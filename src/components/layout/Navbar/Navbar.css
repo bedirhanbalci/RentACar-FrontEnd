@@ -1,0 +1,159 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/fontawesome.min.css");
+
+.range-right {
+  margin-right: 38px;
+}
+
+.donut-up {
+  position: absolute;
+  right: 52px;
+  top: 4px;
+}
+.circle-black {
+  position: absolute;
+  width: 44px;
+  height: 42.9px;
+  border-radius: 50%;
+
+  background: #393939;
+}
+.circle-yellow {
+  position: absolute;
+  width: 20px;
+  height: 19px;
+
+  border-radius: 50%;
+
+  background-color: #ffcd61;
+  border: 3px solid #fff;
+
+  left: 12px;
+  top: 12px;
+}
+
+.nav-item {
+  position: relative;
+  padding-right: 35px;
+}
+.nav-link {
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: "bold";
+  font-size: 18px;
+  /* line-height: 22px; */
+
+  color: #b8becd;
+}
+
+.nav-link:hover {
+  color: #202336 !important;
+}
+
+.btn-login {
+  width: 55%;
+  position: relative;
+  border: 1px solid #ffcd61;
+  box-sizing: border-box;
+  border-radius: 8px;
+  background-color: #ffffff;
+
+  font-family: Nunito;
+  font-style: normal;
+  font-weight: normal;
+
+  padding: 8px 46px 8px 46px;
+
+  color: #393939;
+}
+.btn-login:active {
+  background-color: #393939;
+  color: #ffcd61;
+}
+.btn-register {
+  width: 55%;
+  position: relative;
+  background: #ffcd61;
+  border-radius: 8px;
+  border: none;
+
+  font-family: Nunito;
+  font-style: normal;
+  font-weight: normal;
+
+  color: #393939;
+
+  padding: 8px 46px 8px 46px;
+
+  top: 8px;
+}
+.btn-register:active {
+  background-color: #393939;
+  color: #ffcd61;
+}
+
+.email-logo {
+  width: 36px;
+  height: 36px;
+  /* margin-right: 41px */
+}
+
+.user-profile-img {
+  position: relative;
+  width: 54.62px;
+  height: 54.15px;
+  border-radius: 50%;
+  object-fit: cover;
+  top: 10px;
+  /* bottom: 12px; */
+  cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  .donut-up {
+    right: 72px;
+  }
+  .btn-login {
+    width: 20%;
+  }
+  .btn-register {
+    width: 20%;
+  }
+}
+
+@media (min-width: 992px) {
+  .donut-up {
+    left: 58px;
+    top: 24px;
+  }
+  .nav-pad {
+    padding: 15px;
+  }
+  .nav-item {
+    left: 19px;
+  }
+  .btn-login {
+    width: 132px;
+    height: 44px;
+  }
+  .btn-register {
+    width: 132px;
+    height: 44px;
+    left: 12px;
+    top: 0;
+  }
+  .user-profile-img {
+    top: -8px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .donut-up {
+    left: 88px;
+  }
+}
+
+@media (min-width: 2460px) {
+  .donut-up {
+    left: 688px;
+  }
+}
