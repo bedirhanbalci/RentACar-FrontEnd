@@ -6,7 +6,7 @@ import Navbar from "./components/layout/Navbar/Navbar";
 import { Route, Routes } from "react-router-dom";
 import HomePage from "./pages/HomePage/HomePage";
 import CarList from "./pages/CarList/CarList";
-
+import CarDetail from "./pages/CarDetail/CarDetail";
 function App(): ReactElement {
   return (
     <>
@@ -14,6 +14,7 @@ function App(): ReactElement {
       <Routes>
         <Route path="/" element={<HomePage />}></Route>
         <Route path="/car-list" element={<CarList />}></Route>
+        <Route path="/car-detail" element={<CarDetail />}></Route>
       </Routes>
       <Footer />
     </>
