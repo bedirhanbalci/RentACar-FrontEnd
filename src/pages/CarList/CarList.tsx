@@ -2,10 +2,13 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import CarCard from "../../components/layout/CarCard/CarCard";
 import { GetByIdCarResponse } from "../../models/car/responses/GetByIdCarResponse";
+import { GetAllCarsResponse } from "../../models/car/responses/GetAllCarsResponse";
+import carService from "../../services/carService";
 
 type Props = {};
 
 const CarList = (props: Props) => {
+
   const [cars, setCars] = useState<GetByIdCarResponse[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string>("");
@@ -26,6 +29,8 @@ const CarList = (props: Props) => {
 
     fetchCars();
   }, []);
+
+
 
   if (isLoading) {
     return <div className="container mt-3">Yükleniyor...</div>;
@@ -49,7 +54,7 @@ const CarList = (props: Props) => {
         ))}
       </div>
     </div>
-  );
+);
 };
 
 export default CarList;
