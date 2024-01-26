@@ -1,0 +1,17 @@
+.carousel-control-prev,
+.carousel-control-next {
+  font-size: 2rem;
+  color: black; /* Her zaman siyah renk */
+  background-color: transparent; /* Arka plan olmaması için transparan */
+  border: none; /* Kenarlık olmaması için sınır kaldırılır */
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+  background-color: transparent; /* Hover durumunda arka plan olmaması için transparan */
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: invert(100%); /* Ok rengini siyah yapar */
+}
