@@ -14,7 +14,7 @@ function App(): ReactElement {
       <Routes>
         <Route path="/" element={<HomePage />}></Route>
         <Route path="/car-list" element={<CarList />}></Route>
-        <Route path="/car-detail" element={<CarDetail />}></Route>
+        <Route path="/car-detail/:id" element={<CarDetail />}></Route>
       </Routes>
       <Footer />
     </>

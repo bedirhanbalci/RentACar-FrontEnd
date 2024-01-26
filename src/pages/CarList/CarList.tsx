@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import CarCard from "../../components/layout/CarCard/CarCard";
 import { GetByIdCarResponse } from "../../models/car/responses/GetByIdCarResponse";
-import { GetAllCarsResponse } from "../../models/car/responses/GetAllCarsResponse";
 import carService from "../../services/carService";
 
 type Props = {};
@@ -17,8 +15,9 @@ const CarList = (props: Props) => {
     const fetchCars = async () => {
       try {
         setIsLoading(true);
-        const response = await axios.get('/api/cars');
-        setCars(response.data);
+        carService.getAll().then((response: any) => {
+          setCars(response.data.data);
+        });
       } catch (error) {
         console.error("Araçlar yüklenirken bir hata oluştu!", error);
         setError("Araçlar yüklenirken bir hata oluştu.");
