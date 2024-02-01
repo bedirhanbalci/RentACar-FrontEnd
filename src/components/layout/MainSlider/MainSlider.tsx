@@ -1,14 +1,60 @@
-import React from "react";
+import "./MainSlider.css";
 
-type Props = {};
+type Props = {
+  mainData: { text1: string; text2: string };
+  setMainCount: React.Dispatch<React.SetStateAction<number>>;
+  mainCount: number;
+  setPlayStatus: React.Dispatch<React.SetStateAction<boolean>>;
+  playStatus: boolean;
+};
 
-function MainSlider({}: Props) {
+const MainSlider: any = ({
+  mainData,
+  setMainCount,
+  mainCount,
+  setPlayStatus,
+  playStatus,
+}: Props) => {
   return (
-    <div>
-      MainSlider
-      <hr />
+    <div className="main">
+      <div className="hero-text">
+        <p>{mainData.text1}</p>
+        <p>{mainData.text2}</p>
+      </div>
+      <div className="main-explore">
+        <p>Explore the features</p>
+        <img src={process.env.PUBLIC_URL + "/assets/arrow_btn.png"} alt="" />
+      </div>
+      <div className="main-dot-play">
+        <ul className="main-dots">
+          <li
+            onClick={() => setMainCount(0)}
+            className={mainCount === 0 ? "main-dot orange" : "main-dot"}
+          ></li>
+          <li
+            onClick={() => setMainCount(1)}
+            className={mainCount === 1 ? "main-dot orange" : "main-dot"}
+          ></li>
+          <li
+            onClick={() => setMainCount(2)}
+            className={mainCount === 2 ? "main-dot orange" : "main-dot"}
+          ></li>
+        </ul>
+        <div className="main-play">
+          <img
+            onClick={() => setPlayStatus(!playStatus)}
+            src={
+              playStatus
+                ? process.env.PUBLIC_URL + "/assets/pause_icon.png"
+                : process.env.PUBLIC_URL + "/assets/play_icon.png"
+            }
+            alt=""
+          />
+          <p>See the video</p>
+        </div>
+      </div>
     </div>
   );
-}
+};
 
 export default MainSlider;
