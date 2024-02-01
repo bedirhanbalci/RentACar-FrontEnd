@@ -1,0 +1,34 @@
+.card {
+    width: 18rem; /* Genişlik */
+    background-color: white; /* Arka plan rengi */
+    margin: 1rem; /* Etrafında biraz boşluk */
+    border-radius: 0.5rem; /* Köşeleri yuvarlak */
+  }
+  
+  .card-img-top {
+    width: 100%; /* Resmin genişliği */
+    height: auto; /* Resmin yüksekliği otomatik */
+  }
+  
+  .card-body {
+    padding: 1rem; /* İç boşluk */
+  }
+  
+  .card-title {
+    color: #333; /* Başlık rengi */
+    font-weight: bold; /* Başlık font kalınlığı */
+  }
+  
+  .list-group-item {
+    text-align: left; /* Liste elemanlarını sola yasla */
+    border: none; /* Liste elemanlarının çerçevesini kaldır */
+  }
+  
+  .btn-primary {
+    background-color: #007bff; /* Buton arka plan rengi */
+    color: white; /* Buton yazı rengi */
+    border: none; /* Buton çerçevesini kaldır */
+    margin-top: 1rem; /* Buton üst boşluğu */
+    text-transform: uppercase; /* Buton yazılarını büyük harf yap */
+    border-radius: 0.25rem; /* Buton köşelerini yuvarlak yap */
+  }

@@ -1,44 +1,26 @@
 import React from "react";
 import { GetByIdCarResponse } from "../../../models/car/responses/GetByIdCarResponse";
-import CarService from "../../../services/carService";
-import { HttpStatusCode } from "axios";
 import { Link } from "react-router-dom";
+type Props = {car: GetByIdCarResponse};
 
-type Props = {
-  car: GetByIdCarResponse;
-  onDelete: (id: number) => void;
-  title?: string;
-};
-
-const CarCard = (props: Props) => {
-  const deleteCar = async () => {
-    try {
-      let response = await CarService.delete(props.car.id);
-      if (response.status == HttpStatusCode.Ok) {
-        props.onDelete(props.car.id);
-        alert("Veri başarıyla silindi.");
-      }
-    } catch (error) {
-      alert("Veri silinemedi!");
-    }
-  };
-
+const CarCard = ({car}: Props) => {
   return (
-    <div className="card">
-      <img src={props.car.imagePath} className="card-img-top" alt="..." />
-      <div className="card-body">
-        <h5 className="card-title">{props.car.modelName}</h5>
-        <p className="card-text">{props.car.colorName}</p>
-        <p>{props.car.branchCity} ₺</p>
-        <Link
-          to={"/product-detail/" + props.car.id}
-          className="btn btn-primary"
-        >
-          Details
-        </Link>
-      </div>
+    <div key={car.id} className="card" style={{width: '18rem'}}>
+    <img src="..." className="card-img-top"  alt={car.modelName} />
+    <div className="card-body">
+      <h5 className="card-title">{car.modelName}</h5>
     </div>
-  );
-};
+    <ul className="list-group list-group-flush">
+      <li className="list-group-item">Year: ${car.year}</li>
+      <li className="list-group-item">Daily Price: ${car.dailyPrice}</li>
+      <li className="list-group-item">Gear Type: {car.gearType}</li>
+      <li className="list-group-item">Fuel Type: {car.fuelType}</li>
+    </ul>
+    <div className="card-body">
+    <Link to={`/car-detail/${car.id}`} className="btn btn-primary"> Car Details </Link>
+    </div>
+  </div>
+  )
+}
 
 export default CarCard;
