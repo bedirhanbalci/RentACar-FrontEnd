@@ -1,4 +1,5 @@
 export interface GetAllCarsResponse {
+  id: number;
   kilometer: number;
   plate: string;
   year: number;

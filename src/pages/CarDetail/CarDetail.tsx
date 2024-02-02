@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { GetByIdCarResponse } from '../../models/car/responses/GetByIdCarResponse';
-import carService from '../../services/carService';
+import React, { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
+import { GetByIdCarResponse } from "../../models/car/responses/GetByIdCarResponse";
+import carService from "../../services/carService";
 
 type Props = {};
 
@@ -17,9 +17,9 @@ const CarDetail = (props: Props) => {
         try {
           setIsLoading(true);
           const response = await carService.getById(parseInt(params.id));
-          setCar(response.data);
+          setCar(response.data.data);
         } catch (err) {
-          setError('Araç yüklenirken bir hata oluştu.');
+          setError("Araç yüklenirken bir hata oluştu.");
           console.error(err);
         } finally {
           setIsLoading(false);
@@ -29,6 +29,10 @@ const CarDetail = (props: Props) => {
 
     fetchCar();
   }, [params.id]);
+
+  useEffect(() => {
+    console.log(car);
+  }, [car]);
 
   if (isLoading) {
     return <div>Yükleniyor...</div>;
@@ -42,36 +46,45 @@ const CarDetail = (props: Props) => {
     return <div>Araç bulunamadı.</div>;
   }
 
-return (
-    <div key={car.id} className="text-bg-light mb-3 col-12 col-md-6 shadow">
-    <div className="row g-0">
-      <div className="col-md-4">
-        <img src="..." className="img-fluid rounded-start" alt={car.modelName}/>
-      </div>
-      <div className="col-md-8">
-        <div className="card-body">
-          <h5 className="card-title fw-bold fs-4">{car.modelName}</h5>
-          <ul className="list-group list-group-flush">
-            <li className="list-group-item">Year: {car.year}</li>
-            <li className="list-group-item">Daily Price: {car.dailyPrice}</li>
-            <li className="list-group-item">Gear Type: {car.gearType}</li>
-            <li className="list-group-item">Fuel Type: {car.fuelType}</li>
-            <li className="list-group-item">Color: {car.colorName}</li>
-            <li className="list-group-item">Body Type: {car.bodyType}</li>
-            <li className="list-group-item">Branch City: {car.branchCity}</li>
-            <li className="list-group-item">Plate: {car.plate}</li>
-          </ul>
-          {/* <link
+  return (
+    <div
+      key={car.id}
+      className="container text-bg-light mb-3 col-12 col-md-6 shadow"
+    >
+      <div className="row g-0">
+        <div className="col-md-4">
+          <img
+            src={car.imagePath}
+            className="img-fluid rounded-start"
+            alt={car.modelName}
+          />
+        </div>
+        <div className="col-md-8 mb-3">
+          <div className="card-body">
+            <h5 className="card-title fw-bold fs-4">{car.modelName}</h5>
+            <ul className="list-group list-group-flush">
+              <li className="list-group-item">Year: {car.year}</li>
+              <li className="list-group-item">Daily Price: {car.dailyPrice}</li>
+              <li className="list-group-item">Gear Type: {car.gearType}</li>
+              <li className="list-group-item">Fuel Type: {car.fuelType}</li>
+              <li className="list-group-item">Color: {car.colorName}</li>
+              <li className="list-group-item">Body Type: {car.bodyType}</li>
+              <li className="list-group-item">Branch City: {car.branchCity}</li>
+              <li className="list-group-item">Plate: {car.plate}</li>
+            </ul>
+            <div className="d-grid gap-2 d-md-block mt-3">
+              <Link
                 to={`/reservation/${car?.id}`}
-                className="btn btn-primary "
-              > 
-              Reservation
-              </link> */}
+                className="btn btn-primary btn-lg"
+              >
+                Reservation
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-)
+  );
 };
 
 export default CarDetail;

@@ -10,6 +10,7 @@ import CarDetail from "./pages/CarDetail/CarDetail";
 import CorporateRegister from "./pages/CorporateRegister/CorporateRegister";
 import IndividualRegister from "./pages/IndividualRegister/IndividualRegister";
 import Contact from "./pages/Contact/Contact";
+import { Reservation } from "./pages/Reservation/Reservation";
 function App(): ReactElement {
   return (
     <>
@@ -17,10 +18,17 @@ function App(): ReactElement {
       <Routes>
         <Route path="/" element={<HomePage />}></Route>
         <Route path="/car-list" element={<CarList />}></Route>
-        <Route path="/corporate-register" element={<CorporateRegister />}></Route>
-        <Route path="/individual-register" element={<IndividualRegister />}></Route>
+        <Route
+          path="/corporate-register"
+          element={<CorporateRegister />}
+        ></Route>
+        <Route
+          path="/individual-register"
+          element={<IndividualRegister />}
+        ></Route>
         <Route path="/car-detail/:id" element={<CarDetail />}></Route>
         <Route path="/contact" element={<Contact />}></Route>
+        <Route path="/reservation/:id" element={<Reservation />}></Route>
       </Routes>
       <Footer />
     </>
