@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import Background from "../../components/layout/Background/Background";
 import MainSlider from "../../components/layout/MainSlider/MainSlider";
-
-import React from "react";
 import AdditionalFeatureSlider from "../../components/layout/AdditionalFeatureSlider/AdditionalFeatureSlider";
 import AssurancePackageSlider from "../../components/layout/AssurancePackageSlider/AssurancePackageSlider";
+import CarService from "../../services/carService";
+import CarCard from "../../components/layout/CarCard/CarCard";
+import { GetAllCarsResponse } from "../../models/car/responses/GetAllCarsResponse";
 
 const featureCardsData = Array.from({ length: 10 }, (_, index) => ({
   id: index + 1,
@@ -28,6 +29,23 @@ const HomePage = (props: Props) => {
     { text1: "Give in to", text2: "your passions" },
   ];
 
+  const [carList, setCarList] = useState<GetAllCarsResponse[]>([]);
+
+  const fetchCars = async () => {
+    try {
+      await CarService.getAll().then((response: any) => {
+        console.log(response);
+        setCarList(response.data.data);
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchCars();
+  }, []);
+
   const [mainCount, setMainCount] = useState(0);
   const [playStatus, setPlayStatus] = useState(false);
 
@@ -50,7 +68,17 @@ const HomePage = (props: Props) => {
       />
       <AdditionalFeatureSlider cards={featureCardsData} />
       <AssurancePackageSlider cards={assuranceCardsData} />
-      <hr />
+
+      <div className="container mt-5">
+        <h2 className="text-center mb-4">Featured Cars</h2>
+        <div className="row">
+          {carList?.slice(0, 6).map((car: GetAllCarsResponse) => (
+            <div key={car.id} className="col-md-4 mb-3">
+              <CarCard car={car} />
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 };

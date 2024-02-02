@@ -9,7 +9,7 @@ class CarService {
   }
 
   getById(id: number) {
-    return axiosInstance.get<GetByIdCarResponse>("cars/getById/" + id);
+    return axiosInstance.get<GetByIdCarResponse, any>("cars/getById/" + id);
   }
 
   delete(id: number) {

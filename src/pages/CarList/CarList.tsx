@@ -6,7 +6,6 @@ import carService from "../../services/carService";
 type Props = {};
 
 const CarList = (props: Props) => {
-
   const [cars, setCars] = useState<GetByIdCarResponse[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string>("");
@@ -29,8 +28,6 @@ const CarList = (props: Props) => {
     fetchCars();
   }, []);
 
-
-
   if (isLoading) {
     return <div className="container mt-3">Yükleniyor...</div>;
   }
@@ -47,13 +44,16 @@ const CarList = (props: Props) => {
     <div className="container mt-3">
       <div className="row">
         {cars.map(car => (
-          <div key={car.id} className="col-lg-3 col-md-4 col-sm-6 col-12 mb-3 mb-sm-0">
+          <div
+            key={car.id}
+            className="col-lg-4 col-md-4 col-sm-6 col-12 mb-3 mb-sm-0 mt-3"
+          >
             <CarCard car={car} />
           </div>
         ))}
       </div>
     </div>
-);
+  );
 };
 
 export default CarList;
