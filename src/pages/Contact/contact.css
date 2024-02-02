@@ -1,0 +1,31 @@
+.contact-page {
+    position: relative;
+  }
+  
+  .map-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+  
+  .dropdown-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+
+  .contact-section {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
+    max-width: 1200px; 
+    margin: 0 auto;
+  }
+  
+  .card {
+    flex: 1; 
+    margin: 0 10px; 
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+  }
