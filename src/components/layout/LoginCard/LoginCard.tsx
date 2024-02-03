@@ -30,8 +30,9 @@ const LoginCard: React.FC = () => {
 
   const [password, setPassword] = useState("");
 
-  const handleFormSubmit = async () => {
+  const handleFormSubmit = async (e: any) => {
     console.log(email);
+    e.preventDefault();
     try {
       const response = await axiosInstance.post("auth/login", {
         email: email,
@@ -75,7 +76,7 @@ const LoginCard: React.FC = () => {
             <Form.Check type="checkbox" label="Check me out" />
           </Form.Group>
           <Button
-            onClick={() => handleFormSubmit()}
+            onClick={(e: any) => handleFormSubmit(e)}
             variant="primary"
             type="submit"
           >
