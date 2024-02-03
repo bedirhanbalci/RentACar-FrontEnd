@@ -4,15 +4,12 @@ import { setToken } from "../../utils/interceptors/axiosInterceptors";
 
 const authSlice = createSlice({
   name: "auth",
-  initialState: {
-    id: 0,
-    role: "",
-  },
+  initialState: loadAuthState(),
   reducers: {
     loginSuccess: (state, action) => {
       state.id = action.payload.id;
       state.role = action.payload.role;
-      // setToken(action.payload.accessToken);
+      setToken(action.payload.accessToken);
     },
 
     logoutSuccess: state => {
