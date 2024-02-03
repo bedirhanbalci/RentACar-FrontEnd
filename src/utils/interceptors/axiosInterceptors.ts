@@ -1,12 +1,14 @@
 import axios from "axios";
 import toastr from "toastr";
+import { loadToken, storeToken } from "../../store/authStorage";
 
 const axiosInstance = axios.create({
   baseURL: "http://localhost:8080/api/",
 });
 
 axiosInstance.interceptors.request.use(config => {
-  config.headers.Authorization = "My Token";
+  if (authToken) config.headers.Authorization = `Bearer ${authToken}`;
+
   return config;
 });
 
@@ -20,5 +22,12 @@ axiosInstance.interceptors.response.use(
     return error;
   }
 );
+
+let authToken = loadToken();
+
+export function setToken(token?: any) {
+  authToken = token;
+  storeToken(token);
+}
 
 export default axiosInstance;

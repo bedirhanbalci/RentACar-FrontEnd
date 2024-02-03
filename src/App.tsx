@@ -11,6 +11,8 @@ import CorporateRegister from "./pages/CorporateRegister/CorporateRegister";
 import IndividualRegister from "./pages/IndividualRegister/IndividualRegister";
 import Contact from "./pages/Contact/Contact";
 import { Reservation } from "./pages/Reservation/Reservation";
+import LoginCard from "./components/layout/LoginCard/LoginCard";
+import Branches from "./pages/Branches/Branches";
 function App(): ReactElement {
   return (
     <>
@@ -18,6 +20,9 @@ function App(): ReactElement {
       <Routes>
         <Route path="/" element={<HomePage />}></Route>
         <Route path="/car-list" element={<CarList />}></Route>
+        <Route path="/branches" element={<Branches />}></Route>
+        <Route path="/about" element={<Reservation />}></Route>
+        <Route path="/contact" element={<Contact />}></Route>
         <Route
           path="/corporate-register"
           element={<CorporateRegister />}
@@ -27,7 +32,7 @@ function App(): ReactElement {
           element={<IndividualRegister />}
         ></Route>
         <Route path="/car-detail/:id" element={<CarDetail />}></Route>
-        <Route path="/contact" element={<Contact />}></Route>
+
         <Route path="/reservation/:id" element={<Reservation />}></Route>
       </Routes>
       <Footer />

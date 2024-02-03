@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import "./Navbar.css";
+import LoginCard from "../LoginCard/LoginCard";
 
 type Props = {};
 
@@ -16,8 +17,20 @@ function Navbar({}: Props) {
         <Link className="text-black text-decoration-none" to={"/car-list"}>
           <li>Cars</li>
         </Link>
-        <li>About</li>
-        <li className="nav-contact">Contact</li>
+        <Link className="text-black text-decoration-none" to={"/branches"}>
+          <li>Branches</li>
+        </Link>
+        <Link className="text-black text-decoration-none" to={"/about"}>
+          <li>About</li>
+        </Link>
+        <Link className="text-black text-decoration-none" to={"/contact"}>
+          <li className="nav-contact">Contact</li>
+        </Link>
+        <div className="text-black text-decoration-none">
+          <li>
+            <LoginCard />
+          </li>
+        </div>
       </ul>
     </div>
   );
