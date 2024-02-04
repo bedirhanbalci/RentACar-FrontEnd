@@ -11,11 +11,12 @@ import CorporateRegister from "./pages/CorporateRegister/CorporateRegister";
 import IndividualRegister from "./pages/IndividualRegister/IndividualRegister";
 import Contact from "./pages/Contact/Contact";
 import { Reservation } from "./pages/Reservation/Reservation";
-import LoginCard from "./components/layout/LoginCard/LoginCard";
 import Branches from "./pages/Branches/Branches";
+import OverlayLoader from "./components/layout/OverlayLoader/OverlayLoader";
 function App(): ReactElement {
   return (
     <>
+      <OverlayLoader />
       <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />}></Route>
