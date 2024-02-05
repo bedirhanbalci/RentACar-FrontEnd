@@ -1,9 +1,9 @@
-import { AddRentalRequest } from "../models/rental/requests/addRentalRequest";
-import { UpdateRentalRequest } from "../models/rental/requests/updateRentalRequest";
-import { AddRentalResponse } from "../models/rental/responses/addRentalResponse";
-import { GetAllRentalsResponse } from "../models/rental/responses/getAllRentalsResponse";
-import { GetByIdRentalResponse } from "../models/rental/responses/getByIdRentalResponse";
-import { UpdateRentalResponse } from "../models/rental/responses/updateRentalResponse";
+import { AddRentalRequest } from "../models/rental/requests/AddRentalRequest";
+import { UpdateRentalRequest } from "../models/rental/requests/UpdateRentalRequest";
+import { GetAllRentalsResponse } from "../models/rental/responses/GetAllRentalsResponse";
+import { GetByIdRentalResponse } from "../models/rental/responses/GetByIdRentalResponse";
+import { AddRentalResponse } from "../models/rental/responses/AddRentalResponse";
+import { UpdateRentalResponse } from "../models/rental/responses/UpdateRentalResponse";
 import { BaseService } from "./baseService";
 
 class RentalService extends BaseService<

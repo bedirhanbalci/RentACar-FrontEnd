@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { GetByIdCarResponse } from "../../models/car/responses/getByIdCarResponse";
+import { GetByIdCarResponse } from "../../models/car/responses/GetByIdCarResponse";
 import axiosInstance from "../../utils/interceptors/axiosInterceptors";
 import * as Yup from "yup";
 import { ErrorMessage, Field, Form, Formik } from "formik";

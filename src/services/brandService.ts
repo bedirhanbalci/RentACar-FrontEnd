@@ -1,9 +1,9 @@
-import { AddBrandRequest } from "../models/brand/requests/addBrandRequest";
-import { UpdateBrandRequest } from "../models/brand/requests/updateBrandRequest";
-import { GetAllBrandsResponse } from "../models/brand/responses/getAllBrandsResponse";
-import { GetByIdBrandResponse } from "../models/brand/responses/getByIdBrandResponse";
-import { AddBrandResponse } from "../models/brand/responses/addBrandResponse";
-import { UpdateBrandResponse } from "../models/brand/responses/updateBrandResponse";
+import { AddBrandRequest } from "../models/brand/requests/AddBrandRequest";
+import { UpdateBrandRequest } from "../models/brand/requests/UpdateBrandRequest";
+import { AddBrandResponse } from "../models/brand/responses/AddBrandResponse";
+import { GetAllBrandsResponse } from "../models/brand/responses/GetAllBrandsResponse";
+import { GetByIdBrandResponse } from "../models/brand/responses/GetByIdBrandResponse";
+import { UpdateBrandResponse } from "../models/brand/responses/UpdateBrandResponse";
 import { BaseService } from "./baseService";
 
 class BrandService extends BaseService<

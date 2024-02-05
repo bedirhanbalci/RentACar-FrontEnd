@@ -1,9 +1,9 @@
-import { AddColorRequest } from "../models/color/requests/addColorRequest";
-import { UpdateColorRequest } from "../models/color/requests/updateColorRequest";
-import { GetAllColorsResponse } from "../models/color/responses/getAllColorsResponse";
-import { GetByIdColorResponse } from "../models/color/responses/getByIdColorResponse";
-import { AddColorResponse } from "../models/color/responses/addColorResponse";
-import { UpdateColorResponse } from "../models/color/responses/updateColorResponse";
+import { AddColorRequest } from "../models/color/requests/AddColorRequest";
+import { UpdateColorRequest } from "../models/color/requests/UpdateColorRequest";
+import { GetAllColorsResponse } from "../models/color/responses/GetAllColorsResponse";
+import { GetByIdColorResponse } from "../models/color/responses/GetByIdColorResponse";
+import { AddColorResponse } from "../models/color/responses/AddColorResponse";
+import { UpdateColorResponse } from "../models/color/responses/UpdateColorResponse";
 import { BaseService } from "./baseService";
 
 class ColorService extends BaseService<
