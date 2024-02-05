@@ -5,7 +5,7 @@ import AdditionalFeatureSlider from "../../components/layout/AdditionalFeatureSl
 import AssurancePackageSlider from "../../components/layout/AssurancePackageSlider/AssurancePackageSlider";
 import CarService from "../../services/carService";
 import CarCard from "../../components/layout/CarCard/CarCard";
-import { GetAllCarsResponse } from "../../models/car/responses/getAllCarsResponse";
+import { GetAllCarsResponse } from "../../models/car/responses/GetAllCarsResponse";
 
 const featureCardsData = Array.from({ length: 10 }, (_, index) => ({
   id: index + 1,

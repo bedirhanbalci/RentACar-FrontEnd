@@ -1,6 +1,6 @@
+import { LoginRequest } from "../models/auth/requests/LoginRequest";
+import { RegisterRequest } from "../models/auth/requests/RegisterRequest";
 import axiosInstance from "../utils/interceptors/axiosInterceptors";
-import { RegisterRequest } from "../models/auth/requests/registerRequest";
-import { LoginRequest } from "../models/auth/requests/loginRequest";
 
 class AuthService {
   register(registerRequest: RegisterRequest) {

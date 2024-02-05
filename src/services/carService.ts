@@ -1,9 +1,9 @@
-import { GetAllCarsResponse } from "../models/car/responses/getAllCarsResponse";
-import { GetByIdCarResponse } from "../models/car/responses/getByIdCarResponse";
-import { AddCarRequest } from "../models/car/requests/addCarRequest";
-import { AddCarResponse } from "../models/car/responses/addCarResponse";
-import { UpdateCarRequest } from "../models/car/requests/updateCarRequest";
-import { UpdateCarResponse } from "../models/car/responses/updateCarResponse";
+import { AddCarRequest } from "../models/car/requests/AddCarRequest";
+import { UpdateCarRequest } from "../models/car/requests/UpdateCarRequest";
+import { GetAllCarsResponse } from "../models/car/responses/GetAllCarsResponse";
+import { GetByIdCarResponse } from "../models/car/responses/GetByIdCarResponse";
+import { AddCarResponse } from "../models/car/responses/AddCarResponse";
+import { UpdateCarResponse } from "../models/car/responses/UpdateCarResponse";
 import { BaseService } from "./baseService";
 
 class CarService extends BaseService<

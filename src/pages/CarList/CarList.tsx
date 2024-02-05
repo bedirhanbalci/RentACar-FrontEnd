@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import CarCard from "../../components/layout/CarCard/CarCard";
-import { GetByIdCarResponse } from "../../models/car/responses/getByIdCarResponse";
+import { GetByIdCarResponse } from "../../models/car/responses/GetByIdCarResponse";
 import CarService from "../../services/carService";
 
 type Props = {};

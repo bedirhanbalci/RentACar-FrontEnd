@@ -1,9 +1,9 @@
-import { AddAssurancePackageRequest } from "../models/assurancePackage/requests/addAssurancePackageRequest";
-import { UpdateAssurancePackageRequest } from "../models/assurancePackage/requests/updateAssurancePackageRequest";
-import { AddAssurancePackageResponse } from "../models/assurancePackage/responses/addAssurancePackageResponse";
-import { GetAllAssurancePackagesResponse } from "../models/assurancePackage/responses/getAllAssurancePackagesResponse";
-import { GetByIdAssurancePackageResponse } from "../models/assurancePackage/responses/getByIdAssurancePackageResponse";
-import { UpdateAssurancePackageResponse } from "../models/assurancePackage/responses/updateAssurancePackageResponse";
+import { AddAssurancePackageRequest } from "../models/assurancePackage/requests/AddAssurancePackageRequest";
+import { UpdateAssurancePackageRequest } from "../models/assurancePackage/requests/UpdateAssurancePackageRequest";
+import { AddAssurancePackageResponse } from "../models/assurancePackage/responses/AddAssurancePackageResponse";
+import { GetAllAssurancePackagesResponse } from "../models/assurancePackage/responses/GetAllAssurancePackagesResponse";
+import { GetByIdAssurancePackageResponse } from "../models/assurancePackage/responses/GetByIdAssurancePackageResponse";
+import { UpdateAssurancePackageResponse } from "../models/assurancePackage/responses/UpdateAssurancePackageResponse";
 import { BaseService } from "./baseService";
 
 class AssurancePackageService extends BaseService<
