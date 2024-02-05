@@ -1,1 +1,3 @@
-export {};
+export interface AddColorRequest {
+  name: string;
+}

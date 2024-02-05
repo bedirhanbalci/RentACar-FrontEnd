@@ -1,11 +1,9 @@
 import { Dropdown, Card, Nav, Form, Button } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
 import axiosInstance from "../../../utils/interceptors/axiosInterceptors";
 import { useDispatch, useSelector } from "react-redux";
 import { loginSuccess } from "../../../store/slices/authSlice";
-import TokenService from "../../../services/tokenService";
 
 const LoginCard: React.FC = () => {
   const dropdownStyle: React.CSSProperties = {

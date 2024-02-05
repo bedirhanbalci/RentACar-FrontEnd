@@ -1,19 +1,22 @@
-import { AxiosResponse } from "axios";
-import { GetAllCarsResponse } from "../models/car/responses/GetAllCarsResponse";
-import axiosInstance from "../utils/interceptors/axiosInterceptors";
-import { GetByIdCarResponse } from "../models/car/responses/GetByIdCarResponse";
+import { GetAllCarsResponse } from "../models/car/responses/getAllCarsResponse";
+import { GetByIdCarResponse } from "../models/car/responses/getByIdCarResponse";
+import { AddCarRequest } from "../models/car/requests/addCarRequest";
+import { AddCarResponse } from "../models/car/responses/addCarResponse";
+import { UpdateCarRequest } from "../models/car/requests/updateCarRequest";
+import { UpdateCarResponse } from "../models/car/responses/updateCarResponse";
+import { BaseService } from "./baseService";
 
-class CarService {
-  getAll(): Promise<AxiosResponse<GetAllCarsResponse, any>> {
-    return axiosInstance.get<GetAllCarsResponse>("cars/getAll");
-  }
-
-  getById(id: number) {
-    return axiosInstance.get<GetByIdCarResponse, any>("cars/getById/" + id);
-  }
-
-  delete(id: number) {
-    return axiosInstance.delete<GetByIdCarResponse>("cars/delete");
+class CarService extends BaseService<
+  GetAllCarsResponse,
+  GetByIdCarResponse,
+  AddCarRequest,
+  AddCarResponse,
+  UpdateCarRequest,
+  UpdateCarResponse
+> {
+  constructor() {
+    super();
+    this.apiUrl = "cars";
   }
 }
 
