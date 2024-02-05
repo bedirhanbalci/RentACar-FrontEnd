@@ -1,5 +1,3 @@
-import React from "react";
-import { GetByIdCarResponse } from "../../../models/car/responses/GetByIdCarResponse";
 import { Link } from "react-router-dom";
 type Props = { car: any };
 

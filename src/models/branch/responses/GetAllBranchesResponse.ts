@@ -1,7 +1,8 @@
-export interface GetAllBranchesResponse{
-city: string; 
-address: string; 
-phoneNumber: string ;
-latitude: number;
-longitude: number;
+export interface GetAllBranchesResponse {
+  id: number;
+  city: string;
+  address: string;
+  phoneNumber: string;
+  latitude: number;
+  longitude: number;
 }

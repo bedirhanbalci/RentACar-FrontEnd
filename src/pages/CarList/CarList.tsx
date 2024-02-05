@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import CarCard from "../../components/layout/CarCard/CarCard";
-import { GetByIdCarResponse } from "../../models/car/responses/GetByIdCarResponse";
-import carService from "../../services/carService";
+import { GetByIdCarResponse } from "../../models/car/responses/getByIdCarResponse";
+import CarService from "../../services/carService";
 
 type Props = {};
 
@@ -14,7 +14,7 @@ const CarList = (props: Props) => {
     const fetchCars = async () => {
       try {
         setIsLoading(true);
-        carService.getAll().then((response: any) => {
+        CarService.getAll().then((response: any) => {
           setCars(response.data.data);
         });
       } catch (error) {
