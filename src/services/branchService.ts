@@ -1,18 +1,22 @@
-import { GetByIdBranchResponse } from './../models/branch/responses/GetByIdBranchResponse';
-import { GetAllBranchesResponse } from './../models/branch/responses/GetAllBranchesResponse';
-import { AxiosResponse } from "axios";
-import axiosInstance from "../utils/interceptors/axiosInterceptors";
-class BranchService {
-  getAll(): Promise<AxiosResponse<GetAllBranchesResponse, any>> {
-    return axiosInstance.get<GetAllBranchesResponse>("branches/getAll");
-  }
+import { AddBranchRequest } from "../models/branch/requests/AddBranchRequest";
+import { UpdateBranchRequest } from "../models/branch/requests/UpdateBranchRequest";
+import { AddBranchResponse } from "../models/branch/responses/AddBranchResponse";
+import { GetAllBranchesResponse } from "../models/branch/responses/GetAllBranchesResponse";
+import { GetByIdBranchResponse } from "../models/branch/responses/GetByIdBranchResponse";
+import { UpdateBranchResponse } from "../models/branch/responses/UpdateBranchResponse";
+import { BaseService } from "./baseService";
 
-  getById(id: number) {
-    return axiosInstance.get<GetByIdBranchResponse>("branches/getById/" + id);
-  }
-
-  delete(id: number) {
-    return axiosInstance.delete<GetByIdBranchResponse>("branches/delete");
+class BranchService extends BaseService<
+  GetAllBranchesResponse,
+  GetByIdBranchResponse,
+  AddBranchRequest,
+  AddBranchResponse,
+  UpdateBranchRequest,
+  UpdateBranchResponse
+> {
+  constructor() {
+    super();
+    this.apiUrl = "branches";
   }
 }
 

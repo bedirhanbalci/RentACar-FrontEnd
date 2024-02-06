@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { GetByIdCarResponse } from "../../models/car/responses/GetByIdCarResponse";
-import carService from "../../services/carService";
+import CarService from "../../services/carService";
 
 type Props = {};
 
@@ -15,9 +15,12 @@ const CarDetail = (props: Props) => {
     const fetchCar = async () => {
       if (params.id) {
         try {
-          setIsLoading(true);
-          const response = await carService.getById(parseInt(params.id));
-          setCar(response.data.data);
+          await CarService.getById(parseInt(params.id)).then(
+            (response: any) => {
+              console.log(response);
+              setCar(response.data.data);
+            }
+          );
         } catch (err) {
           setError("Araç yüklenirken bir hata oluştu.");
           console.error(err);
