@@ -1,6 +1,7 @@
 import { ReactElement } from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap-icons/font/bootstrap-icons.css";
 import Footer from "./components/layout/Footer/Footer";
 import Navbar from "./components/layout/Navbar/Navbar";
 import { Route, Routes } from "react-router-dom";
@@ -13,6 +14,7 @@ import Contact from "./pages/Contact/Contact";
 import { Reservation } from "./pages/Reservation/Reservation";
 import Branches from "./pages/Branches/Branches";
 import OverlayLoader from "./components/layout/OverlayLoader/OverlayLoader";
+import NotFound from "./pages/NotFound/NotFound";
 function App(): ReactElement {
   return (
     <>
@@ -35,6 +37,7 @@ function App(): ReactElement {
         <Route path="/car-detail/:id" element={<CarDetail />}></Route>
 
         <Route path="/reservation/:id" element={<Reservation />}></Route>
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
     </>
