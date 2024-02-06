@@ -2,7 +2,7 @@
 import { Loader } from "@googlemaps/js-api-loader";
 import React, { useEffect } from "react";
 
-export function GoogleMap() {
+export function BranchMap() {
   const mapRef = React.useRef<HTMLDivElement>(null);
   useEffect(() => {
     const initMap = async () => {
@@ -86,7 +86,7 @@ export function GoogleMap() {
 
       //put up a marker
 
-      markerArray.forEach(markerInfo => {
+      markerArray.forEach((markerInfo) => {
         const marker = new google.maps.Marker({
           position: markerInfo.location,
           map,
@@ -106,7 +106,7 @@ export function GoogleMap() {
 
   return (
     <div>
-      <div style={{ height: "600px" }} ref={mapRef}></div>
+      <div style={{ height: "300px" }} ref={mapRef}></div>
     </div>
   );
 }
