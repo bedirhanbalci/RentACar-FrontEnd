@@ -1,30 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { BranchMap } from "../../components/layout/BranchMap/BranchMap";
+import BranchMap from "../../components/layout/BranchMap/BranchMap";
 import { Container } from "react-bootstrap";
-import { GetByIdBranchResponse } from "../../models/branch/responses/GetByIdBranchResponse";
-import { useParams } from "react-router-dom";
-import axiosInstance from "../../utils/interceptors/axiosInterceptors";
 
 type Props = {};
 
 const Branches = (props: Props) => {
-  const { id } = useParams();
-  const [branches, setBrances] = useState<GetByIdBranchResponse[]>([]);
-
-  const fetchCar = async () => {
-    try {
-      const response = await axiosInstance(`/cars/getById/${id}`);
-
-      setBrances(response.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    fetchCar();
-  }, []);
-
   return (
     <div>
       <section

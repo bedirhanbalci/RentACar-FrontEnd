@@ -1,5 +1,4 @@
 import { ReactElement } from "react";
-import "./App.css";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import Footer from "./components/layout/Footer/Footer";
@@ -24,7 +23,7 @@ function App(): ReactElement {
         <Route path="/" element={<HomePage />}></Route>
         <Route path="/car-list" element={<CarList />}></Route>
         <Route path="/branches" element={<Branches />}></Route>
-        <Route path="/about" element={<Reservation />}></Route>
+        <Route path="/about"></Route>
         <Route path="/contact" element={<Contact />}></Route>
         <Route
           path="/corporate-register"

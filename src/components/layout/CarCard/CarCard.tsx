@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import "./CarCard.css";
 type Props = { car: any };
 
 const CarCard = ({ car }: Props) => {

@@ -1,0 +1,17 @@
+.carousel-control-prev,
+.carousel-control-next {
+  font-size: 2rem;
+  color: black;
+  background-color: transparent;
+  border: none;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+  background-color: transparent;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: invert(100%);
+}
