@@ -4,6 +4,8 @@ import { GetByIdCarResponse } from "../../models/car/responses/GetByIdCarRespons
 import axiosInstance from "../../utils/interceptors/axiosInterceptors";
 import * as Yup from "yup";
 import { ErrorMessage, Field, Form, Formik } from "formik";
+import CarService from "../../services/carService";
+import RentalService from "../../services/rentalService";
 
 type Props = {};
 
@@ -23,9 +25,10 @@ export const Reservation = (props: Props) => {
   const [totalPrice, setTotalPrice] = useState<number>(0);
   const fetchCar = async () => {
     try {
-      const response = await axiosInstance(`/cars/getById/${id}`);
-
-      setCar(response.data);
+      await CarService.getById(parseInt(`${id}`)).then((response: any) => {
+        console.log(response);
+        setCar(response.data.data);
+      });
     } catch (error) {
       console.log(error);
     }
@@ -42,17 +45,17 @@ export const Reservation = (props: Props) => {
 
   const handleOnSubmit = async (values: CarSearchValues) => {
     try {
-      const response = await axiosInstance.post("/rentals/add", {
+      await RentalService.add({
         carId: id,
         ...values,
         userId: 2,
+      }).then((response: any) => {
+        setTotalPrice(0);
+        setInitialValues({ startDate: "", endDate: "" });
       });
-      console.log(response);
       // navigate(`/order-complete`, {
       //   state: { rental: response.data },
       // });
-      setTotalPrice(0);
-      setInitialValues({ startDate: "", endDate: "" });
     } catch (error) {
       console.log(error);
     }
@@ -63,34 +66,15 @@ export const Reservation = (props: Props) => {
     setInitialValues({ ...values, [e.target.name]: e.target.value });
   };
 
-  useEffect(() => {
-    if (
-      initialValues.endDate &&
-      initialValues.startDate &&
-      initialValues.endDate > initialValues.startDate
-    ) {
-      fetchRentalTotalPrice(initialValues);
-    }
-  }, [initialValues]);
-
-  const fetchRentalTotalPrice = async (values: any) => {
-    try {
-      const response = await axiosInstance.post("/rentals/total", {
-        ...values,
-        carId: car?.id,
-      });
-      setTotalPrice(response.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   return (
     <div className="container row  justify-content-center align-items-center">
       <div className="col-12 col-md-6 ">
         <img className="img-fluid rounded" src={car?.imagePath} alt="" />
       </div>
       <div className="col-12 col-md-6 border   rounded border-3 p-md-5">
+        {/* <div className="text-center fs-1 text-capitalize fw-bolder">
+          {car?.brandName}
+        </div> */}
         <div className="text-center fs-1 text-capitalize fw-bolder">
           {car?.modelName}
         </div>
