@@ -64,7 +64,10 @@ const CarDetail = (props: Props) => {
         </div>
         <div className="col-md-8 mb-3">
           <div className="card-body">
-            <h5 className="card-title fw-bold fs-4">{car.modelName}</h5>
+            <h5 className="card-title fw-bold fs-4">
+              {" "}
+              {car.brandName} {car.modelName}
+            </h5>
             <ul className="list-group list-group-flush">
               <li className="list-group-item">Year: {car.year}</li>
               <li className="list-group-item">Daily Price: {car.dailyPrice}</li>

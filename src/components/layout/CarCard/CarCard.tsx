@@ -7,7 +7,9 @@ const CarCard = ({ car }: Props) => {
     <div key={car.id} className="card" style={{ width: "18rem" }}>
       <img src={car.imagePath} className="card-img-top" alt={car.modelName} />
       <div className="card-body">
-        <h5 className="card-title">{car.modelName}</h5>
+        <h5 className="card-title">
+          {car.brandName} {car.modelName}
+        </h5>
       </div>
       <ul className="list-group list-group-flush">
         <li className="list-group-item">Year: ${car.year}</li>

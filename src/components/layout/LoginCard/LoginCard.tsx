@@ -125,10 +125,6 @@ const LoginCard: React.FC = () => {
     setActiveTab(tab);
   };
 
-  useEffect(() => {
-    console.log(authState);
-  }, [authState]);
-
   return (
     <div className="btn-group">
       <Dropdown className="d-inline mx-2" autoClose="outside">

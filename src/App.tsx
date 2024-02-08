@@ -14,6 +14,8 @@ import { Reservation } from "./pages/Reservation/Reservation";
 import Branches from "./pages/Branches/Branches";
 import OverlayLoader from "./components/layout/OverlayLoader/OverlayLoader";
 import NotFound from "./pages/NotFound/NotFound";
+import AssurancePackage from "./pages/AssurancePackage/AssurancePackage";
+import AdditionalFeature from "./pages/AdditionalFeature/AdditionalFeature";
 function App(): ReactElement {
   return (
     <>
@@ -37,6 +39,11 @@ function App(): ReactElement {
 
         <Route path="/reservation/:id" element={<Reservation />}></Route>
         <Route path="*" element={<NotFound />} />
+        <Route path="/assurance-package" element={<AssurancePackage />}></Route>
+        <Route
+          path="/additional-feature"
+          element={<AdditionalFeature />}
+        ></Route>
       </Routes>
       <Footer />
     </>
