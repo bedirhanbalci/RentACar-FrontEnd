@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { GetByIdCarResponse } from "../../models/car/responses/GetByIdCarResponse";
-import axiosInstance from "../../utils/interceptors/axiosInterceptors";
 import * as Yup from "yup";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import CarService from "../../services/carService";
-import RentalService from "../../services/rentalService";
+import { useDispatch } from "react-redux";
+import { addRental } from "../../store/slices/rentalSlice";
 
 type Props = {};
 
@@ -18,6 +18,7 @@ export const Reservation = (props: Props) => {
   const { id } = useParams();
   const [car, setCar] = useState<GetByIdCarResponse>();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [initialValues, setInitialValues] = useState<CarSearchValues>({
     startDate: "",
     endDate: "",
@@ -44,21 +45,8 @@ export const Reservation = (props: Props) => {
   });
 
   const handleOnSubmit = async (values: CarSearchValues) => {
-    try {
-      await RentalService.add({
-        carId: id,
-        ...values,
-        userId: 2,
-      }).then((response: any) => {
-        setTotalPrice(0);
-        setInitialValues({ startDate: "", endDate: "" });
-      });
-      // navigate(`/order-complete`, {
-      //   state: { rental: response.data },
-      // });
-    } catch (error) {
-      console.log(error);
-    }
+    dispatch(addRental(values));
+    navigate("/assurance-package");
   };
 
   const onChangeInput = (handleChange: any, e: any, values: any) => {
@@ -72,9 +60,9 @@ export const Reservation = (props: Props) => {
         <img className="img-fluid rounded" src={car?.imagePath} alt="" />
       </div>
       <div className="col-12 col-md-6 border   rounded border-3 p-md-5">
-        {/* <div className="text-center fs-1 text-capitalize fw-bolder">
+        <div className="text-center fs-1 text-capitalize fw-bolder">
           {car?.brandName}
-        </div> */}
+        </div>
         <div className="text-center fs-1 text-capitalize fw-bolder">
           {car?.modelName}
         </div>
@@ -132,7 +120,7 @@ export const Reservation = (props: Props) => {
 
                 <div className="text-center mt-4">
                   <button type="submit" className="btn btn-primary">
-                    Kiralama onayla
+                    Continue
                   </button>
                 </div>
               </Form>

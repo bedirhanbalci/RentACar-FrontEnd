@@ -3,5 +3,6 @@ export interface GetAllAdditionalFeaturesResponse {
   name: string;
   detail: string;
   dailyPrice: number;
+  totalPrice?: number;
   quantity?: number;
 }

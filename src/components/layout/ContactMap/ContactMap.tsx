@@ -1,6 +1,6 @@
 "use client";
 import { Loader } from "@googlemaps/js-api-loader";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { GetByIdBranchResponse } from "../../../models/branch/responses/GetByIdBranchResponse";
 
 type Props = {
@@ -21,13 +21,13 @@ const ContactMap = ({ branch }: Props) => {
 
       // Tek bir marker için konum ve içerik
       const markerInfo = {
-        location: { lat: branch.latitude, lng: branch.longitude },
-        content: `<h6>${branch.city}</h6>`,
+        location: { lat: 40.9833, lng: 29.1167 },
+        content: "<h6>Istanbul</h6>",
       };
       // Harita seçenekleri
       const MapOptions: google.maps.MapOptions = {
         center: markerInfo.location,
-        zoom: 8,
+        zoom: 12,
         mapId: "my-project-140107-412608",
       };
 

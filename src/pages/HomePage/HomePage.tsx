@@ -30,7 +30,6 @@ const HomePage = (props: Props) => {
   const fetchCars = async () => {
     try {
       await CarService.getAll().then((response: any) => {
-        console.log(response);
         setCarList(response.data.data);
       });
     } catch (error) {
@@ -41,7 +40,6 @@ const HomePage = (props: Props) => {
   const fetchAssurance = async () => {
     try {
       await AssurancePackageService.getAll().then((response: any) => {
-        console.log(response);
         setAssuranceList(response.data.data);
       });
     } catch (error) {
@@ -52,7 +50,6 @@ const HomePage = (props: Props) => {
   const fetchAdditional = async () => {
     try {
       await AdditionalFeatureService.getAll().then((response: any) => {
-        console.log(response);
         setAdditionalList(response.data.data);
       });
     } catch (error) {
