@@ -18,6 +18,7 @@ import NotFound from "./pages/NotFound/NotFound";
 import AssurancePackage from "./pages/AssurancePackage/AssurancePackage";
 import AdditionalFeature from "./pages/AdditionalFeature/AdditionalFeature";
 import Rental from "./pages/Rental/Rental";
+import OrderComplete from "./pages/OrderComplete/OrderComplete";
 function App(): ReactElement {
   return (
     <>
@@ -48,6 +49,7 @@ function App(): ReactElement {
           element={<AdditionalFeature />}
         ></Route>
         <Route path="/rental" element={<Rental />}></Route>
+        <Route path="/order-complete" element={<OrderComplete />}></Route>
       </Routes>
       <Footer />
     </>

@@ -19,8 +19,6 @@ interface CorporateRegisterForm {
 }
 
 const CorporateRegister = (props: Props) => {
-  // const dispatch = useDispatch();
-
   const initialValues: CorporateRegisterForm = {
     subjectId: 0,
     companyName: "",
@@ -35,32 +33,32 @@ const CorporateRegister = (props: Props) => {
 
   const validationSchema = Yup.object({
     subjectId: Yup.number()
-      .required("Subject field is required.")
+      .required("Subject field is required!")
       .min(1, "Select a valid subject!"),
     companyName: Yup.string()
-      .required("Company name field is required.")
-      .min(2, "Company name must be at least 2 characters long.")
-      .max(50, "Company name must be at most 50 characters long."),
+      .required("Company name field is required!")
+      .min(2, "Company name must be at least 2 characters long!")
+      .max(50, "Company name must be at most 50 characters long!"),
     contactName: Yup.string()
-      .required("Contact name field is required.")
-      .min(2, "Contact name must be at least 2 characters long.")
-      .max(50, "Contact name must be at most 50 characters long."),
+      .required("Contact name field is required!")
+      .min(2, "Contact name must be at least 2 characters long!")
+      .max(50, "Contact name must be at most 50 characters long!"),
     contactTitle: Yup.string()
-      .required("Contact title field is required.")
-      .min(2, "Contact title must be at least 2 characters long.")
-      .max(50, "Contact title must be at most 50 characters long."),
+      .required("Contact title field is required!")
+      .min(2, "Contact title must be at least 2 characters long!")
+      .max(50, "Contact title must be at most 50 characters long!"),
     taxNumber: Yup.string()
-      .required("Tax number field is required.")
+      .required("Tax number field is required!")
       .min(10, "Tax number must be a minimum of 10 characters!"),
     phoneNumber: Yup.string()
-      .matches(/^[0-9]{10}$/, "Please enter a valid phone number")
-      .required("Phone number field is required."),
+      .matches(/^[0-9]{10}$/, "Please enter a valid phone number!")
+      .required("Phone number field is required!"),
     email: Yup.string()
-      .email("Please enter a valid email address")
-      .required("Email field is required."),
+      .email("Please enter a valid email address!")
+      .required("Email field is required!"),
     password: Yup.string()
-      .required("Password field is required.")
-      .min(8, "Password must be at least 8 characters long.")
+      .required("Password field is required!")
+      .min(8, "Password must be at least 8 characters long!")
       .test(
         "is strong",
         "Password must contain at least one uppercase letter, one lowercase letter, and one number!",
@@ -68,7 +66,7 @@ const CorporateRegister = (props: Props) => {
       ),
     confirmPassword: Yup.string()
       .oneOf([Yup.ref("password")], "Passwords must match!")
-      .required("Confirm password is required")
+      .required("Confirm password is required!")
       .nullable(),
   });
 
@@ -78,7 +76,6 @@ const CorporateRegister = (props: Props) => {
         validationSchema={validationSchema}
         initialValues={initialValues}
         onSubmit={values => {
-          // dispatch(addProduct(values));
           console.log(values);
         }}
       >

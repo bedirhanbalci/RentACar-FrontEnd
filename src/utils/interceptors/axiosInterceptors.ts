@@ -14,7 +14,7 @@ const axiosInstance = axios.create({
 
 axiosInstance.interceptors.request.use(config => {
   let authToken = TokenService.getToken();
-  if (authToken) config.headers.Authorization = `Bearer ${authToken}`;
+  if (authToken) config.headers.Authorization = "Bearer " + authToken;
 
   store.dispatch(increaseRequestCount());
 

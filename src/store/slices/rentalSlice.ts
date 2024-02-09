@@ -1,3 +1,4 @@
+import { Card } from "react-bootstrap";
 import { createSlice } from "@reduxjs/toolkit";
 import { loadRentalState } from "../rentalStorage";
 
@@ -9,7 +10,6 @@ const rentalSlice = createSlice({
       state.assurance = action.payload;
     },
     addAdditional: (state, action) => {
-      debugger;
       state.additional = [...action.payload];
     },
 
@@ -17,8 +17,31 @@ const rentalSlice = createSlice({
       state.startDate = action.payload;
       state.endDate = action.payload;
     },
+
+    addCarId: (state, action) => {
+      state.carId = action.payload;
+    },
+
+    addRentalPrice: (state, action) => {
+      state.rentalPrice = action.payload;
+    },
+
+    clearRental: state => {
+      delete state.startDate;
+      delete state.endDate;
+      delete state.assurance;
+      delete state.additional;
+      delete state.carId;
+    },
   },
 });
 
 export const rentalReducer = rentalSlice.reducer;
-export const { addAssurance, addAdditional, addRental } = rentalSlice.actions;
+export const {
+  addAssurance,
+  addAdditional,
+  addRental,
+  clearRental,
+  addCarId,
+  addRentalPrice,
+} = rentalSlice.actions;
