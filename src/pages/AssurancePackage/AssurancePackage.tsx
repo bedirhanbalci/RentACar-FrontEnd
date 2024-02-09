@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Col } from "react-bootstrap";
 import AssurancePackageService from "../../services/assurancePackageService";
 import { GetAllAssurancePackagesResponse } from "../../models/assurancePackage/responses/GetAllAssurancePackagesResponse";
@@ -58,10 +58,23 @@ const AssurancePackage = (props: Props) => {
     const updatedAssuranceList = await Promise.all(
       assuranceList.map(async assurance => {
         const totalPrice = await fetchAssurancePrices(assurance.id);
-        return { ...assurance, totalPrice: totalPrice };
+        return { ...assurance, totalPrice: totalPrice, addible: false };
       })
     );
     setAssuranceList(updatedAssuranceList);
+  };
+
+  const changeAddible = async (id: any) => {
+    const newAssuranceList = [...assuranceList];
+
+    newAssuranceList.forEach(item => {
+      if (item.id === id) {
+        item.addible = !item.addible;
+      } else {
+        item.addible = false;
+      }
+    });
+    setAssuranceList(newAssuranceList);
   };
 
   useEffect(() => {
@@ -95,14 +108,16 @@ const AssurancePackage = (props: Props) => {
               <p className="card-text">{card.dailyPrice}</p>
               <p className="card-text">{card.totalPrice}</p>
             </div>
+
             <button
               onClick={() => {
                 setIsAdded(!isAdded);
                 setAssuranceId(card.id);
+                changeAddible(card.id);
               }}
               className="btn btn-danger"
             >
-              {isAdded && assuranceId === card.id ? "Remove" : "Add"}
+              {card.addible ? "Remove" : "Add"}
             </button>
           </div>
         </Col>

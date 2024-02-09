@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addAdditional } from "../../store/slices/rentalSlice";
 import { GetAllAdditionalFeaturesResponse } from "../../models/additionalFeature/responses/GetAllAdditionalFeaturesResponse";
 import AdditionalFeatureService from "../../services/additionalFeatureService";
+import { useNavigate } from "react-router-dom";
 
 type Props = {};
 
@@ -14,11 +15,11 @@ const AdditionalFeature = (props: Props) => {
   >([]);
   const [counter, setCounter] = useState(0);
 
-  const [quantityInfo, setQuantityInfo] = useState([{ quantity: 1, id: 0 }]);
-
-  const [additionalId, setAdditionalId] = useState(0);
+  const [additionalCard, setAdditionalCard] = useState<any>([]);
 
   const dispatch = useDispatch();
+
+  const navigate = useNavigate();
 
   const rentalState = useSelector((store: any) => store.rental);
 
@@ -54,15 +55,6 @@ const AdditionalFeature = (props: Props) => {
     }
   };
 
-  const updatedQuantityInfo = async (
-    updatedQuantityInfo: any,
-    card: any
-  ): Promise<any> => {
-    const itemIndex = updatedQuantityInfo.findIndex(
-      (item: any) => item.id === card.id
-    );
-  };
-
   const calculateAdditionalPrice = async (): Promise<any> => {
     const updatedAdditionalList = await Promise.all(
       additionalList.map(async additional => {
@@ -73,13 +65,31 @@ const AdditionalFeature = (props: Props) => {
     setAdditionalList(updatedAdditionalList);
   };
 
+  const increaseQuantity = async (id: any) => {
+    const newAdditionalList = [...additionalList];
+
+    newAdditionalList.forEach(item => {
+      if (item.id === id) {
+        item.quantity = item.quantity + 1;
+      }
+    });
+    setAdditionalList(newAdditionalList);
+  };
+
+  const decreaseQuantity = async (id: any) => {
+    const newAdditionalList = [...additionalList];
+
+    newAdditionalList.forEach(item => {
+      if (item.id === id) {
+        if (item.quantity !== 0) item.quantity = item.quantity - 1;
+      }
+    });
+    setAdditionalList(newAdditionalList);
+  };
+
   useEffect(() => {
     fetchAdditional();
   }, []);
-
-  useEffect(() => {
-    console.log(additionalId);
-  }, [additionalId]);
 
   useEffect(() => {
     if (counter === 1) {
@@ -91,9 +101,7 @@ const AdditionalFeature = (props: Props) => {
   return (
     <>
       {additionalList.map((card, index) => {
-        const totalPrice = updatedQuantityInfo(quantityInfo, card); // updatedQuantityInfo fonksiyonunu async olarak işaretlemek gerekmiyor
         return (
-          // return anahtar kelimesi eklendi
           <Col key={index} md={4}>
             <div className={"card"}>
               <img
@@ -104,17 +112,13 @@ const AdditionalFeature = (props: Props) => {
               <h5 className="card-header">{card.name}</h5>
               <div className="card-body">
                 <p className="card-text">{card.detail}</p>
-                {/* <p className="card-text">{totalPrice}</p> */}
+                Quantity:<p className="card-text">{card.quantity}</p>
                 <p className="card-text">{card.dailyPrice}</p>
                 <p className="card-text">{card.totalPrice}</p>
               </div>
               <button
                 onClick={() => {
-                  const item = quantityInfo.find(item => item.id === card.id);
-                  setQuantityInfo(prevQuantityInfo => [
-                    ...prevQuantityInfo,
-                    { id: card.id, quantity: item?.quantity ?? 1 },
-                  ]);
+                  increaseQuantity(card.id);
                 }}
                 className="btn btn-danger"
               >
@@ -122,20 +126,7 @@ const AdditionalFeature = (props: Props) => {
               </button>
               <button
                 onClick={() => {
-                  setQuantityInfo(prevQuantityInfo => {
-                    const updatedQuantityInfo = [...prevQuantityInfo];
-                    const itemIndex = updatedQuantityInfo.findIndex(
-                      item => item.id === card.id
-                    );
-                    if (itemIndex !== -1) {
-                      if (updatedQuantityInfo[itemIndex].quantity > 1) {
-                        updatedQuantityInfo[itemIndex].quantity -= 1;
-                      } else {
-                        updatedQuantityInfo.splice(itemIndex, 1);
-                      }
-                    }
-                    return updatedQuantityInfo;
-                  });
+                  decreaseQuantity(card.id);
                 }}
                 className="btn btn-danger"
               >
@@ -144,12 +135,25 @@ const AdditionalFeature = (props: Props) => {
 
               <button
                 onClick={() => {
-                  setIsAdded(!isAdded);
-                  setAdditionalId(card.id);
+                  const isAlreadyAdded = additionalCard.some(
+                    (item: any) => item.id === card.id
+                  );
+                  if (!isAlreadyAdded) {
+                    setAdditionalCard([
+                      ...additionalCard,
+                      { quantity: card.quantity, id: card.id },
+                    ]);
+                  } else {
+                    setAdditionalCard(
+                      additionalCard.filter((x: any) => x.id !== card.id)
+                    );
+                  }
                 }}
                 className="btn btn-danger"
               >
-                {isAdded && additionalId === card.id ? "Remove" : "Add"}
+                {additionalCard.some((item: any) => item.id === card.id)
+                  ? "Remove"
+                  : "Add"}
               </button>
             </div>
           </Col>
@@ -157,7 +161,8 @@ const AdditionalFeature = (props: Props) => {
       })}
       <button
         onClick={() => {
-          if (isAdded === true) dispatch(addAdditional([]));
+          dispatch(addAdditional(additionalCard));
+          navigate("/rental");
         }}
         className="btn btn-danger"
       >
