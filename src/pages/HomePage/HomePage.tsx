@@ -1,24 +1,14 @@
 import { useEffect, useState } from "react";
 import Background from "../../components/layout/Background/Background";
 import MainSlider from "../../components/layout/MainSlider/MainSlider";
-import AdditionalFeatureSlider from "../../components/layout/AdditionalFeatureSlider/AdditionalFeatureSlider";
-import AssurancePackageSlider from "../../components/layout/AssurancePackageSlider/AssurancePackageSlider";
+import CampaignSlider from "../../components/layout/CampaignSlider/CampaignSlider";
 import CarService from "../../services/carService";
 import CarCard from "../../components/layout/CarCard/CarCard";
 import { GetAllCarsResponse } from "../../models/car/responses/GetAllCarsResponse";
-
-const featureCardsData = Array.from({ length: 10 }, (_, index) => ({
-  id: index + 1,
-  title: `Card ${index + 1}`,
-  description: `Description ${index + 1}`,
-  image: `url${index + 1}`,
-}));
-const assuranceCardsData = Array.from({ length: 10 }, (_, index) => ({
-  id: index + 1,
-  title: `Card ${index + 1}`,
-  description: `Description ${index + 1}`,
-  image: `url${index + 1}`,
-}));
+import AssurancePackageService from "../../services/assurancePackageService";
+import { GetAllAssurancePackagesResponse } from "../../models/assurancePackage/responses/GetAllAssurancePackagesResponse";
+import { GetAllAdditionalFeaturesResponse } from "../../models/additionalFeature/responses/GetAllAdditionalFeaturesResponse";
+import AdditionalFeatureService from "../../services/additionalFeatureService";
 
 type Props = {};
 
@@ -30,12 +20,37 @@ const HomePage = (props: Props) => {
   ];
 
   const [carList, setCarList] = useState<GetAllCarsResponse[]>([]);
+  const [assuranceList, setAssuranceList] = useState<
+    GetAllAssurancePackagesResponse[]
+  >([]);
+  const [additionalList, setAdditionalList] = useState<
+    GetAllAdditionalFeaturesResponse[]
+  >([]);
 
   const fetchCars = async () => {
     try {
       await CarService.getAll().then((response: any) => {
-        console.log(response);
         setCarList(response.data.data);
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const fetchAssurance = async () => {
+    try {
+      await AssurancePackageService.getAll().then((response: any) => {
+        setAssuranceList(response.data.data);
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const fetchAdditional = async () => {
+    try {
+      await AdditionalFeatureService.getAll().then((response: any) => {
+        setAdditionalList(response.data.data);
       });
     } catch (error) {
       console.log(error);
@@ -44,6 +59,8 @@ const HomePage = (props: Props) => {
 
   useEffect(() => {
     fetchCars();
+    fetchAssurance();
+    fetchAdditional();
   }, []);
 
   const [mainCount, setMainCount] = useState(0);
@@ -66,8 +83,8 @@ const HomePage = (props: Props) => {
         setMainCount={setMainCount}
         playStatus={playStatus}
       />
-      <AdditionalFeatureSlider cards={featureCardsData} />
-      <AssurancePackageSlider cards={assuranceCardsData} />
+      <CampaignSlider cards={additionalList} />
+      <CampaignSlider cards={assuranceList} />
 
       <div className="container mt-5">
         <h2 className="text-center mb-4">Featured Cars</h2>

@@ -3,4 +3,6 @@ export interface GetAllAssurancePackagesResponse {
   name: string;
   detail: string;
   dailyPrice: number;
+  totalPrice?: number;
+  addible?: boolean;
 }

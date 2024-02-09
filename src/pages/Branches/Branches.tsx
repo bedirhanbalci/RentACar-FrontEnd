@@ -1,28 +1,9 @@
-import React, { useEffect, useState } from "react";
 import BranchMap from "../../components/layout/BranchMap/BranchMap";
 import { Container } from "react-bootstrap";
-import { GetAllBranchesResponse } from "../../models/branch/responses/GetAllBranchesResponse";
-import branchService from "../../services/branchService";
 
 type Props = {};
 
 const Branches = (props: Props) => {
-  const [branches, setBranches] = useState<GetAllBranchesResponse[]>([]);
-
-  const fetchBranches = async () => {
-    try {
-      await branchService.getAll().then((response: any) => {
-        console.log(response);
-        setBranches(response.data.data);
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  useEffect(() => {
-    fetchBranches();
-  }, []);
-
   return (
     <div>
       <section
@@ -58,7 +39,7 @@ const Branches = (props: Props) => {
         <div className="row">
           <div className="col-lg-4 sm-12">{}</div>
           <div className="col-lg-8 sm-12">
-            {branches.length > 0 && <BranchMap branches={branches} />}
+            <BranchMap />
           </div>
         </div>
       </Container>

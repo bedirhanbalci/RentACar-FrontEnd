@@ -9,6 +9,7 @@ export interface GetAllCarsResponse {
   fuelType: string;
   bodyType: string;
   modelName: string;
+  brandName: string;
   colorName: string;
   branchCity: string;
 }
