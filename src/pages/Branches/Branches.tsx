@@ -1,28 +1,26 @@
 import React, { useEffect, useState } from "react";
-import { BranchMap } from "../../components/layout/BranchMap/BranchMap";
+import BranchMap from "../../components/layout/BranchMap/BranchMap";
 import { Container } from "react-bootstrap";
-import { GetByIdBranchResponse } from "../../models/branch/responses/GetByIdBranchResponse";
-import { useParams } from "react-router-dom";
-import axiosInstance from "../../utils/interceptors/axiosInterceptors";
+import { GetAllBranchesResponse } from "../../models/branch/responses/GetAllBranchesResponse";
+import branchService from "../../services/branchService";
 
 type Props = {};
 
 const Branches = (props: Props) => {
-  const { id } = useParams();
-  const [branches, setBrances] = useState<GetByIdBranchResponse[]>([]);
+  const [branches, setBranches] = useState<GetAllBranchesResponse[]>([]);
 
-  const fetchCar = async () => {
+  const fetchBranches = async () => {
     try {
-      const response = await axiosInstance(`/cars/getById/${id}`);
-
-      setBrances(response.data);
+      await branchService.getAll().then((response: any) => {
+        console.log(response);
+        setBranches(response.data.data);
+      });
     } catch (error) {
       console.log(error);
     }
   };
-
   useEffect(() => {
-    fetchCar();
+    fetchBranches();
   }, []);
 
   return (
@@ -58,9 +56,9 @@ const Branches = (props: Props) => {
       </section>
       <Container>
         <div className="row">
-          <div className="lg-4 sm-12"></div>
-          <div className="lg-8 sm-12">
-            <BranchMap />
+          <div className="col-lg-4 sm-12">{}</div>
+          <div className="col-lg-8 sm-12">
+            {branches.length > 0 && <BranchMap branches={branches} />}
           </div>
         </div>
       </Container>
