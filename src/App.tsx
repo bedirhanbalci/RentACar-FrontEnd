@@ -16,6 +16,7 @@ import OverlayLoader from "./components/layout/OverlayLoader/OverlayLoader";
 import NotFound from "./pages/NotFound/NotFound";
 import AssurancePackage from "./pages/AssurancePackage/AssurancePackage";
 import AdditionalFeature from "./pages/AdditionalFeature/AdditionalFeature";
+import Rental from "./pages/Rental/Rental";
 function App(): ReactElement {
   return (
     <>
@@ -44,6 +45,7 @@ function App(): ReactElement {
           path="/additional-feature"
           element={<AdditionalFeature />}
         ></Route>
+        <Route path="/rental" element={<Rental />}></Route>
       </Routes>
       <Footer />
     </>

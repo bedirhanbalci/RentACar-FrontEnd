@@ -12,7 +12,7 @@ const CarCard = ({ car }: Props) => {
         </h5>
       </div>
       <ul className="list-group list-group-flush">
-        <li className="list-group-item">Year: ${car.year}</li>
+        <li className="list-group-item">Year: {car.year}</li>
         <li className="list-group-item">Daily Price: ${car.dailyPrice}</li>
         <li className="list-group-item">Gear Type: {car.gearType}</li>
         <li className="list-group-item">Fuel Type: {car.fuelType}</li>

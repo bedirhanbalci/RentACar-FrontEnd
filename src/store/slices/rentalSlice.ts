@@ -9,7 +9,8 @@ const rentalSlice = createSlice({
       state.assurance = action.payload;
     },
     addAdditional: (state, action) => {
-      state.additional = [...state.additional, action.payload.additional];
+      debugger;
+      state.additional = [...action.payload];
     },
 
     addRental: (state, action) => {
