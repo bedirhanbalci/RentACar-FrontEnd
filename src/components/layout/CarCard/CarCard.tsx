@@ -4,21 +4,22 @@ type Props = { car: any };
 
 const CarCard = ({ car }: Props) => {
   return (
-    <div key={car.id} className="card" style={{ width: "18rem" }}>
+    <div key={car.id} className="card" style={{ width: "24 rem" }}>
       <img src={car.imagePath} className="card-img-top" alt={car.modelName} />
       <div className="card-body">
-        <h5 className="card-title">
+        <p className="card-text text-danger">
           {car.brandName} {car.modelName}
-        </h5>
+        </p>
       </div>
-      <ul className="list-group list-group-flush">
+      <ul className="list-group list-group-flush no-border">
         <li className="list-group-item">Year: {car.year}</li>
         <li className="list-group-item">Daily Price: ${car.dailyPrice}</li>
+
         <li className="list-group-item">Gear Type: {car.gearType}</li>
         <li className="list-group-item">Fuel Type: {car.fuelType}</li>
       </ul>
       <div className="card-body">
-        <Link to={`/car-detail/${car.id}`} className="btn btn-primary">
+        <Link to={`/car-detail/${car.id}`} className="btn btn-danger">
           {" "}
           Car Details{" "}
         </Link>

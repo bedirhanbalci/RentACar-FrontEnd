@@ -47,7 +47,7 @@ const BranchMap: React.FC<BranchMapProps> = () => {
 
       //put up a marker
 
-      branches.forEach(markerInfo => {
+      branches.forEach((markerInfo) => {
         const marker = new google.maps.Marker({
           position: { lat: markerInfo.latitude, lng: markerInfo.longitude },
           map,

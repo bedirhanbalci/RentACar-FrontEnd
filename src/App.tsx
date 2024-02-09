@@ -13,6 +13,7 @@ import Contact from "./pages/Contact/Contact";
 import { Reservation } from "./pages/Reservation/Reservation";
 import Branches from "./pages/Branches/Branches";
 import OverlayLoader from "./components/layout/OverlayLoader/OverlayLoader";
+import About from "./pages/About/About";
 import NotFound from "./pages/NotFound/NotFound";
 import AssurancePackage from "./pages/AssurancePackage/AssurancePackage";
 import AdditionalFeature from "./pages/AdditionalFeature/AdditionalFeature";
@@ -26,7 +27,8 @@ function App(): ReactElement {
         <Route path="/" element={<HomePage />}></Route>
         <Route path="/car-list" element={<CarList />}></Route>
         <Route path="/branches" element={<Branches />}></Route>
-        <Route path="/about"></Route>
+
+        <Route path="/about" element={<About />}></Route>
         <Route path="/contact" element={<Contact />}></Route>
         <Route
           path="/corporate-register"

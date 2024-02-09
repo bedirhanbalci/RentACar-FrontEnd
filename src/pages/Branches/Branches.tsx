@@ -37,8 +37,8 @@ const Branches = (props: Props) => {
       </section>
       <Container>
         <div className="row">
-          <div className="lg-4 sm-12"></div>
-          <div className="lg-8 sm-12">
+          <div className="col-lg-4 sm-12">{}</div>
+          <div className="col-lg-8 sm-12">
             <BranchMap />
           </div>
         </div>
