@@ -5,6 +5,9 @@ import { GetByIdCarResponse } from "../models/car/responses/GetByIdCarResponse";
 import { AddCarResponse } from "../models/car/responses/AddCarResponse";
 import { UpdateCarResponse } from "../models/car/responses/UpdateCarResponse";
 import { BaseService } from "./baseService";
+import { CarTotalPriceRequest } from "../models/car/requests/CarTotalPriceRequest";
+import { AxiosResponse } from "axios";
+import axiosInstance from "../utils/interceptors/axiosInterceptors";
 
 class CarService extends BaseService<
   GetAllCarsResponse,
@@ -17,6 +20,11 @@ class CarService extends BaseService<
   constructor() {
     super();
     this.apiUrl = "cars";
+  }
+  addTotalPrice(
+    request: CarTotalPriceRequest
+  ): Promise<AxiosResponse<any, any>> {
+    return axiosInstance.post<any>(this.apiUrl + "/totalPrice", request);
   }
 }
 

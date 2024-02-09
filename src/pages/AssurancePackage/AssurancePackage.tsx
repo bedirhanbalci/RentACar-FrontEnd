@@ -17,11 +17,15 @@ const AssurancePackage = (props: Props) => {
 
   const [assuranceId, setAssuranceId] = useState(0);
 
+  const [tempPrice, setTempPrice] = useState(0);
+
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
 
   const rentalState = useSelector((store: any) => store.rental);
+
+  const [totalPrice, setTotalPrice] = useState(rentalState.rentalPrice);
 
   const fetchAssurance = async () => {
     try {
@@ -47,7 +51,6 @@ const AssurancePackage = (props: Props) => {
       };
 
       const response = await AssurancePackageService.addAssurancePrice(data);
-      console.log(response.data.data.dailyPrice);
       return response.data.data.dailyPrice;
     } catch (error) {
       console.log(error);
@@ -111,9 +114,36 @@ const AssurancePackage = (props: Props) => {
 
             <button
               onClick={() => {
+                if (assuranceId !== card.id && card.totalPrice) {
+                  setTotalPrice(
+                    (prevTotalPrice: any) => prevTotalPrice - tempPrice
+                  );
+                  setTotalPrice(
+                    (prevTotalPrice: any) => prevTotalPrice + card.totalPrice
+                  );
+                }
+                if (assuranceId !== card.id) {
+                  setIsAdded(!isAdded);
+                }
+
                 setIsAdded(!isAdded);
+
                 setAssuranceId(card.id);
+
                 changeAddible(card.id);
+
+                if (!isAdded && card.totalPrice && card.id === assuranceId) {
+                  setTotalPrice(
+                    (prevTotalPrice: any) => prevTotalPrice + card.totalPrice
+                  );
+                } else {
+                  if (card.totalPrice && card.id === assuranceId) {
+                    setTotalPrice(
+                      (prevTotalPrice: any) => prevTotalPrice - card.totalPrice
+                    );
+                  }
+                }
+                if (card.totalPrice) setTempPrice(card.totalPrice);
               }}
               className="btn btn-danger"
             >
@@ -122,6 +152,7 @@ const AssurancePackage = (props: Props) => {
           </div>
         </Col>
       ))}
+      <p className="card-text">{totalPrice}</p>
       <button
         onClick={() => {
           if (isAdded === true) dispatch(addAssurance(assuranceId));

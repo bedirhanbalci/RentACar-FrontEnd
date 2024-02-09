@@ -5,7 +5,11 @@ import * as Yup from "yup";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import CarService from "../../services/carService";
 import { useDispatch } from "react-redux";
-import { addRental } from "../../store/slices/rentalSlice";
+import {
+  addCarId,
+  addRental,
+  addRentalPrice,
+} from "../../store/slices/rentalSlice";
 
 type Props = {};
 
@@ -19,6 +23,7 @@ export const Reservation = (props: Props) => {
   const [car, setCar] = useState<GetByIdCarResponse>();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
   const [initialValues, setInitialValues] = useState<CarSearchValues>({
     startDate: "",
     endDate: "",
@@ -27,7 +32,6 @@ export const Reservation = (props: Props) => {
   const fetchCar = async () => {
     try {
       await CarService.getById(parseInt(`${id}`)).then((response: any) => {
-        console.log(response);
         setCar(response.data.data);
       });
     } catch (error) {
@@ -35,17 +39,43 @@ export const Reservation = (props: Props) => {
     }
   };
 
+  const fetchTotalPrice = async () => {
+    try {
+      await CarService.addTotalPrice({
+        carId: car?.id,
+        startDate: initialValues.startDate,
+        endDate: initialValues.endDate,
+      }).then((response: any) => {
+        setTotalPrice(response.data);
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    if (
+      car?.id &&
+      initialValues.startDate !== "" &&
+      initialValues.endDate !== ""
+    )
+      fetchTotalPrice();
+  }, [initialValues]);
+
   useEffect(() => {
     fetchCar();
   }, []);
 
   const validationSchema = Yup.object({
-    startDate: Yup.string().required(),
-    endDate: Yup.string().required(),
+    startDate: Yup.string().required("Start date field is required."),
+    endDate: Yup.string().required("End date field is required."),
   });
 
   const handleOnSubmit = async (values: CarSearchValues) => {
     dispatch(addRental(values));
+    dispatch(addCarId(car?.id));
+    dispatch(addRentalPrice(totalPrice));
+
     navigate("/assurance-package");
   };
 

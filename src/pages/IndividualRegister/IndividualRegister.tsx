@@ -1,11 +1,14 @@
-import { Formik, Form } from "formik";
+import { Formik, Form, FormikHelpers } from "formik";
 import * as Yup from "yup";
 import { passwordRule } from "../../utils/validation/customValidationRules";
 import FormikInput from "../../components/common/FormikInput/FormikInput";
+import { toast } from "react-toastify";
+import authService from "../../services/authService";
+import { useNavigate } from "react-router-dom";
 
 type Props = {};
 
-interface IndividualRegisterForm {
+export interface IndividualRegisterForm {
   firstName: string;
   lastName: string;
   nationalityNo: string;
@@ -13,12 +16,10 @@ interface IndividualRegisterForm {
   phoneNumber: string;
   email: string;
   password: string;
-  confirmPassword: string;
+  confirmPassword?: string;
 }
 
 const IndividualRegister = (props: Props) => {
-  // const dispatch = useDispatch();
-
   const initialValues: IndividualRegisterForm = {
     firstName: "",
     lastName: "",
@@ -32,28 +33,28 @@ const IndividualRegister = (props: Props) => {
 
   const validationSchema = Yup.object({
     firstName: Yup.string()
-      .required("First name field is required.")
-      .min(2, "First name must be at least 2 characters long.")
-      .max(50, "First name must be at most 50 characters long."),
+      .required("First name field is required!")
+      .min(2, "First name must be at least 2 characters long!")
+      .max(50, "First name must be at most 50 characters long!"),
     lastName: Yup.string()
-      .required("Last name field is required.")
-      .min(2, "Last name must be at least 2 characters long.")
-      .max(50, "Last name must be at most 50 characters long."),
+      .required("Last name field is required!")
+      .min(2, "Last name must be at least 2 characters long!")
+      .max(50, "Last name must be at most 50 characters long!"),
     nationalityNo: Yup.string()
-      .required("Nationality number field is required.")
-      .min(11, "Nationality number must be exactly 11 characters long.")
-      .max(11, "Nationality number must be exactly 11 characters long."),
-    birthDate: Yup.string().required("Birth date field is required."),
+      .required("Nationality number field is required!")
+      .min(11, "Nationality number must be exactly 11 characters long!")
+      .max(11, "Nationality number must be exactly 11 characters long!"),
+    birthDate: Yup.string().required("Birth date field is required!"),
 
     phoneNumber: Yup.string()
-      .matches(/^[0-9]{10}$/, "Please enter a valid phone number")
-      .required("Phone number field is required."),
+      .matches(/^[0-9]{10}$/, "Please enter a valid phone number!")
+      .required("Phone number field is required!"),
     email: Yup.string()
-      .email("Please enter a valid email address")
-      .required("Email field is required."),
+      .email("Please enter a valid email address!")
+      .required("Email field is required!"),
     password: Yup.string()
-      .required("Password field is required.")
-      .min(8, "Password must be at least 8 characters long.")
+      .required("Password field is required!")
+      .min(8, "Password must be at least 8 characters long!")
       .test(
         "is strong",
         "Password must contain at least one uppercase letter, one lowercase letter, and one number!",
@@ -61,19 +62,44 @@ const IndividualRegister = (props: Props) => {
       ),
     confirmPassword: Yup.string()
       .oneOf([Yup.ref("password")], "Passwords must match!")
-      .required("Confirm password is required")
+      .required("Confirm password is required!")
       .nullable(),
   });
+
+  const navigate = useNavigate();
+
+  const handleSignupSubmit = async (
+    values: IndividualRegisterForm,
+    { setErrors, setSubmitting }: FormikHelpers<IndividualRegisterForm>
+  ) => {
+    try {
+      setSubmitting(true);
+      await authService.individualRegister(values);
+      navigate("/");
+    } catch (error: any) {
+      if (error.response.data.validationErrors) {
+        const validationErrors: Record<string, string> =
+          error.response.data.validationErrors;
+        const formikErrors: Record<string, string> = {};
+        Object.entries(validationErrors).forEach(([field, message]) => {
+          formikErrors[field] = message;
+        });
+        setErrors(formikErrors);
+      } else {
+        console.log(error);
+        toast.error(error.response.data.message);
+      }
+    } finally {
+      setSubmitting(false);
+    }
+  };
 
   return (
     <div className="container">
       <Formik
         validationSchema={validationSchema}
         initialValues={initialValues}
-        onSubmit={values => {
-          // dispatch(addProduct(values));
-          console.log(values);
-        }}
+        onSubmit={handleSignupSubmit}
       >
         <Form>
           <div className="row">

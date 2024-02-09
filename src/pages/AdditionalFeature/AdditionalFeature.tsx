@@ -9,7 +9,6 @@ import { useNavigate } from "react-router-dom";
 type Props = {};
 
 const AdditionalFeature = (props: Props) => {
-  const [isAdded, setIsAdded] = useState(false);
   const [additionalList, setAdditionalList] = useState<
     GetAllAdditionalFeaturesResponse[]
   >([]);
