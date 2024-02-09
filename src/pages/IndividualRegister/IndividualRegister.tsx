@@ -13,6 +13,7 @@ interface IndividualRegisterForm {
   phoneNumber: string;
   email: string;
   password: string;
+  confirmPassword: string;
 }
 
 const IndividualRegister = (props: Props) => {
@@ -26,6 +27,7 @@ const IndividualRegister = (props: Props) => {
     phoneNumber: "",
     email: "",
     password: "",
+    confirmPassword: "",
   };
 
   const validationSchema = Yup.object({
@@ -57,6 +59,10 @@ const IndividualRegister = (props: Props) => {
         "Password must contain at least one uppercase letter, one lowercase letter, and one number!",
         passwordRule
       ),
+    confirmPassword: Yup.string()
+      .oneOf([Yup.ref("password")], "Passwords must match!")
+      .required("Confirm password is required")
+      .nullable(),
   });
 
   return (
@@ -75,30 +81,56 @@ const IndividualRegister = (props: Props) => {
               <FormikInput
                 label="First Name"
                 name="firstName"
-                placeholder="Please write the product name!"
+                placeholder="Please write the first name!"
               />
 
               <FormikInput
                 label="Last Name"
                 name="lastName"
-                placeholder="Please write the product description!"
+                placeholder="Please write the last name!"
               />
 
               <FormikInput
                 label="Nationality Number"
                 name="nationalityNo"
-                placeholder="Please write the product price!"
+                placeholder="Please write the nationality number!"
               />
 
               <FormikInput
                 label="Birth Date"
                 name="birthDate"
                 type="date"
-                placeholder="Please write the product stock condition!"
+                placeholder="Please write the birth date!"
               />
 
-              <button className="btn btn-success mt-3" type="submit">
-                Add
+              <FormikInput
+                label="Phone Number"
+                name="phoneNumber"
+                placeholder="Please write the phone number!"
+              />
+
+              <FormikInput
+                label="Email"
+                name="email"
+                placeholder="Please write the email!"
+              />
+
+              <FormikInput
+                label="Password"
+                name="password"
+                type="password"
+                placeholder="Please write the password!"
+              />
+
+              <FormikInput
+                label="Confirm Password"
+                name="confirmPassword"
+                type="password"
+                placeholder="Please write the confirm password!"
+              />
+
+              <button className="btn btn-danger mt-3" type="submit">
+                Sign Up
               </button>
             </div>
           </div>
