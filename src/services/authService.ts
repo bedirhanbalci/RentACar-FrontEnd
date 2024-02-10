@@ -1,5 +1,6 @@
 import { LoginRequest } from "../models/auth/requests/LoginRequest";
 import { RegisterRequest } from "../models/auth/requests/RegisterRequest";
+import { CorporateRegisterForm } from "../pages/CorporateRegister/CorporateRegister";
 import { IndividualRegisterForm } from "../pages/IndividualRegister/IndividualRegister";
 import axiosInstance from "../utils/interceptors/axiosInterceptors";
 
@@ -14,6 +15,10 @@ class AuthService {
 
   individualRegister(individualRequest: IndividualRegisterForm) {
     return axiosInstance.post("auth/individualRegister", individualRequest);
+  }
+
+  corporateRegister(corporateRequest: CorporateRegisterForm) {
+    return axiosInstance.post("auth/corporateRegister", corporateRequest);
   }
 }
 
