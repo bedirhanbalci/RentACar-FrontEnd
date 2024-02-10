@@ -1,12 +1,15 @@
-import { Formik, Form } from "formik";
+import { Formik, Form, FormikHelpers } from "formik";
 import * as Yup from "yup";
 import { passwordRule } from "../../utils/validation/customValidationRules";
 import FormikInput from "../../components/common/FormikInput/FormikInput";
 import FormikSelect from "../../components/common/FormikSelect/FormikSelect";
+import { useNavigate } from "react-router-dom";
+import AuthService from "../../services/authService";
+import { toast } from "react-toastify";
 
 type Props = {};
 
-interface CorporateRegisterForm {
+export interface CorporateRegisterForm {
   subjectId: number;
   companyName: string;
   contactName: string;
@@ -70,14 +73,40 @@ const CorporateRegister = (props: Props) => {
       .nullable(),
   });
 
+  const navigate = useNavigate();
+
+  const handleSignupSubmit = async (
+    values: CorporateRegisterForm,
+    { setErrors, setSubmitting }: FormikHelpers<CorporateRegisterForm>
+  ) => {
+    try {
+      setSubmitting(true);
+      await AuthService.corporateRegister(values);
+      navigate("/");
+    } catch (error: any) {
+      if (error.response.data.validationErrors) {
+        const validationErrors: Record<string, string> =
+          error.response.data.validationErrors;
+        const formikErrors: Record<string, string> = {};
+        Object.entries(validationErrors).forEach(([field, message]) => {
+          formikErrors[field] = message;
+        });
+        setErrors(formikErrors);
+      } else {
+        console.log(error);
+        toast.error(error.response.data.message);
+      }
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
   return (
     <div className="container">
       <Formik
         validationSchema={validationSchema}
         initialValues={initialValues}
-        onSubmit={values => {
-          console.log(values);
-        }}
+        onSubmit={handleSignupSubmit}
       >
         <Form>
           <div className="row">

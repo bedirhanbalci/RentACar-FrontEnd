@@ -3,7 +3,7 @@ import * as Yup from "yup";
 import { passwordRule } from "../../utils/validation/customValidationRules";
 import FormikInput from "../../components/common/FormikInput/FormikInput";
 import { toast } from "react-toastify";
-import authService from "../../services/authService";
+import AuthService from "../../services/authService";
 import { useNavigate } from "react-router-dom";
 
 type Props = {};
@@ -74,7 +74,7 @@ const IndividualRegister = (props: Props) => {
   ) => {
     try {
       setSubmitting(true);
-      await authService.individualRegister(values);
+      await AuthService.individualRegister(values);
       navigate("/");
     } catch (error: any) {
       if (error.response.data.validationErrors) {
