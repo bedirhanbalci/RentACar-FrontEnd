@@ -18,7 +18,7 @@ export interface CorporateRegisterForm {
   phoneNumber: string;
   email: string;
   password: string;
-  confirmPassword: string;
+  confirmPassword?: string;
 }
 
 const CorporateRegister = (props: Props) => {
@@ -102,7 +102,7 @@ const CorporateRegister = (props: Props) => {
   };
 
   return (
-    <div className="container">
+    <div className="container mt-5 mb-5 pt-5 pb-5">
       <Formik
         validationSchema={validationSchema}
         initialValues={initialValues}

@@ -36,27 +36,24 @@ const BranchMap: React.FC<BranchMapProps> = () => {
 
       const { Map } = await loader.importLibrary("maps");
 
-      // map options
       const MapOptions: google.maps.MapOptions = {
         center: { lat: branches[12]?.latitude, lng: branches[12]?.longitude },
         zoom: 6,
         mapId: "my-project-140107-412608",
       };
-      // setup the map
+
       const map = new Map(mapRef.current as HTMLDivElement, MapOptions);
 
-      //put up a marker
-
-      branches.forEach((markerInfo) => {
+      branches.forEach(markerInfo => {
         const marker = new google.maps.Marker({
           position: { lat: markerInfo.latitude, lng: markerInfo.longitude },
           map,
         });
-        // put up a infowindow for markers
+
         const infowindow = new google.maps.InfoWindow({
           content: `${markerInfo.city} ${markerInfo.address}`,
         });
-        // show infowindows
+
         marker.addListener("click", () => {
           infowindow.open(map, marker);
         });

@@ -67,24 +67,29 @@ const HomePage = (props: Props) => {
   const [playStatus, setPlayStatus] = useState(false);
 
   useEffect(() => {
-    setInterval(() => {
-      setMainCount(count => {
-        return count === 2 ? 0 : count + 1;
-      });
+    const interval = setInterval(() => {
+      setMainCount(count => (count === 2 ? 0 : count + 1));
     }, 3000);
-  }, []);
+
+    return () => clearInterval(interval);
+  }, [mainCount, setMainCount]);
   return (
-    <div>
-      <Background playStatus={playStatus} mainCount={mainCount} />
-      <MainSlider
-        setPlayStatus={setPlayStatus}
-        mainData={mainData[mainCount]}
-        mainCount={mainCount}
-        setMainCount={setMainCount}
-        playStatus={playStatus}
-      />
-      <CampaignSlider cards={additionalList} />
-      <CampaignSlider cards={assuranceList} />
+    <div className="overflow-x-hidden d-flex flex-column">
+      <div>
+        <Background playStatus={playStatus} mainCount={mainCount} />
+        <MainSlider
+          setPlayStatus={setPlayStatus}
+          mainData={mainData[mainCount]}
+          mainCount={mainCount}
+          setMainCount={setMainCount}
+          playStatus={playStatus}
+        />
+      </div>
+
+      <div className="d-block">
+        <CampaignSlider cards={additionalList} />
+        <CampaignSlider cards={assuranceList} />
+      </div>
 
       <div className="container mt-5">
         <h2 className="text-center mb-4">Featured Cars</h2>

@@ -1,6 +1,6 @@
 "use client";
 import { Loader } from "@googlemaps/js-api-loader";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { GetByIdBranchResponse } from "../../../models/branch/responses/GetByIdBranchResponse";
 
 type Props = {

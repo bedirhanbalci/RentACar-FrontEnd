@@ -1,6 +1,13 @@
 .main {
   margin: 0px 120px;
   margin-top: 270px;
+  float: left;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: none;
+  position: absolute;
 }
 
 .main-text {
@@ -19,12 +26,13 @@
   padding: 5px 8px;
   padding-left: 30px;
   border-radius: 60px;
-  background-color: #262626;
+  background-color: #fff;
   cursor: pointer;
 }
 
 .main-explore p {
-  color: #fff;
+  color: #262626;
+  padding-top: 15px;
   font-size: 20px;
   font-weight: 500;
 }
@@ -55,6 +63,7 @@
   display: flex;
   align-items: center;
   gap: 30px;
+  cursor: pointer;
 }
 .main-play p {
   color: #fff;

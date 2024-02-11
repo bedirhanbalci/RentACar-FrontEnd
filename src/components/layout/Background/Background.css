@@ -7,9 +7,8 @@
   right: 0;
   bottom: 0;
   padding: none;
-  position: fixed;
-  object-fit: cover;
-  z-index: -1;
+  position: relative;
+  display: block;
 }
 @keyframes fadeIn {
   from {

@@ -3,7 +3,7 @@ import { Container } from "react-bootstrap";
 
 export default function About() {
   return (
-    <div style={{ fontFamily: "sans-serif" }}>
+    <div className="mb-5" style={{ fontFamily: "sans-serif" }}>
       <section
         className="page-header mb-5"
         style={{
@@ -78,7 +78,7 @@ export default function About() {
               >
                 <img
                   src="assets/person_1.jpg"
-                  alt="aaaaaaaaaaa"
+                  alt=""
                   className="img-fluid rounded-circle p-2"
                 />
 
@@ -102,7 +102,7 @@ export default function About() {
               >
                 <img
                   src="assets/person_2.jpg"
-                  alt="aaaaaae"
+                  alt=""
                   className="img-fluid rounded-circle p-2"
                 />
 
@@ -127,7 +127,7 @@ export default function About() {
               >
                 <img
                   src="assets/person_3.jpg"
-                  alt="aaaaaaaa"
+                  alt=""
                   className="img-fluid rounded-circle p-2"
                 />
 
@@ -146,10 +146,13 @@ export default function About() {
             </div>
 
             <div className="col-lg-4 col-md-6 mb-5">
-              <div className="post-entry-1 h-100 person-1">
+              <div
+                className="post-entry-1 h-100 person-1"
+                style={{ textAlign: "center" }}
+              >
                 <img
                   src="assets/person_4.jpg"
-                  alt="aaaaaaaaaaa"
+                  alt=""
                   className="img-fluid rounded-circle p-2"
                 />
 
@@ -177,7 +180,7 @@ export default function About() {
               >
                 <img
                   src="assets/person_5.jpg"
-                  alt="aaaaaaaaaaaaaa"
+                  alt=""
                   className="img-fluid rounded-circle p-2"
                 />
 
@@ -202,7 +205,7 @@ export default function About() {
               >
                 <img
                   src="assets/person_1.jpg"
-                  alt="aaaaaaaaaa"
+                  alt=""
                   className="img-fluid rounded-circle p-2"
                 />
 
@@ -229,7 +232,7 @@ export default function About() {
             <div className="col-lg-6 mb-5 mb-lg-0">
               <img
                 src="assets/hero_1_a.jpg"
-                alt="Imagnhhe"
+                alt=""
                 className="img-fluid rounded"
               />
             </div>

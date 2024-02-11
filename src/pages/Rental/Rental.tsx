@@ -36,9 +36,9 @@ const Rental = (props: Props) => {
         onClick={() => {
           sendRental();
         }}
-        className="btn btn-danger"
+        className="btn btn-danger rounded-4 btn-lg"
       >
-        Order Confirmed
+        Order Confirm
       </button>
     </>
   );

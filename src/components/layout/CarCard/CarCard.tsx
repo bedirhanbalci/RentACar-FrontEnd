@@ -7,19 +7,27 @@ const CarCard = ({ car }: Props) => {
     <div key={car.id} className="card" style={{ width: "24 rem" }}>
       <img src={car.imagePath} className="card-img-top" alt={car.modelName} />
       <div className="card-body">
-        <p className="card-text text-danger">
+        <p className="card-text text-danger fw-bold">
           {car.brandName} {car.modelName}
         </p>
       </div>
       <ul className="list-group list-group-flush no-border">
-        <li className="list-group-item">Year: {car.year}</li>
-        <li className="list-group-item">Daily Price: ${car.dailyPrice}</li>
+        <li className="list-group-item">
+          <i className="bi bi-calendar text-muted" /> Year: {car.year}
+        </li>
+        <li className="list-group-item">
+          <i className="bi bi-tag text-muted" /> Daily Price: ${car.dailyPrice}
+        </li>
 
-        <li className="list-group-item">Gear Type: {car.gearType}</li>
-        <li className="list-group-item">Fuel Type: {car.fuelType}</li>
+        <li className="list-group-item">
+          <i className="bi bi-gear text-muted" /> Gear Type: {car.gearType}
+        </li>
+        <li className="list-group-item">
+          <i className="bi bi-fuel-pump text-muted" /> Fuel Type: {car.fuelType}
+        </li>
       </ul>
       <div className="card-body">
-        <Link to={`/car-detail/${car.id}`} className="btn btn-danger">
+        <Link to={`/car-detail/${car.id}`} className="btn btn-danger rounded-4">
           {" "}
           Car Details{" "}
         </Link>
