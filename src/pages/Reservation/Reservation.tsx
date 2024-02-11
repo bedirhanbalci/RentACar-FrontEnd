@@ -85,16 +85,13 @@ export const Reservation = (props: Props) => {
   };
 
   return (
-    <div className="container row  justify-content-center align-items-center">
+    <div className="container row  justify-content-center align-items-center mt-5 mb-5 pt-5 pb-5">
       <div className="col-12 col-md-6 ">
         <img className="img-fluid rounded" src={car?.imagePath} alt="" />
       </div>
-      <div className="col-12 col-md-6 border   rounded border-3 p-md-5">
+      <div className="col-12 col-md-6 border rounded border-3 p-md-5">
         <div className="text-center fs-1 text-capitalize fw-bolder">
-          {car?.brandName}
-        </div>
-        <div className="text-center fs-1 text-capitalize fw-bolder">
-          {car?.modelName}
+          {car?.brandName} {car?.modelName}
         </div>
         <div>
           <Formik
@@ -106,8 +103,8 @@ export const Reservation = (props: Props) => {
               <Form className="container mt-4">
                 <div className="row">
                   <div className="mb-3">
-                    <label htmlFor="startDate" className="form-label">
-                      {"Rental Date"}
+                    <label htmlFor="startDate" className="form-label fw-bold">
+                      {"Start Date"}
                     </label>
                     <Field
                       type="date"
@@ -126,8 +123,8 @@ export const Reservation = (props: Props) => {
                     />
                   </div>
                   <div className="mb-3">
-                    <label htmlFor="endDate" className="form-label">
-                      {"Return Date"}
+                    <label htmlFor="endDate" className="form-label fw-bold">
+                      {"End Date"}
                     </label>
                     <Field
                       type="date"
@@ -149,8 +146,11 @@ export const Reservation = (props: Props) => {
                 </div>
 
                 <div className="text-center mt-4">
-                  <button type="submit" className="btn btn-primary">
-                    Continue
+                  <button
+                    type="submit"
+                    className="btn btn-danger rounded-4 btn-lg"
+                  >
+                    Pay Now
                   </button>
                 </div>
               </Form>

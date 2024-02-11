@@ -1,9 +1,16 @@
-.nav {
+.nav-red {
+  background-color: #d4002a;
+  width: 100%;
+  top: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 40px 120px;
-  color: black;
+  color: #fff;
+  position: sticky;
+}
+
+.nav-red a {
+  color: #fff;
 }
 
 .nav-logo {
@@ -15,6 +22,7 @@
 .nav-menu {
   display: flex;
   align-items: center;
+  justify-content: center;
   list-style: none;
   font-size: 18px;
   gap: 90px;

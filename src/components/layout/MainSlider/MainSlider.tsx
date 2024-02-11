@@ -16,14 +16,14 @@ const MainSlider: any = ({
   playStatus,
 }: Props) => {
   return (
-    <div className="main">
-      <div className="hero-text">
+    <div className="main d-flex flex-column justify-content-end gap-5">
+      <div className="hero-text display-3 text-light">
         <p>{mainData.text1}</p>
         <p>{mainData.text2}</p>
       </div>
       <div className="main-explore">
         <p>Explore the features</p>
-        <img src={process.env.PUBLIC_URL + "/assets/arrow_btn.png"} alt="" />
+        <img src={"/assets/arrow_btn.png"} alt="" />
       </div>
       <div className="main-dot-play">
         <ul className="main-dots">
@@ -44,9 +44,7 @@ const MainSlider: any = ({
           <img
             onClick={() => setPlayStatus(!playStatus)}
             src={
-              playStatus
-                ? process.env.PUBLIC_URL + "/assets/pause_icon.png"
-                : process.env.PUBLIC_URL + "/assets/play_icon.png"
+              playStatus ? "/assets/pause_icon.png" : "/assets/play_icon.png"
             }
             alt=""
           />

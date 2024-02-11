@@ -1,0 +1,19 @@
+.custom-checkbox .form-check-input:checked {
+  background-color: #ad0a27;
+  border-color: #ad0a27;
+}
+
+.custom-checkbox .form-check-input {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+.dropdownStyle {
+  width: 310px;
+  height: 500px;
+}
+
+.containerStyle {
+  background-color: #fff;
+  padding: 3px;
+}

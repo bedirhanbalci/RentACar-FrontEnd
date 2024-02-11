@@ -96,7 +96,7 @@ const AssurancePackage = (props: Props) => {
   }, [assuranceList]);
 
   return (
-    <>
+    <div className="mt-5 mb-5">
       {assuranceList.map((card, index) => (
         <Col key={index} md={4}>
           <div className={"card"}>
@@ -145,7 +145,8 @@ const AssurancePackage = (props: Props) => {
                 }
                 if (card.totalPrice) setTempPrice(card.totalPrice);
               }}
-              className="btn btn-danger"
+              className="btn btn-danger ms-2"
+              style={{ borderRadius: "20px" }}
             >
               {card.addible ? "Remove" : "Add"}
             </button>
@@ -158,11 +159,12 @@ const AssurancePackage = (props: Props) => {
           if (isAdded === true) dispatch(addAssurance(assuranceId));
           navigate("/additional-feature");
         }}
-        className="btn btn-danger"
+        className="btn btn-danger rounded-4 btn-lg"
       >
-        Continue
+        Next Step
+        <i className="bi bi-arrow-right-circle ps-3" />
       </button>
-    </>
+    </div>
   );
 };
 

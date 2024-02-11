@@ -28,13 +28,13 @@ const CampaignSlider: React.FC<CampaignSliderProps> = ({ cards }) => {
   const renderCards = (start: number, end: number) => {
     const cardItems = cards.slice(start, end).map((card, index) => (
       <Col key={index} md={4}>
-        <div className={"card"}>
+        <div className={"card camp-card-body"}>
           <img
             src="assets/Driver.png"
             className="card-img-top"
             alt={`Card ${index + 1}`}
           />
-          <h5 className="card-header">{card.name}</h5>
+          <h5 className="card-header fw-bold">{card.name}</h5>
           <div className="card-body">
             <p className="card-text">{card.detail}</p>
           </div>

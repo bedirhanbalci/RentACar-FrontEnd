@@ -68,7 +68,7 @@ const AdditionalFeature = (props: Props) => {
     const newAdditionalList = [...additionalList];
 
     newAdditionalList.forEach(item => {
-      if (item.id === id) {
+      if (item.id === id && item.quantity < 2) {
         item.quantity = item.quantity + 1;
       }
     });
@@ -98,7 +98,7 @@ const AdditionalFeature = (props: Props) => {
   }, [additionalList]);
 
   return (
-    <>
+    <div className="mt-5 mb-5">
       {additionalList.map((card, index) => {
         return (
           <Col key={index} md={4}>
@@ -111,49 +111,76 @@ const AdditionalFeature = (props: Props) => {
               <h5 className="card-header">{card.name}</h5>
               <div className="card-body">
                 <p className="card-text">{card.detail}</p>
-                Quantity:<p className="card-text">{card.quantity}</p>
                 <p className="card-text">{card.dailyPrice}</p>
                 <p className="card-text">{card.totalPrice}</p>
               </div>
-              <button
-                onClick={() => {
-                  increaseQuantity(card.id);
-                }}
-                className="btn btn-danger"
-              >
-                Increase
-              </button>
-              <button
-                onClick={() => {
-                  decreaseQuantity(card.id);
-                }}
-                className="btn btn-danger"
-              >
-                Decrease
-              </button>
 
-              <button
-                onClick={() => {
-                  const isAlreadyAdded = additionalCard.some(
-                    (item: any) => item.id === card.id
-                  );
-                  if (!isAlreadyAdded) {
-                    setAdditionalCard([
-                      ...additionalCard,
-                      { quantity: card.quantity, id: card.id },
-                    ]);
-                  } else {
-                    setAdditionalCard(
-                      additionalCard.filter((x: any) => x.id !== card.id)
+              <div className="d-flex justify-content-start align-items-center">
+                <button
+                  onClick={() => {
+                    decreaseQuantity(card.id);
+                  }}
+                  className="btn btn-danger rounded-circle btn-sm me-2"
+                  style={{ width: "32px", height: "32px" }}
+                >
+                  -
+                </button>
+
+                <div
+                  className="border border-1 rounded text-center overflow-hidden"
+                  style={{
+                    width: "32px",
+                    height: "32px",
+                    lineHeight: "32px",
+                    backgroundColor: "#fff",
+                  }}
+                >
+                  <span
+                    className="d-inline-block"
+                    style={{
+                      maxWidth: "100%",
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                    }}
+                  >
+                    {card.quantity}
+                  </span>
+                </div>
+
+                <button
+                  onClick={() => {
+                    increaseQuantity(card.id);
+                  }}
+                  className="btn btn-danger rounded-circle btn-sm me-2"
+                  style={{ width: "32px", height: "32px" }}
+                >
+                  +
+                </button>
+
+                <button
+                  onClick={() => {
+                    const isAlreadyAdded = additionalCard.some(
+                      (item: any) => item.id === card.id
                     );
-                  }
-                }}
-                className="btn btn-danger"
-              >
-                {additionalCard.some((item: any) => item.id === card.id)
-                  ? "Remove"
-                  : "Add"}
-              </button>
+                    if (!isAlreadyAdded) {
+                      setAdditionalCard([
+                        ...additionalCard,
+                        { quantity: card.quantity, id: card.id },
+                      ]);
+                    } else {
+                      setAdditionalCard(
+                        additionalCard.filter((x: any) => x.id !== card.id)
+                      );
+                    }
+                  }}
+                  className="btn btn-danger ms-2"
+                  style={{ borderRadius: "20px" }}
+                >
+                  {additionalCard.some((item: any) => item.id === card.id)
+                    ? "Remove"
+                    : "Add"}
+                </button>
+              </div>
             </div>
           </Col>
         );
@@ -163,11 +190,11 @@ const AdditionalFeature = (props: Props) => {
           dispatch(addAdditional(additionalCard));
           navigate("/rental");
         }}
-        className="btn btn-danger"
+        className="btn btn-danger rounded-4 btn-lg"
       >
-        Continue
+        Next Step<i className="bi bi-arrow-right-circle ps-3"></i>
       </button>
-    </>
+    </div>
   );
 };
 

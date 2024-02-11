@@ -52,9 +52,9 @@ const CarDetail = (props: Props) => {
   return (
     <div
       key={car.id}
-      className="container text-bg-light mb-3 col-12 col-md-6 shadow"
+      className="container text-bg-light mb-3 col-12 col-md-6 shadow mt-5 mb-5 pt-5 pb-5"
     >
-      <div className="row g-0">
+      <div className="row g-0 bg-white">
         <div className="col-md-4">
           <img
             src={car.imagePath}
@@ -63,12 +63,15 @@ const CarDetail = (props: Props) => {
           />
         </div>
         <div className="col-md-8 mb-3">
-          <div className="card-body">
+          <div
+            // style={{ backgroundColor: "#fff5f7", borderColor: "#fff5f7" }}
+            className="card-body"
+          >
             <h5 className="card-title fw-bold fs-4">
               {" "}
               {car.brandName} {car.modelName}
             </h5>
-            <ul className="list-group list-group-flush">
+            <ul className="list-group">
               <li className="list-group-item">Year: {car.year}</li>
               <li className="list-group-item">Daily Price: {car.dailyPrice}</li>
               <li className="list-group-item">Gear Type: {car.gearType}</li>
@@ -81,9 +84,9 @@ const CarDetail = (props: Props) => {
             <div className="d-grid gap-2 d-md-block mt-3">
               <Link
                 to={`/reservation/${car?.id}`}
-                className="btn btn-primary btn-lg"
+                className="btn btn-danger rounded-4 btn-lg"
               >
-                Reservation
+                Rent Now
               </Link>
             </div>
           </div>
@@ -92,5 +95,4 @@ const CarDetail = (props: Props) => {
     </div>
   );
 };
-
 export default CarDetail;

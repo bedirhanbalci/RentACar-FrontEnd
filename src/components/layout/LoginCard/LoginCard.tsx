@@ -1,21 +1,12 @@
 import { Dropdown, Card, Nav, Form, Button } from "react-bootstrap";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import axiosInstance from "../../../utils/interceptors/axiosInterceptors";
 import { useDispatch, useSelector } from "react-redux";
 import { loginSuccess } from "../../../store/slices/authSlice";
+import "./LoginCard.css";
 
 const LoginCard: React.FC = () => {
-  const dropdownStyle: React.CSSProperties = {
-    width: "210px", // Genişlik ayarlayabilirsiniz
-    height: "500px", // Yükseklik ayarlayabilirsiniz
-  };
-
-  const containerStyle: React.CSSProperties = {
-    backgroundColor: "#f0f0f0", // Arka plan rengi
-    padding: "10px", // Opsiyonel: içerik arasına boşluk ekleyebilirsiniz
-  };
-
   const [activeTab, setActiveTab] = useState<"individual" | "corporate">(
     "individual"
   );
@@ -38,7 +29,6 @@ const LoginCard: React.FC = () => {
       });
       dispatch(loginSuccess(response.data));
       console.log(response.data);
-      // Burada gerekirse başka işlemler yapabilirsiniz.
     } catch (error) {
       console.error("Error submitting form:", error);
     }
@@ -49,7 +39,7 @@ const LoginCard: React.FC = () => {
       <Card.Body>
         <Form>
           <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label>Individual Email address</Form.Label>
+            <Form.Label>Individual Email address *</Form.Label>
             <Form.Control
               onChange={e => setEmail(e.target.value)}
               value={email}
@@ -62,7 +52,7 @@ const LoginCard: React.FC = () => {
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Label>Individual Password</Form.Label>
+            <Form.Label>Individual Password *</Form.Label>
             <Form.Control
               onChange={e => setPassword(e.target.value)}
               value={password}
@@ -70,21 +60,27 @@ const LoginCard: React.FC = () => {
               placeholder="Password"
             />
           </Form.Group>
-          <Form.Group className="mb-3" controlId="formBasicCheckbox">
-            <Form.Check type="checkbox" label="Check me out" />
-          </Form.Group>
-          <Button
-            onClick={(e: any) => handleFormSubmit(e)}
-            variant="primary"
-            type="submit"
+          <Form.Group
+            className="mb-3 custom-checkbox"
+            controlId="formBasicCheckbox"
+            style={{ display: "flex", alignItems: "center" }}
           >
-            Sign In
-          </Button>
+            <Form.Check type="checkbox" label="Remember Me" />
+            <Button
+              className="rounded-5 ms-auto"
+              variant="danger"
+              type="submit"
+            >
+              Sign In
+            </Button>
+          </Form.Group>
         </Form>
-        <div style={containerStyle} className="text-center d-grid gap-2">
-          <h5>Don't have an Avis account?</h5>
-          <Button variant="link" size="sm">
-            <Link to="/individual-register">Sign Up</Link>
+        <div className="containerStyle text-center mt-4 pb-2">
+          <h5>Don't have an 2B2 account?</h5>
+          <Button className="rounded-5" variant="danger">
+            <Link className="text-decoration-none" to="/individual-register">
+              Sign Up
+            </Link>
           </Button>
         </div>
       </Card.Body>
@@ -93,7 +89,7 @@ const LoginCard: React.FC = () => {
       <Card.Body>
         <Form>
           <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label>Corporate Email address</Form.Label>
+            <Form.Label>Corporate Email address *</Form.Label>
             <Form.Control type="email" placeholder="Enter email" />
             <Form.Text className="text-muted">
               We'll never share your email with anyone else.
@@ -101,20 +97,30 @@ const LoginCard: React.FC = () => {
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Label>Corporate Password</Form.Label>
+            <Form.Label>Corporate Password *</Form.Label>
             <Form.Control type="password" placeholder="Password" />
           </Form.Group>
-          <Form.Group className="mb-3" controlId="formBasicCheckbox">
-            <Form.Check type="checkbox" label="Check me out" />
+          <Form.Group
+            className="mb-3 custom-checkbox"
+            controlId="formBasicCheckbox"
+            style={{ display: "flex", alignItems: "center" }}
+          >
+            <Form.Check type="checkbox" label="Remember Me" />
+            <Button
+              className="rounded-5 ms-auto"
+              variant="danger"
+              type="submit"
+            >
+              Sign In
+            </Button>
           </Form.Group>
-          <Button variant="primary" type="submit">
-            Sign In
-          </Button>
         </Form>
-        <div style={containerStyle} className="text-center d-grid gap-2">
-          <h5>Don't have an Avis account?</h5>
-          <Button variant="link" size="sm">
-            <Link to="/corporate-register">Sign Up</Link>
+        <div className="containerStyle text-center mt-4 pb-2">
+          <h5>Don't have an 2B2 account?</h5>
+          <Button className="rounded-5" variant="danger">
+            <Link className="text-decoration-none" to="/corporate-register">
+              Sign Up
+            </Link>
           </Button>
         </div>
       </Card.Body>
@@ -127,15 +133,33 @@ const LoginCard: React.FC = () => {
 
   return (
     <div className="btn-group">
-      <Dropdown className="d-inline mx-2" autoClose="outside">
-        <Dropdown.Toggle id="dropdown-autoclose-outside">Login</Dropdown.Toggle>
+      <Dropdown className="d-inline mx-5" autoClose="outside">
+        <Dropdown.Toggle
+          style={{ backgroundColor: "#d4002a" }}
+          id="dropdown-autoclose-outside"
+        >
+          Login
+        </Dropdown.Toggle>
 
         <Dropdown.Menu>
-          <Card style={dropdownStyle}>
-            <Card.Header>
+          <Card
+            style={{ backgroundColor: "#fff5f7" }}
+            className="dropdownStyle"
+          >
+            <Card.Header style={{ backgroundColor: "#AD0A27" }}>
               <Nav variant="tabs" defaultActiveKey="#individual">
-                <Nav.Item>
+                <Nav.Item style={{ flex: 1, textAlign: "center" }}>
                   <Nav.Link
+                    style={{
+                      color: activeTab === "individual" ? "#D4002A" : "#fff5f7",
+                      backgroundColor:
+                        activeTab === "individual" ? "#fff5f7" : "#AD0A27",
+                      fontWeight: "bold",
+                      height: "50px",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
                     href="#individual"
                     active={activeTab === "individual"}
                     onClick={() => handleTabClick("individual")}
@@ -143,8 +167,18 @@ const LoginCard: React.FC = () => {
                     Individual
                   </Nav.Link>
                 </Nav.Item>
-                <Nav.Item>
+                <Nav.Item style={{ flex: 1, textAlign: "center" }}>
                   <Nav.Link
+                    style={{
+                      color: activeTab === "corporate" ? "#D4002A" : "#fff5f7",
+                      backgroundColor:
+                        activeTab === "corporate" ? "#fff5f7" : "#AD0A27",
+                      fontWeight: "bold",
+                      height: "50px",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
                     href="#corporate"
                     active={activeTab === "corporate"}
                     onClick={() => handleTabClick("corporate")}
@@ -154,6 +188,7 @@ const LoginCard: React.FC = () => {
                 </Nav.Item>
               </Nav>
             </Card.Header>
+
             {tabContents[activeTab]}
           </Card>
         </Dropdown.Menu>
