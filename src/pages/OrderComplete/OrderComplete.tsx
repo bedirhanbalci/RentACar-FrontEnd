@@ -23,7 +23,7 @@ const OrderComplete = (props: Props) => {
             <p className="card-text text-center mb-4">
               We will contact you shortly regarding delivery details.
             </p>
-            <Link to="/" className="btn btn-lg rounded-5 btn-danger mt-3">
+            <Link to="/" className="btn btn-danger btn-lg rounded-5 mt-3">
               Back to Home
             </Link>
           </div>

@@ -45,7 +45,6 @@ const IndividualRegister = (props: Props) => {
       .min(11, "Nationality number must be exactly 11 characters long!")
       .max(11, "Nationality number must be exactly 11 characters long!"),
     birthDate: Yup.string().required("Birth date field is required!"),
-
     phoneNumber: Yup.string()
       .matches(/^[0-9]{10}$/, "Please enter a valid phone number!")
       .required("Phone number field is required!"),
@@ -105,6 +104,7 @@ const IndividualRegister = (props: Props) => {
           <div className="row">
             <div className="col-6 mx-auto">
               <FormikInput
+                className="form-control"
                 htmlFor="firstName"
                 id="firstName"
                 label="First Name"
@@ -113,6 +113,7 @@ const IndividualRegister = (props: Props) => {
               />
 
               <FormikInput
+                className="form-control"
                 htmlFor="lastName"
                 id="lastName"
                 label="Last Name"
@@ -121,6 +122,7 @@ const IndividualRegister = (props: Props) => {
               />
 
               <FormikInput
+                className="form-control"
                 htmlFor="nationalityNo"
                 id="nationalityNo"
                 label="Nationality Number"
@@ -129,6 +131,7 @@ const IndividualRegister = (props: Props) => {
               />
 
               <FormikInput
+                className="form-control"
                 htmlFor="birthDate"
                 id="birthDate"
                 label="Birth Date"
@@ -138,6 +141,7 @@ const IndividualRegister = (props: Props) => {
               />
 
               <FormikInput
+                className="form-control"
                 htmlFor="phoneNumber"
                 id="phoneNumber"
                 label="Phone Number"
@@ -146,6 +150,7 @@ const IndividualRegister = (props: Props) => {
               />
 
               <FormikInput
+                className="form-control"
                 htmlFor="email"
                 id="email"
                 label="Email"
@@ -154,6 +159,7 @@ const IndividualRegister = (props: Props) => {
               />
 
               <FormikInput
+                className="form-control"
                 htmlFor="password"
                 id="password"
                 label="Password"
@@ -163,6 +169,7 @@ const IndividualRegister = (props: Props) => {
               />
 
               <FormikInput
+                className="form-control"
                 htmlFor="confirmPassword"
                 id="confirmPassword"
                 label="Confirm Password"
@@ -171,7 +178,7 @@ const IndividualRegister = (props: Props) => {
                 placeholder="Please write the confirm password!"
               />
 
-              <button className="btn btn-danger mt-3" type="submit">
+              <button className="btn btn-danger rounded-5 mt-3" type="submit">
                 Sign Up
               </button>
             </div>

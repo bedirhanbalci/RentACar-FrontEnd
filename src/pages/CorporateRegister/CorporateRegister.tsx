@@ -34,6 +34,13 @@ const CorporateRegister = (props: Props) => {
     confirmPassword: "",
   };
 
+  const subjectOptions = [
+    { value: 0, label: "Select" },
+    { value: 1, label: "Price List Request" },
+    { value: 2, label: "New Corporate Customer Requests" },
+    { value: 3, label: "General Requests" },
+  ];
+
   const validationSchema = Yup.object({
     subjectId: Yup.number()
       .required("Subject field is required!")
@@ -116,15 +123,11 @@ const CorporateRegister = (props: Props) => {
                 id="subjectId"
                 label="Subject"
                 name="subjectId"
-                options={[
-                  { value: 0, label: "Select" },
-                  { value: 1, label: "Price List Request" },
-                  { value: 2, label: "New Corporate Customer Requests" },
-                  { value: 3, label: "General Requests" },
-                ]}
+                options={subjectOptions}
               ></FormikSelect>
 
               <FormikInput
+                className="form-control"
                 htmlFor="companyName"
                 id="companyName"
                 label="Company Name"
@@ -133,6 +136,7 @@ const CorporateRegister = (props: Props) => {
               />
 
               <FormikInput
+                className="form-control"
                 htmlFor="contactName"
                 id="contactName"
                 label="Contact Name"
@@ -141,6 +145,7 @@ const CorporateRegister = (props: Props) => {
               />
 
               <FormikInput
+                className="form-control"
                 htmlFor="contactTitle"
                 id="contactTitle"
                 label="Contact Title"
@@ -149,6 +154,7 @@ const CorporateRegister = (props: Props) => {
               />
 
               <FormikInput
+                className="form-control"
                 htmlFor="taxNumber"
                 id="taxNumber"
                 label="Tax Number"
@@ -157,6 +163,7 @@ const CorporateRegister = (props: Props) => {
               />
 
               <FormikInput
+                className="form-control"
                 htmlFor="phoneNumber"
                 id="phoneNumber"
                 label="Phone Number"
@@ -165,6 +172,7 @@ const CorporateRegister = (props: Props) => {
               />
 
               <FormikInput
+                className="form-control"
                 htmlFor="email"
                 id="email"
                 label="Email"
@@ -173,6 +181,7 @@ const CorporateRegister = (props: Props) => {
               />
 
               <FormikInput
+                className="form-control"
                 htmlFor="password"
                 id="password"
                 label="Password"
@@ -182,6 +191,7 @@ const CorporateRegister = (props: Props) => {
               />
 
               <FormikInput
+                className="form-control"
                 htmlFor="confirmPassword"
                 id="confirmPassword"
                 label="Confirm Password"
@@ -190,7 +200,7 @@ const CorporateRegister = (props: Props) => {
                 placeholder="Please write the confirm password!"
               />
 
-              <button className="btn btn-danger mt-3" type="submit">
+              <button className="btn btn-danger rounded-5 mt-3" type="submit">
                 Sign Up
               </button>
             </div>
