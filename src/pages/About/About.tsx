@@ -37,7 +37,7 @@ export default function About() {
       <div className="site-section style={{backgroundColor: '#fafaf5'}}">
         <div className="container">
           <div className="row">
-            <div className="col-lg-6 mb-5 mb-lg-3 order-lg-2">
+            <div className="col-lg-6 mb-5 mb-lg-3 order-lg-2 img-border">
               <img
                 src="/assets/about_image_1.jpg"
                 alt="About Us"

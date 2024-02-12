@@ -38,7 +38,7 @@ const BranchMap: React.FC<BranchMapProps> = () => {
 
       const MapOptions: google.maps.MapOptions = {
         center: { lat: branches[12]?.latitude, lng: branches[12]?.longitude },
-        zoom: 6,
+        zoom: 5,
         mapId: "my-project-140107-412608",
       };
 
@@ -64,7 +64,11 @@ const BranchMap: React.FC<BranchMapProps> = () => {
 
   return (
     <div>
-      <div style={{ height: "300px" }} ref={mapRef}></div>
+      <div
+        className="border   rounded border-4 p-md-5"
+        style={{ height: "300px" }}
+        ref={mapRef}
+      ></div>
     </div>
   );
 };

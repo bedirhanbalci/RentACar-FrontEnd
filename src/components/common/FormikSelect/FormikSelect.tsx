@@ -25,14 +25,16 @@ const FormikSelect = (props: Props) => {
         id={props.id}
         name={props.name}
       >
-        {props.options.map(option => (
+        {props.options.map((option) => (
           <option key={option.value} value={option.value}>
             {option.label}
           </option>
         ))}
       </Field>
       <ErrorMessage name={props.name}>
-        {message => <p className="badge small bg-danger text-end">{message}</p>}
+        {(message) => (
+          <p className="badge small bg-danger text-end">{message}</p>
+        )}
       </ErrorMessage>
     </div>
   );
