@@ -6,11 +6,16 @@ import {
   decreaseRequestCount,
   increaseRequestCount,
 } from "../../store/slices/loadingSlice";
-import { store } from "../../store/configureStore";
 
 const axiosInstance = axios.create({
   baseURL: "http://localhost:8080/api/",
 });
+
+let store: any;
+
+export const injectStore = (_store: any) => {
+  store = _store;
+};
 
 axiosInstance.interceptors.request.use(config => {
   let authToken = TokenService.getToken();
@@ -29,7 +34,11 @@ axiosInstance.interceptors.response.use(
   },
   error => {
     store.dispatch(decreaseRequestCount());
-    toastr.error(error.response.data.message);
+    if (error.response.data === "Bad credentials") {
+      toastr.error("Incorrect login, please login correctly");
+    } else {
+      toastr.error(error.response.data);
+    }
     return error;
   }
 );

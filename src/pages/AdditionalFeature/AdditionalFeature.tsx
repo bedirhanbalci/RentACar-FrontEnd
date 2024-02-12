@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
 import { Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { addAdditional } from "../../store/slices/rentalSlice";
+import {
+  addAdditional,
+  addAdditionalPrice,
+} from "../../store/slices/rentalSlice";
 import { GetAllAdditionalFeaturesResponse } from "../../models/additionalFeature/responses/GetAllAdditionalFeaturesResponse";
 import AdditionalFeatureService from "../../services/additionalFeatureService";
 import { useNavigate } from "react-router-dom";
@@ -72,28 +75,6 @@ const AdditionalFeature = (props: Props) => {
     setAdditionalList(updatedAdditionalList);
   };
 
-  const increaseQuantity = async (id: any) => {
-    const newAdditionalList = [...additionalList];
-
-    newAdditionalList.forEach(item => {
-      if (item.id === id && item.quantity < 2) {
-        item.quantity = item.quantity + 1;
-      }
-    });
-    setAdditionalList(newAdditionalList);
-  };
-
-  const decreaseQuantity = async (id: any) => {
-    const newAdditionalList = [...additionalList];
-
-    newAdditionalList.forEach(item => {
-      if (item.id === id) {
-        if (item.quantity !== 0) item.quantity = item.quantity - 1;
-      }
-    });
-    setAdditionalList(newAdditionalList);
-  };
-
   const calculateQuantityWithTotalPrice = async (card: any) => {
     const newAdditionalList = [...additionalList];
 
@@ -106,13 +87,6 @@ const AdditionalFeature = (props: Props) => {
     });
     setAdditionalList(newAdditionalList);
   };
-
-  // const mappedToAdditionalList = async () => {
-  //   const newAdditionalList = additionalList.map(item => {
-  //     return { ...item, amount: 1, finalPrice: 0 };
-  //   });
-  //   setAdditionalList(newAdditionalList);
-  // };
 
   const calculateAmountIncrease = async (card: any) => {
     const newAdditionalList = [...additionalList];
@@ -137,19 +111,42 @@ const AdditionalFeature = (props: Props) => {
   };
 
   const calculateAdditionalTotalPrice = async () => {
-    const newAdditionalList = [...additionalList];
-
     let totalPrice = 0;
 
-    newAdditionalList.forEach(item => {
-      totalPrice += item.finalPrice;
+    additionalCard.forEach((item: any) => {
+      totalPrice += item.amount * item.totalPrice;
     });
     setAdditionalTotalPrice(totalPrice);
   };
 
+  function calculateDateDifference(
+    startDateStr: string,
+    endDateStr: string
+  ): string {
+    // String tarihleri Date nesnelerine dönüştür
+    const startDate = new Date(startDateStr);
+    const endDate = new Date(endDateStr);
+
+    // İki tarih arasındaki farkı hesapla
+    const timeDifference = endDate.getTime() - startDate.getTime();
+
+    // Bir günün milisaniye cinsinden değeri
+    const oneDay = 1000 * 60 * 60 * 24;
+
+    // Farkı gün cinsine dönüştür
+    const differenceInDays = Math.floor(timeDifference / oneDay);
+
+    // Gün hesaplaması
+
+    const days = Math.floor((differenceInDays % 365) % 30);
+
+    // Sonucu formatlı bir şekilde döndür
+    return `For ${days + 1} days`;
+  }
+
   useEffect(() => {
     calculateAdditionalTotalPrice();
-  }, [additionalList]);
+  }, [additionalCard]);
 
   useEffect(() => {
     fetchAdditional();
@@ -178,8 +175,17 @@ const AdditionalFeature = (props: Props) => {
               <h5 className="card-header fw-bold">{card.name}</h5>
               <div className="card-body">
                 <p className="card-text">{card.detail}</p>
-                <p className="card-text">{formatCurrency(card.dailyPrice)}</p>
-                <p className="card-text">{card.totalPrice}</p>
+                <p className="card-text text-muted">
+                  {calculateDateDifference(
+                    rentalState.startDate.startDate,
+                    rentalState.endDate.endDate
+                  )}
+                </p>
+                <p className="card-text fw-bold">
+                  {formatCurrency(
+                    card.totalPrice ? card.totalPrice * card.amount : 0
+                  )}
+                </p>
               </div>
 
               <div className="d-flex justify-content-start align-items-center">
@@ -234,7 +240,12 @@ const AdditionalFeature = (props: Props) => {
                     if (!isAlreadyAdded) {
                       setAdditionalCard([
                         ...additionalCard,
-                        { quantity: card.quantity, id: card.id },
+                        {
+                          quantity: card.amount,
+                          id: card.id,
+                          amount: card.amount,
+                          totalPrice: card.totalPrice,
+                        },
                       ]);
                     } else {
                       setAdditionalCard(
@@ -254,10 +265,15 @@ const AdditionalFeature = (props: Props) => {
           </Col>
         );
       })}
-      <p>{formatCurrency(additionalTotalPrice)}</p>
+      <p>
+        {formatCurrency(
+          additionalTotalPrice + rentalState.assurancePriceWithTotalPrice
+        )}
+      </p>
       <button
         onClick={() => {
           dispatch(addAdditional(additionalCard));
+          dispatch(addAdditionalPrice(additionalTotalPrice));
           navigate("/rental");
         }}
         className="btn btn-danger rounded-4 btn-lg"

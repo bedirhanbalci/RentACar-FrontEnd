@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import CarService from "../../services/carService";
 import { GetByIdCarResponse } from "../../models/car/responses/GetByIdCarResponse";
 import { formatCurrency } from "../../utils/validation/formatCurrency";
+import toastr from "toastr";
 
 type Props = {};
 
@@ -34,6 +35,12 @@ const Rental = (props: Props) => {
   }, []);
 
   const sendRental = async (): Promise<any> => {
+    if (authState.id === 0) {
+      navigate("/");
+      toastr.error("Lütfen kayıt olunuz!");
+      return;
+    }
+
     try {
       const response = await RentalService.add({
         startDate: rentalState.startDate.startDate,
@@ -75,16 +82,29 @@ const Rental = (props: Props) => {
               <strong>End Date:</strong> {rentalState.endDate.endDate}
             </p>
             <p>
-              <strong>Total Assurance Price:</strong>{" "}
+              <strong>Assurance Price:</strong>{" "}
               {formatCurrency(
                 rentalState.assurancePriceWithTotalPrice -
                   rentalState.rentalPrice
               )}
             </p>
             <p>
-              <strong>Rental Price:</strong>{" "}
+              <strong>Additional Price:</strong>{" "}
+              {formatCurrency(rentalState.additionalPriceWithTotalPrice)}
+            </p>
+            <p>
+              <strong>Car Price:</strong>{" "}
               {formatCurrency(rentalState.rentalPrice)}
             </p>
+
+            <p>
+              <strong>Total Price:</strong>{" "}
+              {formatCurrency(
+                rentalState.assurancePriceWithTotalPrice +
+                  rentalState.additionalPriceWithTotalPrice
+              )}
+            </p>
+
             <hr />
             <p>
               <strong>Details:</strong>

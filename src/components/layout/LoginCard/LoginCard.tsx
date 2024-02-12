@@ -26,7 +26,7 @@ const LoginCard: React.FC = () => {
       await AuthService.login({ email: email, password: password }).then(
         (response: any) => {
           console.log(response.data);
-          // dispatch(loginSuccess(response.data));
+          dispatch(loginSuccess(response.data));
           console.log(response.data);
         }
       );

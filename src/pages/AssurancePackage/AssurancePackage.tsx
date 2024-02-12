@@ -62,8 +62,6 @@ const AssurancePackage = (props: Props) => {
   };
 
   const handleOnClick = async (card: any) => {
-    debugger;
-
     if (
       isAdded &&
       assuranceId !== card.id &&
@@ -135,6 +133,31 @@ const AssurancePackage = (props: Props) => {
     setAssuranceList(newAssuranceList);
   };
 
+  function calculateDateDifference(
+    startDateStr: string,
+    endDateStr: string
+  ): string {
+    // String tarihleri Date nesnelerine dönüştür
+    const startDate = new Date(startDateStr);
+    const endDate = new Date(endDateStr);
+
+    // İki tarih arasındaki farkı hesapla
+    const timeDifference = endDate.getTime() - startDate.getTime();
+
+    // Bir günün milisaniye cinsinden değeri
+    const oneDay = 1000 * 60 * 60 * 24;
+
+    // Farkı gün cinsine dönüştür
+    const differenceInDays = Math.floor(timeDifference / oneDay);
+
+    // Gün hesaplaması
+
+    const days = Math.floor((differenceInDays % 365) % 30);
+
+    // Sonucu formatlı bir şekilde döndür
+    return `For ${days + 1} days`;
+  }
+
   useEffect(() => {
     fetchAssurance();
   }, []);
@@ -163,17 +186,27 @@ const AssurancePackage = (props: Props) => {
             <h5 className="card-header fw-bold">{card.name}</h5>
             <div className="card-body">
               <p className="card-text">{card.detail}</p>
-              <p className="card-text"> {formatCurrency(card.dailyPrice)}</p>
-              <p className="card-text"> {formatCurrency(card.totalPrice)}</p>
+              <p className="card-text text-muted">
+                {calculateDateDifference(
+                  rentalState.startDate.startDate,
+                  rentalState.endDate.endDate
+                )}
+              </p>
+              <p className="card-text fw-bold">
+                {" "}
+                {formatCurrency(card.totalPrice)}
+              </p>
             </div>
 
-            <button
-              onClick={() => handleOnClick(card)}
-              className="btn btn-danger ms-2"
-              style={{ borderRadius: "20px" }}
-            >
-              {card.addible ? "Remove" : "Add"}
-            </button>
+            <div>
+              <button
+                onClick={() => handleOnClick(card)}
+                className="btn btn-danger ms-2"
+                style={{ borderRadius: "20px" }}
+              >
+                {card.addible ? "Remove" : "Add"}
+              </button>
+            </div>
           </div>
         </Col>
       ))}

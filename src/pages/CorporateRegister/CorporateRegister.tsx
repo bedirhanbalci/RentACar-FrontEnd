@@ -112,6 +112,8 @@ const CorporateRegister = (props: Props) => {
           <div className="row">
             <div className="col-6 mx-auto">
               <FormikSelect
+                htmlFor="subjectId"
+                id="subjectId"
                 label="Subject"
                 name="subjectId"
                 options={[
@@ -123,42 +125,56 @@ const CorporateRegister = (props: Props) => {
               ></FormikSelect>
 
               <FormikInput
+                htmlFor="companyName"
+                id="companyName"
                 label="Company Name"
                 name="companyName"
                 placeholder="Please write the company name!"
               />
 
               <FormikInput
+                htmlFor="contactName"
+                id="contactName"
                 label="Contact Name"
                 name="contactName"
                 placeholder="Please write the contact name!"
               />
 
               <FormikInput
+                htmlFor="contactTitle"
+                id="contactTitle"
                 label="Contact Title"
                 name="contactTitle"
                 placeholder="Please write the contact title!"
               />
 
               <FormikInput
+                htmlFor="taxNumber"
+                id="taxNumber"
                 label="Tax Number"
                 name="taxNumber"
                 placeholder="Please write the tax number!"
               />
 
               <FormikInput
+                htmlFor="phoneNumber"
+                id="phoneNumber"
                 label="Phone Number"
                 name="phoneNumber"
                 placeholder="Please write the phone number!"
               />
 
               <FormikInput
+                htmlFor="email"
+                id="email"
                 label="Email"
                 name="email"
                 placeholder="Please write the email!"
               />
 
               <FormikInput
+                htmlFor="password"
+                id="password"
                 label="Password"
                 name="password"
                 type="password"
@@ -166,6 +182,8 @@ const CorporateRegister = (props: Props) => {
               />
 
               <FormikInput
+                htmlFor="confirmPassword"
+                id="confirmPassword"
                 label="Confirm Password"
                 name="confirmPassword"
                 type="password"

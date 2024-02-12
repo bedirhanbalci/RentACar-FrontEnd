@@ -34,3 +34,19 @@
   background: #262626;
   color: #fff;
 }
+
+.nav-dropdown-width {
+  width: 100px;
+}
+
+@media screen and (min-width: 768px) {
+  .nav-dropdown-width {
+    width: 200px;
+  }
+}
+
+@media screen and (min-width: 940px) {
+  .nav-dropdown-width {
+    width: 300px;
+  }
+}

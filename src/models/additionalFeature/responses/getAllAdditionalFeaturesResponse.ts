@@ -7,4 +7,5 @@ export interface GetAllAdditionalFeaturesResponse {
   quantity?: any;
   finalPrice?: any;
   amount?: any;
+  imagePath?: string;
 }

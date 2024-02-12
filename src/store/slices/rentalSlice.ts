@@ -29,12 +29,19 @@ const rentalSlice = createSlice({
       state.assurancePriceWithTotalPrice = action.payload;
     },
 
+    addAdditionalPrice: (state, action) => {
+      state.additionalPriceWithTotalPrice = action.payload;
+    },
+
     clearRental: state => {
       state.startDate = "";
       state.endDate = "";
       state.assurance = 0;
       state.additional = 0;
       state.carId = 0;
+      state.rentalPrice = 0;
+      state.assurancePriceWithTotalPrice = 0;
+      state.additionalPriceWithTotalPrice = 0;
     },
   },
 });
@@ -48,4 +55,5 @@ export const {
   addCarId,
   addRentalPrice,
   addAssurancePrice,
+  addAdditionalPrice,
 } = rentalSlice.actions;
