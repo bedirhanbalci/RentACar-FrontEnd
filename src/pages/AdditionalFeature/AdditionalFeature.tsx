@@ -5,6 +5,7 @@ import { addAdditional } from "../../store/slices/rentalSlice";
 import { GetAllAdditionalFeaturesResponse } from "../../models/additionalFeature/responses/GetAllAdditionalFeaturesResponse";
 import AdditionalFeatureService from "../../services/additionalFeatureService";
 import { useNavigate } from "react-router-dom";
+import { formatCurrency } from "../../utils/validation/formatCurrency";
 
 type Props = {};
 
@@ -15,6 +16,8 @@ const AdditionalFeature = (props: Props) => {
   const [counter, setCounter] = useState(0);
 
   const [additionalCard, setAdditionalCard] = useState<any>([]);
+
+  const [additionalTotalPrice, setAdditionalTotalPrice] = useState(0);
 
   const dispatch = useDispatch();
 
@@ -58,7 +61,12 @@ const AdditionalFeature = (props: Props) => {
     const updatedAdditionalList = await Promise.all(
       additionalList.map(async additional => {
         const totalPrice = await fetchAdditionalPrices(additional.id);
-        return { ...additional, totalPrice: totalPrice };
+        return {
+          ...additional,
+          totalPrice: totalPrice,
+          amount: 0,
+          finalPrice: 1,
+        };
       })
     );
     setAdditionalList(updatedAdditionalList);
@@ -86,6 +94,63 @@ const AdditionalFeature = (props: Props) => {
     setAdditionalList(newAdditionalList);
   };
 
+  const calculateQuantityWithTotalPrice = async (card: any) => {
+    const newAdditionalList = [...additionalList];
+
+    newAdditionalList.forEach(item => {
+      if (item.id === card.id) {
+        if (item.totalPrice && item.amount !== 0) {
+          item.finalPrice = item.amount * item.totalPrice;
+        }
+      }
+    });
+    setAdditionalList(newAdditionalList);
+  };
+
+  // const mappedToAdditionalList = async () => {
+  //   const newAdditionalList = additionalList.map(item => {
+  //     return { ...item, amount: 1, finalPrice: 0 };
+  //   });
+  //   setAdditionalList(newAdditionalList);
+  // };
+
+  const calculateAmountIncrease = async (card: any) => {
+    const newAdditionalList = [...additionalList];
+
+    newAdditionalList.forEach(item => {
+      if (item.id === card.id && item.amount < 2) {
+        item.amount += 1;
+      }
+    });
+    setAdditionalList(newAdditionalList);
+  };
+
+  const calculateAmountDecrease = async (card: any) => {
+    const newAdditionalList = [...additionalList];
+
+    newAdditionalList.forEach(item => {
+      if (item.id === card.id && item.amount !== 0) {
+        item.amount -= 1;
+      }
+    });
+    setAdditionalList(newAdditionalList);
+  };
+
+  const calculateAdditionalTotalPrice = async () => {
+    const newAdditionalList = [...additionalList];
+
+    let totalPrice = 0;
+
+    newAdditionalList.forEach(item => {
+      totalPrice += item.finalPrice;
+    });
+    setAdditionalTotalPrice(totalPrice);
+  };
+
+  useEffect(() => {
+    calculateAdditionalTotalPrice();
+  }, [additionalList]);
+
   useEffect(() => {
     fetchAdditional();
   }, []);
@@ -93,8 +158,10 @@ const AdditionalFeature = (props: Props) => {
   useEffect(() => {
     if (counter === 1) {
       calculateAdditionalPrice();
+      console.log(additionalList);
     }
     setCounter(counter + 1);
+    console.log(additionalList);
   }, [additionalList]);
 
   return (
@@ -108,17 +175,18 @@ const AdditionalFeature = (props: Props) => {
                 className="card-img-top"
                 alt={`Card ${index + 1}`}
               />
-              <h5 className="card-header">{card.name}</h5>
+              <h5 className="card-header fw-bold">{card.name}</h5>
               <div className="card-body">
                 <p className="card-text">{card.detail}</p>
-                <p className="card-text">{card.dailyPrice}</p>
+                <p className="card-text">{formatCurrency(card.dailyPrice)}</p>
                 <p className="card-text">{card.totalPrice}</p>
               </div>
 
               <div className="d-flex justify-content-start align-items-center">
                 <button
                   onClick={() => {
-                    decreaseQuantity(card.id);
+                    calculateAmountDecrease(card);
+                    calculateQuantityWithTotalPrice(card);
                   }}
                   className="btn btn-danger rounded-circle btn-sm me-2"
                   style={{ width: "32px", height: "32px" }}
@@ -143,13 +211,14 @@ const AdditionalFeature = (props: Props) => {
                       textOverflow: "ellipsis",
                     }}
                   >
-                    {card.quantity}
+                    {card.amount}
                   </span>
                 </div>
 
                 <button
                   onClick={() => {
-                    increaseQuantity(card.id);
+                    calculateAmountIncrease(card);
+                    calculateQuantityWithTotalPrice(card);
                   }}
                   className="btn btn-danger rounded-circle btn-sm me-2"
                   style={{ width: "32px", height: "32px" }}
@@ -185,6 +254,7 @@ const AdditionalFeature = (props: Props) => {
           </Col>
         );
       })}
+      <p>{formatCurrency(additionalTotalPrice)}</p>
       <button
         onClick={() => {
           dispatch(addAdditional(additionalCard));

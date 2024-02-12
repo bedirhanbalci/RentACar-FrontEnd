@@ -3,8 +3,12 @@ import { Col } from "react-bootstrap";
 import AssurancePackageService from "../../services/assurancePackageService";
 import { GetAllAssurancePackagesResponse } from "../../models/assurancePackage/responses/GetAllAssurancePackagesResponse";
 import { useDispatch, useSelector } from "react-redux";
-import { addAssurance } from "../../store/slices/rentalSlice";
+import {
+  addAssurance,
+  addAssurancePrice,
+} from "../../store/slices/rentalSlice";
 import { useNavigate } from "react-router-dom";
+import { formatCurrency } from "../../utils/validation/formatCurrency";
 
 type Props = {};
 
@@ -57,6 +61,57 @@ const AssurancePackage = (props: Props) => {
     }
   };
 
+  const handleOnClick = async (card: any) => {
+    debugger;
+
+    if (
+      isAdded &&
+      assuranceId !== card.id &&
+      card.totalPrice &&
+      card.totalPrice !== tempPrice &&
+      assuranceId !== 0
+    ) {
+      setTotalPrice((prevTotalPrice: any) => prevTotalPrice - tempPrice);
+      setTotalPrice((prevTotalPrice: any) => prevTotalPrice + card.totalPrice);
+    } else {
+      if (
+        !isAdded &&
+        assuranceId !== card.id &&
+        card.totalPrice &&
+        card.totalPrice !== tempPrice &&
+        assuranceId !== 0
+      ) {
+        setTotalPrice(
+          (prevTotalPrice: any) => prevTotalPrice + card.totalPrice
+        );
+      }
+    }
+
+    if (assuranceId !== card.id && assuranceId !== 0) {
+      setIsAdded(true);
+    }
+
+    await changeAddible(card.id);
+    if (
+      !isAdded &&
+      card.totalPrice &&
+      (card.id === assuranceId || assuranceId === 0)
+    ) {
+      setTotalPrice((prevTotalPrice: any) => prevTotalPrice + card.totalPrice);
+    } else {
+      if (card.totalPrice && card.id === assuranceId) {
+        setTotalPrice(
+          (prevTotalPrice: any) => prevTotalPrice - card.totalPrice
+        );
+      }
+    }
+    if (card.totalPrice) setTempPrice(card.totalPrice);
+    setAssuranceId(card.id);
+    if (assuranceId === card.id || assuranceId === 0) {
+      setIsAdded(!isAdded);
+    }
+  };
+
   const calculateAssurancePrice = async () => {
     const updatedAssuranceList = await Promise.all(
       assuranceList.map(async assurance => {
@@ -105,46 +160,15 @@ const AssurancePackage = (props: Props) => {
               className="card-img-top"
               alt={`Card ${index + 1}`}
             />
-            <h5 className="card-header">{card.name}</h5>
+            <h5 className="card-header fw-bold">{card.name}</h5>
             <div className="card-body">
               <p className="card-text">{card.detail}</p>
-              <p className="card-text">{card.dailyPrice}</p>
-              <p className="card-text">{card.totalPrice}</p>
+              <p className="card-text"> {formatCurrency(card.dailyPrice)}</p>
+              <p className="card-text"> {formatCurrency(card.totalPrice)}</p>
             </div>
 
             <button
-              onClick={() => {
-                if (assuranceId !== card.id && card.totalPrice) {
-                  setTotalPrice(
-                    (prevTotalPrice: any) => prevTotalPrice - tempPrice
-                  );
-                  setTotalPrice(
-                    (prevTotalPrice: any) => prevTotalPrice + card.totalPrice
-                  );
-                }
-                if (assuranceId !== card.id) {
-                  setIsAdded(!isAdded);
-                }
-
-                setIsAdded(!isAdded);
-
-                setAssuranceId(card.id);
-
-                changeAddible(card.id);
-
-                if (!isAdded && card.totalPrice && card.id === assuranceId) {
-                  setTotalPrice(
-                    (prevTotalPrice: any) => prevTotalPrice + card.totalPrice
-                  );
-                } else {
-                  if (card.totalPrice && card.id === assuranceId) {
-                    setTotalPrice(
-                      (prevTotalPrice: any) => prevTotalPrice - card.totalPrice
-                    );
-                  }
-                }
-                if (card.totalPrice) setTempPrice(card.totalPrice);
-              }}
+              onClick={() => handleOnClick(card)}
               className="btn btn-danger ms-2"
               style={{ borderRadius: "20px" }}
             >
@@ -153,10 +177,11 @@ const AssurancePackage = (props: Props) => {
           </div>
         </Col>
       ))}
-      <p className="card-text">{totalPrice}</p>
+      <p className="card-text"> {formatCurrency(totalPrice)} </p>
       <button
         onClick={() => {
           if (isAdded === true) dispatch(addAssurance(assuranceId));
+          dispatch(addAssurancePrice(totalPrice));
           navigate("/additional-feature");
         }}
         className="btn btn-danger rounded-4 btn-lg"

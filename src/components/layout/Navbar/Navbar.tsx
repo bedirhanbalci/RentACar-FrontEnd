@@ -1,10 +1,14 @@
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 import LoginCard from "../LoginCard/LoginCard";
+import { useSelector } from "react-redux";
+import DropdownCard from "../DropdownCard/DropdownCard";
 
 type Props = {};
 
 function Navbar({}: Props) {
+  const authState = useSelector((store: any) => store.auth);
+
   return (
     <div className="nav-red z-3 p-3 px-5">
       <Link className="text-decoration-none ms-5" to={"/"}>
@@ -29,7 +33,7 @@ function Navbar({}: Props) {
           </Link>
         </div>
         <div className="d-flex justify-content-center align-items-center pb-3">
-          <LoginCard />
+          {authState && authState.id === 0 ? <LoginCard /> : <DropdownCard />}
         </div>
       </ul>
     </div>

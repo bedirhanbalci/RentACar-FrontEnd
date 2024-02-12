@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import "./CarCard.css";
+import { formatCurrency } from "../../../utils/validation/formatCurrency";
 type Props = { car: any };
 
 const CarCard = ({ car }: Props) => {
@@ -16,7 +17,8 @@ const CarCard = ({ car }: Props) => {
           <i className="bi bi-calendar text-muted" /> Year: {car.year}
         </li>
         <li className="list-group-item">
-          <i className="bi bi-tag text-muted" /> Daily Price: ${car.dailyPrice}
+          <i className="bi bi-tag text-muted" /> Daily Price:{" "}
+          {formatCurrency(car.dailyPrice)}
         </li>
 
         <li className="list-group-item">

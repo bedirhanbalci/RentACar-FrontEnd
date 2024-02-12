@@ -87,7 +87,9 @@ const HomePage = (props: Props) => {
       </div>
 
       <div className="d-block">
+        <h2 className="text-center pt-5 pb-2">Extras</h2>
         <CampaignSlider cards={additionalList} />
+        <h2 className="text-center pt-5 pb-2">Coverages</h2>
         <CampaignSlider cards={assuranceList} />
       </div>
 

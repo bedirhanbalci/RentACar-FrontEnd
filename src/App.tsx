@@ -1,4 +1,5 @@
 import { ReactElement } from "react";
+import "./app.css";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import Footer from "./components/layout/Footer/Footer";
@@ -24,33 +25,38 @@ function App(): ReactElement {
     <>
       <OverlayLoader />
       <Navbar />
-      <Routes>
-        <Route path="/" element={<HomePage />}></Route>
-        <Route path="/car-list" element={<CarList />}></Route>
-        <Route path="/branches" element={<Branches />}></Route>
+      <div className="app">
+        <Routes>
+          <Route path="/" element={<HomePage />}></Route>
+          <Route path="/car-list" element={<CarList />}></Route>
+          <Route path="/branches" element={<Branches />}></Route>
 
-        <Route path="/about" element={<About />}></Route>
-        <Route path="/contact" element={<Contact />}></Route>
-        <Route
-          path="/corporate-register"
-          element={<CorporateRegister />}
-        ></Route>
-        <Route
-          path="/individual-register"
-          element={<IndividualRegister />}
-        ></Route>
-        <Route path="/car-detail/:id" element={<CarDetail />}></Route>
+          <Route path="/about" element={<About />}></Route>
+          <Route path="/contact" element={<Contact />}></Route>
+          <Route
+            path="/corporate-register"
+            element={<CorporateRegister />}
+          ></Route>
+          <Route
+            path="/individual-register"
+            element={<IndividualRegister />}
+          ></Route>
+          <Route path="/car-detail/:id" element={<CarDetail />}></Route>
 
-        <Route path="/reservation/:id" element={<Reservation />}></Route>
-        <Route path="*" element={<NotFound />} />
-        <Route path="/assurance-package" element={<AssurancePackage />}></Route>
-        <Route
-          path="/additional-feature"
-          element={<AdditionalFeature />}
-        ></Route>
-        <Route path="/rental" element={<Rental />}></Route>
-        <Route path="/order-complete" element={<OrderComplete />}></Route>
-      </Routes>
+          <Route path="/reservation/:id" element={<Reservation />}></Route>
+          <Route path="*" element={<NotFound />} />
+          <Route
+            path="/assurance-package"
+            element={<AssurancePackage />}
+          ></Route>
+          <Route
+            path="/additional-feature"
+            element={<AdditionalFeature />}
+          ></Route>
+          <Route path="/rental" element={<Rental />}></Route>
+          <Route path="/order-complete" element={<OrderComplete />}></Route>
+        </Routes>
+      </div>
       <Footer />
     </>
   );
