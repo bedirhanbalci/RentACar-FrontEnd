@@ -8,6 +8,8 @@ import "toastr/build/toastr.css";
 import "react-toastify/dist/ReactToastify.css";
 import { Provider } from "react-redux";
 import { store } from "./store/configureStore";
+import { injectStore } from "./utils/interceptors/axiosInterceptors";
+injectStore(store);
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement

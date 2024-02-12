@@ -15,6 +15,7 @@ const authSlice = createSlice({
     logoutSuccess: state => {
       state.id = 0;
       state.role = "";
+      setToken();
     },
   },
 });

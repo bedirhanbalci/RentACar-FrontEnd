@@ -105,24 +105,32 @@ const IndividualRegister = (props: Props) => {
           <div className="row">
             <div className="col-6 mx-auto">
               <FormikInput
+                htmlFor="firstName"
+                id="firstName"
                 label="First Name"
                 name="firstName"
                 placeholder="Please write the first name!"
               />
 
               <FormikInput
+                htmlFor="lastName"
+                id="lastName"
                 label="Last Name"
                 name="lastName"
                 placeholder="Please write the last name!"
               />
 
               <FormikInput
+                htmlFor="nationalityNo"
+                id="nationalityNo"
                 label="Nationality Number"
                 name="nationalityNo"
                 placeholder="Please write the nationality number!"
               />
 
               <FormikInput
+                htmlFor="birthDate"
+                id="birthDate"
                 label="Birth Date"
                 name="birthDate"
                 type="date"
@@ -130,18 +138,24 @@ const IndividualRegister = (props: Props) => {
               />
 
               <FormikInput
+                htmlFor="phoneNumber"
+                id="phoneNumber"
                 label="Phone Number"
                 name="phoneNumber"
                 placeholder="Please write the phone number!"
               />
 
               <FormikInput
+                htmlFor="email"
+                id="email"
                 label="Email"
                 name="email"
                 placeholder="Please write the email!"
               />
 
               <FormikInput
+                htmlFor="password"
+                id="password"
                 label="Password"
                 name="password"
                 type="password"
@@ -149,6 +163,8 @@ const IndividualRegister = (props: Props) => {
               />
 
               <FormikInput
+                htmlFor="confirmPassword"
+                id="confirmPassword"
                 label="Confirm Password"
                 name="confirmPassword"
                 type="password"

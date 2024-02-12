@@ -30,7 +30,7 @@ const CampaignSlider: React.FC<CampaignSliderProps> = ({ cards }) => {
       <Col key={index} md={4}>
         <div className={"card camp-card-body"}>
           <img
-            src="assets/Driver.png"
+            src={card.imagePath}
             className="card-img-top"
             alt={`Card ${index + 1}`}
           />

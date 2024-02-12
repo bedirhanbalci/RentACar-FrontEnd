@@ -1,0 +1,25 @@
+#profile-dropdown:hover,
+#profile-dropdown:focus {
+  color: inherit !important;
+  border: none;
+  outline: none;
+}
+
+#profile-dropdown {
+  border: none;
+  outline: none;
+}
+
+#profile-dropdown:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.dropdown-item:focus,
+.dropdown-item:active {
+  background-color: transparent !important;
+}
+
+.dropdown-item:hover {
+  color: #ad0a27 !important;
+}

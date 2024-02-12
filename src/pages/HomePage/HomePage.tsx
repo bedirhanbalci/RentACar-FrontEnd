@@ -14,9 +14,9 @@ type Props = {};
 
 const HomePage = (props: Props) => {
   let mainData = [
-    { text1: "Dive into", text2: "what you love" },
-    { text1: "Indulge", text2: "your passions" },
-    { text1: "Give in to", text2: "your passions" },
+    { text1: "Miles of", text2: "Happiness" },
+    { text1: "Rent the Car", text2: "of Your Dreams" },
+    { text1: "Turn the Key", text2: "to Freedom" },
   ];
 
   const [carList, setCarList] = useState<GetAllCarsResponse[]>([]);
@@ -26,6 +26,9 @@ const HomePage = (props: Props) => {
   const [additionalList, setAdditionalList] = useState<
     GetAllAdditionalFeaturesResponse[]
   >([]);
+
+  const [mainCount, setMainCount] = useState(0);
+  const [playStatus, setPlayStatus] = useState(false);
 
   const fetchCars = async () => {
     try {
@@ -62,9 +65,6 @@ const HomePage = (props: Props) => {
     fetchAssurance();
     fetchAdditional();
   }, []);
-
-  const [mainCount, setMainCount] = useState(0);
-  const [playStatus, setPlayStatus] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {

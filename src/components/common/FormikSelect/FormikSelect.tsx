@@ -9,13 +9,22 @@ type Props = {
   label: string;
   name: string;
   options: Option[];
+  htmlFor?: string;
+  id?: string;
 };
 
 const FormikSelect = (props: Props) => {
   return (
     <div>
-      <label className="form-label">{props.label}</label>
-      <Field as="select" className="form-select" name={props.name}>
+      <label htmlFor={props.htmlFor} className="form-label">
+        {props.label}
+      </label>
+      <Field
+        as="select"
+        className="form-select"
+        id={props.id}
+        name={props.name}
+      >
         {props.options.map(option => (
           <option key={option.value} value={option.value}>
             {option.label}
