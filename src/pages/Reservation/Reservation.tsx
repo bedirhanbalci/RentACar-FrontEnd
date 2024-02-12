@@ -10,6 +10,7 @@ import {
   addRental,
   addRentalPrice,
 } from "../../store/slices/rentalSlice";
+import { formatCurrency } from "../../utils/validation/formatCurrency";
 
 type Props = {};
 
@@ -142,7 +143,9 @@ export const Reservation = (props: Props) => {
                       className="text-danger"
                     />
                   </div>
-                  {totalPrice !== 0 && <div> Total Price : {totalPrice}</div>}
+                  {totalPrice !== 0 && (
+                    <div> Total Price : {formatCurrency(totalPrice)}</div>
+                  )}
                 </div>
 
                 <div className="text-center mt-4">

@@ -1,10 +1,10 @@
 import { Dropdown, Card, Nav, Form, Button } from "react-bootstrap";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import axiosInstance from "../../../utils/interceptors/axiosInterceptors";
 import { useDispatch, useSelector } from "react-redux";
 import { loginSuccess } from "../../../store/slices/authSlice";
 import "./LoginCard.css";
+import AuthService from "../../../services/authService";
 
 const LoginCard: React.FC = () => {
   const [activeTab, setActiveTab] = useState<"individual" | "corporate">(
@@ -23,26 +23,27 @@ const LoginCard: React.FC = () => {
     console.log(email);
     e.preventDefault();
     try {
-      const response = await axiosInstance.post("auth/login", {
-        email: email,
-        password: password,
-      });
-      dispatch(loginSuccess(response.data));
-      console.log(response.data);
+      await AuthService.login({ email: email, password: password }).then(
+        (response: any) => {
+          console.log(response.data);
+          // dispatch(loginSuccess(response.data));
+          console.log(response.data);
+        }
+      );
     } catch (error) {
-      console.error("Error submitting form:", error);
+      console.log(error);
     }
   };
 
   const tabContents: Record<string, React.ReactNode> = {
     individual: (
       <Card.Body>
-        <Form>
+        <Form onSubmit={e => handleFormSubmit(e)}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Individual Email address *</Form.Label>
             <Form.Control
               onChange={e => setEmail(e.target.value)}
-              value={email}
+              value={email || ""}
               type="email"
               placeholder="Enter email"
             />
@@ -55,7 +56,7 @@ const LoginCard: React.FC = () => {
             <Form.Label>Individual Password *</Form.Label>
             <Form.Control
               onChange={e => setPassword(e.target.value)}
-              value={password}
+              value={password || ""}
               type="password"
               placeholder="Password"
             />
@@ -87,10 +88,15 @@ const LoginCard: React.FC = () => {
     ),
     corporate: (
       <Card.Body>
-        <Form>
+        <Form onSubmit={e => handleFormSubmit(e)}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Corporate Email address *</Form.Label>
-            <Form.Control type="email" placeholder="Enter email" />
+            <Form.Control
+              onChange={e => setEmail(e.target.value)}
+              value={email || ""}
+              type="email"
+              placeholder="Enter email"
+            />
             <Form.Text className="text-muted">
               We'll never share your email with anyone else.
             </Form.Text>
@@ -98,7 +104,12 @@ const LoginCard: React.FC = () => {
 
           <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Label>Corporate Password *</Form.Label>
-            <Form.Control type="password" placeholder="Password" />
+            <Form.Control
+              onChange={e => setPassword(e.target.value)}
+              value={password || ""}
+              type="password"
+              placeholder="Enter password"
+            />
           </Form.Group>
           <Form.Group
             className="mb-3 custom-checkbox"

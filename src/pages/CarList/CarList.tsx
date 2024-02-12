@@ -74,7 +74,7 @@ const CarList = (props: Props) => {
       </section>
       <div className="container mt-3">
         <div className="row">
-          {cars.map((car) => (
+          {cars.map(car => (
             <div
               key={car.id}
               className="col-lg-4 col-md-4 col-sm-6 col-12 mb-3 mb-sm-0 mt-3"

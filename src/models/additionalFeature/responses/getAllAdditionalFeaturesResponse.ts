@@ -5,4 +5,6 @@ export interface GetAllAdditionalFeaturesResponse {
   dailyPrice: number;
   totalPrice?: number;
   quantity?: any;
+  finalPrice?: any;
+  amount?: any;
 }
