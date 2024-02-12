@@ -168,7 +168,7 @@ const AdditionalFeature = (props: Props) => {
           <Col key={index} md={4}>
             <div className={"card"}>
               <img
-                src="assets/Driver.png"
+                src={card.imagePath}
                 className="card-img-top"
                 alt={`Card ${index + 1}`}
               />
