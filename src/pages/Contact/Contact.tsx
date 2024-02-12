@@ -1,13 +1,27 @@
 import React, { useEffect, useState } from "react";
 import ContactMap from "../../components/layout/ContactMap/ContactMap";
 import { Container } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import { GetByIdBranchResponse } from "../../models/branch/responses/GetByIdBranchResponse";
 import branchService from "../../services/branchService";
 import { Form, Formik } from "formik";
+import FormikSelect from "../../components/common/FormikSelect/FormikSelect";
+import FormikInput from "../../components/common/FormikInput/FormikInput";
+import * as Yup from "yup";
+import ContactCard from "../../components/layout/ContactCard/ContactCard";
 
 type Props = {};
-
+interface ContactForm {
+  subject: string;
+  firstName: string;
+  lastName: string;
+  birthDate: string;
+  nationalityNo: string;
+  phoneNumber: string;
+  email: string;
+  yourMessage: string;
+  acceptTerms: boolean;
+  rows: number;
+}
 const Contact = (props: Props) => {
   const [branch, setBranch] = useState<GetByIdBranchResponse>();
 
@@ -24,11 +38,50 @@ const Contact = (props: Props) => {
     fetchBranch();
   }, []);
 
-  const email = " @.com.tr ";
-
-  const Initialvalues = {
-    name: "",
+  const Initialvalues: ContactForm = {
+    subject: "",
+    firstName: "",
+    lastName: "",
+    birthDate: "",
+    nationalityNo: "",
+    phoneNumber: "",
+    email: "",
+    yourMessage: "",
+    acceptTerms: false,
+    rows: 5,
   };
+
+  const SubjectOptions = [
+    { value: "", label: "Choose..." },
+    { value: "Proposal", label: "Proposal" },
+    { value: "Thank", label: "Thank" },
+    { value: "Criticism", label: "Criticism" },
+    { value: "Request", label: "Request" },
+    { value: "DealerRequest", label: "Dealer Request" },
+  ];
+
+  const validationSchema = Yup.object({
+    firstName: Yup.string()
+      .required("First name field is required.")
+      .min(2, "First name must be at least 2 characters long.")
+      .max(50, "First name must be at most 50 characters long."),
+    lastName: Yup.string()
+      .required("Last name field is required.")
+      .min(2, "Last name must be at least 2 characters long.")
+      .max(50, "Last name must be at most 50 characters long."),
+    nationalityNo: Yup.string()
+      .required("Nationality number field is required.")
+      .min(11, "Nationality number must be exactly 11 characters long.")
+      .max(11, "Nationality number must be exactly 11 characters long."),
+    birthDate: Yup.string().required("Birth date field is required."),
+    phoneNumber: Yup.string()
+      .matches(/^[0-9]{10}$/, "Please enter a valid phone number")
+      .required("Phone number field is required."),
+    email: Yup.string()
+      .email("Please enter a valid email address")
+      .required("Email field is required."),
+    yourMessage: Yup.string().required("Message field is required."),
+  });
 
   return (
     <>
@@ -64,126 +117,7 @@ const Contact = (props: Props) => {
 
       <section className="primary-section">
         <Container>
-          <div className="card-list">
-            <div className="row">
-              <div className="col-sm-4 mb-3 mb-sm-0">
-                <div
-                  className="card"
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    backgroundColor: "#fafaf5",
-                  }}
-                >
-                  <div
-                    className="card-body"
-                    style={{
-                      flex: 1,
-                      display: "flex",
-                      flexDirection: "column",
-                      overflow: "hidden",
-                    }}
-                  >
-                    <h5 className="card-title" style={{ color: "#c31432" }}>
-                      {" "}
-                      For Your Reservations
-                    </h5>
-                    <p
-                      className="card-text"
-                      style={{
-                        fontFamily: '"Open Sans", sans-serif',
-                        overflowY: "auto",
-                        minHeight: "200px",
-                      }}
-                    >
-                      You can reach our Reservation Center from res@avis.com.tr
-                      e-mail address or 444 28 47/444 Avis between the hours
-                      09:00-19:00 on weekdays and weekends. You can also make
-                      your reservations online from our www.avis.com.tr website.
-                      Our number for international calls is + 90 (216) 444 28 47
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="col-sm-4">
-                <div
-                  className="card"
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    backgroundColor: "#fafaf5",
-                  }}
-                >
-                  <div
-                    className="card-body"
-                    style={{
-                      flex: 1,
-                      display: "flex",
-                      flexDirection: "column",
-                      overflow: "hidden",
-                    }}
-                  >
-                    <h5 className="card-title" style={{ color: "#c31432" }}>
-                      Customer Relations
-                    </h5>
-                    <p
-                      className="card-text"
-                      style={{
-                        fontFamily: '"Open Sans", sans-serif',
-                        overflowY: "auto",
-                        minHeight: "200px",
-                      }}
-                    >
-                      For all your suggestions, requests, criticisms and
-                      comments, you can contact us from our Contact Center by
-                      pressing 3 on our 444 28 47 / 444 Avis&nbsp;line between
-                      08:00-17:00 on weekdays, our contact form on our website,
-                      or our e-mail address <Link to={email}> @.com.tr </Link>{" "}
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="col-sm-4">
-                <div
-                  className="card"
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    backgroundColor: "#fafaf5",
-                  }}
-                >
-                  <div
-                    className="card-body"
-                    style={{
-                      flex: 1,
-                      display: "flex",
-                      flexDirection: "column",
-                      overflow: "hidden",
-                    }}
-                  >
-                    <h5 className="card-title" style={{ color: "#c31432" }}>
-                      Avis Full Support Service
-                    </h5>
-                    <p
-                      className="card-text"
-                      style={{
-                        fontFamily: '"Open Sans", sans-serif',
-                        overflowY: "auto",
-                        minHeight: "200px",
-                      }}
-                    >
-                      You can reach us 24 / 7 by dialing 2 on 444 28 47 / 444
-                      Avis line in case of any kind of emergency, such as
-                      breakdowns, accidents, or roadside assistance.
-                      <br />
-                      You can also benefit from Avis Full Support Services when
-                      you log in to our website as a member.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <ContactCard />
           <div className="row">
             <div className="col-lg-6 col-md-12" style={{ padding: "24px" }}>
               <div className="map-card" style={{ overflow: "hidden" }}>
@@ -204,7 +138,13 @@ const Contact = (props: Props) => {
               </div>
             </div>
             <div className="col-lg-6 col-md-12" style={{ padding: "24px" }}>
-              <Formik initialValues={Initialvalues} onSubmit={() => {}}>
+              <Formik
+                initialValues={Initialvalues}
+                validationSchema={validationSchema}
+                onSubmit={(values) => {
+                  console.log(values);
+                }}
+              >
                 <Form
                   className="form"
                   style={{ fontFamily: '"Open Sans", sans-serif' }}
@@ -212,163 +152,117 @@ const Contact = (props: Props) => {
                   <h5 className="form-title mb-5" style={{ color: "#c31432" }}>
                     Contact Us
                   </h5>
-                  <div className="row">
+                  <div>
                     <div className="col-12,mb-3">
-                      <label htmlFor="inputSubject" className="form-label">
-                        Subject*
-                      </label>
-                      <select id="inputSubject" className="form-select">
-                        <option value="">Choose...</option>
-                        <option value="Proposal">Proposal</option>
-                        <option value="Thank">Thank</option>
-                        <option value="Criticism">Criticism</option>
-                        <option value="Request">Request</option>
-                        <option value="Dealer Request">DealerRequest</option>
-                      </select>
-                    </div>
-
-                    <div className="col-md-6">
-                      <label htmlFor="inputName" className="form-label">
-                        Your Name*
-                      </label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="inputName"
+                      <FormikSelect
+                        label="Subject"
+                        name="subject"
+                        options={SubjectOptions}
                       />
                     </div>
+                    <div className="row mb-2">
+                      <div className="col-md-6, col-lg-6">
+                        <FormikInput
+                          className="form-control"
+                          label="Your Name"
+                          name="firstName"
+                          placeholder="Please write the first name!"
+                        />
+                      </div>
 
-                    <div className="col-md-6">
-                      <label htmlFor="inputSurname" className="form-label">
-                        Your Surname*
-                      </label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="inputSurname"
-                      />
+                      <div className="col-md-6, col-lg-6">
+                        <FormikInput
+                          className="form-control"
+                          label="Your Surname"
+                          name="lastName"
+                          placeholder="Please write the surname!"
+                        />
+                      </div>
                     </div>
 
-                    <div className="col-md-6 mb-3">
-                      <label htmlFor="startDate" className="form-label">
-                        BirthDate*
-                      </label>
-                      <input
-                        type="date"
-                        className="form-control"
-                        id="startDate"
-                        placeholder="date"
-                        required
-                      />
+                    <div className="row mb-2">
+                      <div className="col-md-6, col-lg-6">
+                        <FormikInput
+                          className="form-control"
+                          label="Birth Date"
+                          name="birthDate"
+                          type="date"
+                          placeholder="Please write the birth date!"
+                        />
+                      </div>
+
+                      <div className="col-md-6, col-lg-6">
+                        <FormikInput
+                          className="form-control"
+                          label="Nationality Number"
+                          name="nationalityNo"
+                          placeholder="Please write the nationality number!"
+                        />
+                      </div>
                     </div>
 
-                    <div className="col-md-6 mb-3">
-                      <label htmlFor="inputTC" className="form-label">
-                        TC*
-                      </label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="inputTC"
-                        placeholder="TC Number"
-                        required
-                      />
-                    </div>
+                    <div className="row mb-2">
+                      <div className="col-md-6, col-lg-6">
+                        <FormikInput
+                          className="form-control"
+                          label="Phone Number"
+                          name="phoneNumber"
+                          placeholder="Please write the phone number!"
+                        />
+                      </div>
 
-                    <div className="col-md-6 mb-3">
-                      <label htmlFor="inputPhone" className="form-label">
-                        Phone*
-                      </label>
-                      <input
-                        type="tel"
-                        className="form-control"
-                        id="inputPhone"
-                        required
-                      />
+                      <div className="col-md-6, col-lg-6">
+                        <FormikInput
+                          className="form-control"
+                          label="Email"
+                          name="email"
+                          placeholder="Please write the email!"
+                        />
+                      </div>
                     </div>
-
-                    <div className="col-md-6 mb-3">
-                      <label htmlFor="inputEmail" className="form-label">
-                        Email*
-                      </label>
-                      <input
-                        type="email"
-                        className="form-control"
-                        id="inputEmail"
-                        required
-                      />
-                    </div>
-
                     <div className="col-12 mb-3">
-                      <label htmlFor="yourMessage" className="form-label">
-                        Your Message*
-                      </label>
-                      <textarea
+                      <FormikInput
                         className="form-control"
-                        id="yourMessage"
+                        as="textarea"
+                        label="Your Message"
+                        name="yourMessage"
+                        placeholder="Please write the message here!"
                         rows={5}
-                        placeholder="Write your message here..."
-                        required
-                      ></textarea>
+                      />
+                    </div>
+                  </div>
+                  <div className="col-12 mb-3">
+                    <p>
+                      Pursuant to the Privacy Notice, I accept the following
+                      processing activities conducted by Otokoç Otomotiv Ticaret
+                      ve Sanayi Anonim Şirketi:
+                    </p>
+                    <div className="col-12 mb-3">
+                      <FormikInput
+                        type="checkbox"
+                        className="form-check-label"
+                        name="acceptTerms"
+                        label="Processing of my identity, communication, customer transaction, marketing, and vehicle-insurance data for the purposes of tailoring the goods and services provided, based on my likes, usage habits and needs, and in this regard, sending commercial electronic messages such as advertisements, promotions, and campaigns to my contact information, and for sharing this information with the suppliers whom Otokoç procures their services for these activities."
+                      />
                     </div>
 
                     <div className="col-12 mb-3">
-                      <p>
-                        Pursuant to the Privacy Notice, I accept the following
-                        processing activities conducted by Otokoç Otomotiv
-                        Ticaret ve Sanayi Anonim Şirketi:
-                      </p>
-                      <div className="form-check">
-                        <input
-                          type="checkbox"
-                          className="form-check-input"
-                          id="privacyPolicyCheck"
-                          required
-                        />
-                        <label
-                          className="form-check-label"
-                          htmlFor="privacyPolicyCheck"
-                        >
-                          Processing of my identity, communication, customer
-                          transaction, marketing, and vehicle-insurance data for
-                          the purposes of tailoring the goods and services
-                          provided, based on my likes, usage habits and needs,
-                          and in this regard, sending commercial electronic
-                          messages such as advertisements, promotions, and
-                          campaigns to my contact information, and for sharing
-                          this information with the suppliers whom Otokoç
-                          procures their services for these activities.
-                        </label>
-                      </div>
-                    </div>
-
-                    <div className="col-12 mb-3">
-                      <div className="form-check">
-                        <input
-                          type="checkbox"
-                          className="form-check-input"
-                          id="privacyPolicyCheck"
-                          required
-                        />
-                        <label
-                          className="form-check-label"
-                          htmlFor="privacyPolicyCheck"
-                        >
-                          Processing of my identity, vehicle, location, customer
-                          transaction and marketing data for the purposes of
-                          analyzing my Connected Car driving and service usage
-                          performance for calculating the points on the basis of
-                          driving and offering me tailored vehicle insurance.
-                        </label>
-                      </div>
+                      <FormikInput
+                        type="checkbox"
+                        className="form-check-label"
+                        name="acceptTerms"
+                        label=" Processing of my identity, vehicle, location, customer
+                        transaction and marketing data for the purposes of
+                        analyzing my Connected Car driving and service usage
+                        performance for calculating the points on the basis of
+                        driving and offering me tailored vehicle insurance."
+                      />
                     </div>
 
                     <div className="col-md-12, text-end">
                       <button type="submit" className="btn btn-danger ms-3">
-                        {" "}
-                        {/* ms-3 sınıfı ile checkbox'tan biraz boşluk bırakıyoruz */}
-                        SUBMIT <i className="bi bi-arrow-right"></i>{" "}
-                        {/* Bootstrap ikonlarını kullanıyoruz */}
+                        Submit{" "}
+                        <i className="bi bi-arrow-right-circle ps-3 fs-4" />
                       </button>
                     </div>
                   </div>

@@ -1,9 +1,16 @@
 import BranchMap from "../../components/layout/BranchMap/BranchMap";
 import { Container } from "react-bootstrap";
+import BranchesCard from "../../components/layout/BranchesCard/BranchesCard";
 
 type Props = {};
 
 const Branches = (props: Props) => {
+  const ScrollableContent = () => (
+    <div style={{ height: "200px", overflowY: "scroll" }}>
+      <BranchesCard />
+    </div>
+  );
+
   return (
     <div>
       <section
@@ -35,9 +42,21 @@ const Branches = (props: Props) => {
           </h1>
         </Container>
       </section>
+
       <Container>
         <div className="row">
-          <div className="col-lg-4 sm-12">{}</div>
+          <div className="col-lg-4 sm-12">
+            <div className="fw-bold">
+              <h4>Kiralama Lokasyonu Ara</h4>
+            </div>
+            <form>
+              <input
+                placeholder="İl ya da İlçe Ara …"
+                className="form-control md-4"
+              />
+            </form>
+            <div>{<ScrollableContent />} </div>
+          </div>
           <div className="col-lg-8 sm-12">
             <BranchMap />
           </div>

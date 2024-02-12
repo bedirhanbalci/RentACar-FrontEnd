@@ -30,8 +30,7 @@ const CarCard = ({ car }: Props) => {
       </ul>
       <div className="card-body">
         <Link to={`/car-detail/${car.id}`} className="btn btn-danger rounded-4">
-          {" "}
-          Car Details{" "}
+          Car Details
         </Link>
       </div>
     </div>
