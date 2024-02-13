@@ -86,7 +86,7 @@ export const Reservation = (props: Props) => {
   };
 
   return (
-    <div className="container row  justify-content-center align-items-center mt-5 mb-5 pt-5 pb-5">
+    <div className="container row justify-content-center align-items-center mt-5 mb-5 pt-5 pb-5">
       <div className="col-12 col-md-6 ">
         <img className="img-fluid rounded" src={car?.imagePath} alt="" />
       </div>

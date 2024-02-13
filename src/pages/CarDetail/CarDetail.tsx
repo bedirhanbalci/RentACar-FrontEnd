@@ -37,7 +37,7 @@ const CarDetail = (props: Props) => {
   }, [params.id]);
 
   useEffect(() => {
-    console.log(car);
+    console.log(car?.imagePath);
   }, [car]);
 
   if (isLoading) {
@@ -83,6 +83,7 @@ const CarDetail = (props: Props) => {
           </h1>
         </Container>
       </section>
+
       <div key={car.id} className="container mb-3 col-12 col-md-6 shadow">
         <div className="row g-0 border bg-white rounded border-3 p-md-5">
           <div className="col-md-4">
@@ -151,7 +152,7 @@ const CarDetail = (props: Props) => {
               <div className="d-grid gap-2 d-md-block mt-3">
                 <Link
                   to={`/reservation/${car?.id}`}
-                  className="btn btn-primary btn-lg"
+                  className="btn btn-danger rounded-4 btn-lg"
                 >
                   Reservation
                 </Link>

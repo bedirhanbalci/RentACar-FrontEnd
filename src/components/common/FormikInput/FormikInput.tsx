@@ -30,9 +30,7 @@ const FormikInput = (props: Props) => {
         aria-label={props.ariaLabel}
       />
       <ErrorMessage name={props.name}>
-        {(message) => (
-          <p className="badge small bg-danger text-end">{message}</p>
-        )}
+        {message => <p className="badge small bg-danger text-end">{message}</p>}
       </ErrorMessage>
     </div>
   );

@@ -11,15 +11,16 @@ import ContactCard from "../../components/layout/ContactCard/ContactCard";
 
 type Props = {};
 interface ContactForm {
-  subject: string;
+  subjectId: number;
   firstName: string;
   lastName: string;
   birthDate: string;
   nationalityNo: string;
   phoneNumber: string;
   email: string;
-  yourMessage: string;
-  acceptTerms: boolean;
+  message: string;
+  terms1: boolean;
+  terms2: boolean;
   rows: number;
 }
 const Contact = (props: Props) => {
@@ -38,29 +39,33 @@ const Contact = (props: Props) => {
     fetchBranch();
   }, []);
 
-  const Initialvalues: ContactForm = {
-    subject: "",
+  const initialValues: ContactForm = {
+    subjectId: 0,
     firstName: "",
     lastName: "",
     birthDate: "",
     nationalityNo: "",
     phoneNumber: "",
     email: "",
-    yourMessage: "",
-    acceptTerms: false,
+    message: "",
+    terms1: false,
+    terms2: false,
     rows: 5,
   };
 
-  const SubjectOptions = [
-    { value: "", label: "Choose..." },
-    { value: "Proposal", label: "Proposal" },
-    { value: "Thank", label: "Thank" },
-    { value: "Criticism", label: "Criticism" },
-    { value: "Request", label: "Request" },
-    { value: "DealerRequest", label: "Dealer Request" },
+  const subjectOptions = [
+    { value: 0, label: "Choose..." },
+    { value: 1, label: "Proposal" },
+    { value: 2, label: "Thank" },
+    { value: 3, label: "Criticism" },
+    { value: 4, label: "Request" },
+    { value: 5, label: "Dealer Request" },
   ];
 
   const validationSchema = Yup.object({
+    subjectId: Yup.number()
+      .required("Subject field is required!")
+      .min(1, "Select a valid subject!"),
     firstName: Yup.string()
       .required("First name field is required.")
       .min(2, "First name must be at least 2 characters long.")
@@ -80,7 +85,7 @@ const Contact = (props: Props) => {
     email: Yup.string()
       .email("Please enter a valid email address")
       .required("Email field is required."),
-    yourMessage: Yup.string().required("Message field is required."),
+    message: Yup.string().required("Message field is required."),
   });
 
   return (
@@ -139,9 +144,9 @@ const Contact = (props: Props) => {
             </div>
             <div className="col-lg-6 col-md-12" style={{ padding: "24px" }}>
               <Formik
-                initialValues={Initialvalues}
+                initialValues={initialValues}
                 validationSchema={validationSchema}
-                onSubmit={(values) => {
+                onSubmit={values => {
                   console.log(values);
                 }}
               >
@@ -155,16 +160,20 @@ const Contact = (props: Props) => {
                   <div>
                     <div className="col-12,mb-3">
                       <FormikSelect
+                        htmlFor="subjectId"
+                        id="subjectId"
                         label="Subject"
-                        name="subject"
-                        options={SubjectOptions}
+                        name="subjectId"
+                        options={subjectOptions}
                       />
                     </div>
                     <div className="row mb-2">
                       <div className="col-md-6, col-lg-6">
                         <FormikInput
                           className="form-control"
-                          label="Your Name"
+                          htmlFor="firstName"
+                          id="firstName"
+                          label="First Name"
                           name="firstName"
                           placeholder="Please write the first name!"
                         />
@@ -173,9 +182,11 @@ const Contact = (props: Props) => {
                       <div className="col-md-6, col-lg-6">
                         <FormikInput
                           className="form-control"
-                          label="Your Surname"
+                          htmlFor="lastName"
+                          id="lastName"
+                          label="Last name"
                           name="lastName"
-                          placeholder="Please write the surname!"
+                          placeholder="Please write the last name!"
                         />
                       </div>
                     </div>
@@ -184,6 +195,8 @@ const Contact = (props: Props) => {
                       <div className="col-md-6, col-lg-6">
                         <FormikInput
                           className="form-control"
+                          htmlFor="birthDate"
+                          id="birthDate"
                           label="Birth Date"
                           name="birthDate"
                           type="date"
@@ -194,6 +207,8 @@ const Contact = (props: Props) => {
                       <div className="col-md-6, col-lg-6">
                         <FormikInput
                           className="form-control"
+                          htmlFor="nationalityNo"
+                          id="nationalityNo"
                           label="Nationality Number"
                           name="nationalityNo"
                           placeholder="Please write the nationality number!"
@@ -205,6 +220,8 @@ const Contact = (props: Props) => {
                       <div className="col-md-6, col-lg-6">
                         <FormikInput
                           className="form-control"
+                          htmlFor="phoneNumber"
+                          id="phoneNumber"
                           label="Phone Number"
                           name="phoneNumber"
                           placeholder="Please write the phone number!"
@@ -214,6 +231,8 @@ const Contact = (props: Props) => {
                       <div className="col-md-6, col-lg-6">
                         <FormikInput
                           className="form-control"
+                          htmlFor="email"
+                          id="email"
                           label="Email"
                           name="email"
                           placeholder="Please write the email!"
@@ -223,9 +242,11 @@ const Contact = (props: Props) => {
                     <div className="col-12 mb-3">
                       <FormikInput
                         className="form-control"
+                        htmlFor="message"
+                        id="message"
                         as="textarea"
                         label="Your Message"
-                        name="yourMessage"
+                        name="message"
                         placeholder="Please write the message here!"
                         rows={5}
                       />
@@ -239,29 +260,47 @@ const Contact = (props: Props) => {
                     </p>
                     <div className="col-12 mb-3">
                       <FormikInput
+                        className="form-check-input"
                         type="checkbox"
-                        className="form-check-label"
-                        name="acceptTerms"
-                        label="Processing of my identity, communication, customer transaction, marketing, and vehicle-insurance data for the purposes of tailoring the goods and services provided, based on my likes, usage habits and needs, and in this regard, sending commercial electronic messages such as advertisements, promotions, and campaigns to my contact information, and for sharing this information with the suppliers whom Otokoç procures their services for these activities."
+                        id="terms1"
+                        name="terms1"
                       />
+                      <label htmlFor="terms1">
+                        {" "}
+                        Processing of my identity, communication, customer
+                        transaction, marketing, and vehicle-insurance data for
+                        the purposes of tailoring the goods and services
+                        provided, based on my likes, usage habits and needs, and
+                        in this regard, sending commercial electronic messages
+                        such as advertisements, promotions, and campaigns to my
+                        contact information, and for sharing this information
+                        with the suppliers whom Otokoç procures their services
+                        for these activities.
+                      </label>
                     </div>
 
                     <div className="col-12 mb-3">
                       <FormikInput
+                        className="form-check-input"
                         type="checkbox"
-                        className="form-check-label"
-                        name="acceptTerms"
-                        label=" Processing of my identity, vehicle, location, customer
+                        id="terms2"
+                        name="terms2"
+                      />
+                      <label htmlFor="terms2">
+                        Processing of my identity, vehicle, location, customer
                         transaction and marketing data for the purposes of
                         analyzing my Connected Car driving and service usage
                         performance for calculating the points on the basis of
-                        driving and offering me tailored vehicle insurance."
-                      />
+                        driving and offering me tailored vehicle insurance.
+                      </label>
                     </div>
 
                     <div className="col-md-12, text-end">
-                      <button type="submit" className="btn btn-danger ms-3">
-                        Submit{" "}
+                      <button
+                        type="submit"
+                        className="btn btn-danger rounded-5"
+                      >
+                        Submit
                         <i className="bi bi-arrow-right-circle ps-3 fs-4" />
                       </button>
                     </div>
