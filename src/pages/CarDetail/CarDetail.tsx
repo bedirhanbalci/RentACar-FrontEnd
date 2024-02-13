@@ -83,11 +83,8 @@ const CarDetail = (props: Props) => {
           </h1>
         </Container>
       </section>
-      <div
-        key={car.id}
-        className="container text-bg-light mb-3 col-12 col-md-6 shadow"
-      >
-        <div className="row g-0 border   rounded border-3 p-md-5">
+      <div key={car.id} className="container mb-3 col-12 col-md-6 shadow">
+        <div className="row g-0 border bg-white rounded border-3 p-md-5">
           <div className="col-md-4">
             <img
               src={car.imagePath}
