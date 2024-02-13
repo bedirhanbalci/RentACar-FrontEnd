@@ -84,8 +84,11 @@ const CarDetail = (props: Props) => {
         </Container>
       </section>
 
-      <div key={car.id} className="container mb-3 col-12 col-md-6 shadow">
-        <div className="row g-0 border bg-white rounded border-3 p-md-5">
+      <div
+        key={car.id}
+        className="container border border-3 rounded mb-3 col-12 col-md-6 shadow p-md-5 mb-5 pt-5"
+      >
+        <div className="row g-0">
           <div className="col-md-4">
             <img
               src={car.imagePath}
@@ -99,55 +102,19 @@ const CarDetail = (props: Props) => {
                 {car.brandName} {car.modelName}
               </h5>
 
-              <ul className="list-group list-group-flush">
-                <li
-                  className="list-group-item"
-                  style={{ backgroundColor: "#ffcccc" }}
-                >
-                  Year: {car.year}
-                </li>
-                <li
-                  className="list-group-item"
-                  style={{ backgroundColor: "#ffcccc" }}
-                >
+              <ul className="list-group list-group-flush border border-1">
+                <li className="list-group-item">Year: {car.year}</li>
+                <li className="list-group-item">
                   Daily Price: {formatCurrency(car.dailyPrice)}
                 </li>
-                <li
-                  className="list-group-item"
-                  style={{ backgroundColor: "#ffcccc" }}
-                >
-                  Gear Type: {car.gearType}
-                </li>
-                <li
-                  className="list-group-item"
-                  style={{ backgroundColor: "#ffcccc" }}
-                >
-                  Fuel Type: {car.fuelType}
-                </li>
-                <li
-                  className="list-group-item"
-                  style={{ backgroundColor: "#ff9999" }}
-                >
-                  Color: {car.colorName}
-                </li>
-                <li
-                  className="list-group-item"
-                  style={{ backgroundColor: "#ffcccc" }}
-                >
-                  Body Type: {car.bodyType}
-                </li>
-                <li
-                  className="list-group-item"
-                  style={{ backgroundColor: "#fffdd0" }}
-                >
+                <li className="list-group-item">Gear Type: {car.gearType}</li>
+                <li className="list-group-item">Fuel Type: {car.fuelType}</li>
+                <li className="list-group-item">Color: {car.colorName}</li>
+                <li className="list-group-item">Body Type: {car.bodyType}</li>
+                <li className="list-group-item">
                   Branch City: {car.branchCity}
                 </li>
-                <li
-                  className="list-group-item"
-                  style={{ backgroundColor: "#f5f5dc" }}
-                >
-                  Plate: {car.plate}
-                </li>
+                <li className="list-group-item">Plate: {car.plate}</li>
               </ul>
               <div className="d-grid gap-2 d-md-block mt-3">
                 <Link
