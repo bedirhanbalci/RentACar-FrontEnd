@@ -1,7 +1,7 @@
 import { ErrorMessage, Field } from "formik";
 
 type Option = {
-  value: number;
+  value: any;
   label: string;
 };
 
