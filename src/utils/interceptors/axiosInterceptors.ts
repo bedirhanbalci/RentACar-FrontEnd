@@ -35,7 +35,7 @@ axiosInstance.interceptors.response.use(
   error => {
     store.dispatch(decreaseRequestCount());
     if (error.response.data === "Bad credentials") {
-      toastr.error("Incorrect login, please login correctly");
+      toastr.error("No such user found!");
     } else if (error.response.data.message) {
       toastr.error(error.response.data.message);
     } else {

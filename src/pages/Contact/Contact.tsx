@@ -131,8 +131,8 @@ const Contact = (props: Props) => {
                   Headquarters
                 </h4>
                 <p className="desc">
-                  Avis Türkiye Aydınevler Mah. Saygı Cad.No: 60 34854 Küçükyalı
-                  / İstanbul
+                  2B2 Türkiye Aydınevler Mah. Saygı Cad.No: 60 34854 Ataşehir /
+                  İstanbul
                 </p>
                 <div
                   className="map-item"
