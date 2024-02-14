@@ -3,6 +3,11 @@
   background-color: white;
   margin: 1rem;
   border-radius: 0.5rem;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.05);
 }
 
 .card-img-top {

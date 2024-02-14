@@ -20,6 +20,7 @@ const BranchesCard: React.FC = () => {
   useEffect(() => {
     fetchBranch();
   }, []);
+
   return (
     <div>
       {branches.map((branch, id) => (
@@ -37,14 +38,15 @@ const BranchesCard: React.FC = () => {
               className="card-title"
               style={{ color: "red", fontWeight: "bold" }}
             >
-              {`${branch.city}  ${branch.address}`}
+              {`${branch.city} - ${branch.address}`}{" "}
+              <i className="bi bi-building"></i>
             </h5>
-            <p className="card-text"> Phone Number: {branch.phoneNumber}</p>
-            <p className="fw-bold">Pazartesi-pazar</p>
+            <p className="card-text">Phone Number: {branch.phoneNumber}</p>
+            <p className="fw-bold">Monday - Sunday</p>
             <p>09:00-21:00</p>
             <Link
               to={`/reservation/${branch.id}`}
-              className="btn btn-danger"
+              className="btn btn-danger rounded-4"
               style={{ textDecoration: "none" }}
             >
               Reservation

@@ -68,7 +68,7 @@ const HomePage = (props: Props) => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setMainCount((count) => (count === 2 ? 0 : count + 1));
+      setMainCount(count => (count === 2 ? 0 : count + 1));
     }, 3000);
 
     return () => clearInterval(interval);

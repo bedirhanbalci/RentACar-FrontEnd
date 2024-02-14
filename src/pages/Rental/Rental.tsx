@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import CarService from "../../services/carService";
 import { GetByIdCarResponse } from "../../models/car/responses/GetByIdCarResponse";
-import { formatCurrency } from "../../utils/validation/formatCurrency";
+import { formatCurrency } from "../../utils/formatCurrency";
 import toastr from "toastr";
 
 type Props = {};

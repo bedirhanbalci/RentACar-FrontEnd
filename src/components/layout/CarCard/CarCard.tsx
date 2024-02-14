@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import "./CarCard.css";
-import { formatCurrency } from "../../../utils/validation/formatCurrency";
+import { formatCurrency } from "../../../utils/formatCurrency";
 type Props = { car: any };
 
 const CarCard = ({ car }: Props) => {

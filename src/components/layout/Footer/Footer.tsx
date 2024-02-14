@@ -83,7 +83,9 @@ const Footer = (props: Props) => {
 
               <p className="office__info text-white">Email: 2b2@gmail.com</p>
 
-              <p className="office__info text-white">Office Time: 10am - 7pm</p>
+              <p className="office__info text-white">
+                Office Time: 09:00-21:00
+              </p>
             </div>
           </Col>
 

@@ -8,7 +8,7 @@ import {
 import { GetAllAdditionalFeaturesResponse } from "../../models/additionalFeature/responses/GetAllAdditionalFeaturesResponse";
 import AdditionalFeatureService from "../../services/additionalFeatureService";
 import { useNavigate } from "react-router-dom";
-import { formatCurrency } from "../../utils/validation/formatCurrency";
+import { formatCurrency } from "../../utils/formatCurrency";
 
 type Props = {};
 
