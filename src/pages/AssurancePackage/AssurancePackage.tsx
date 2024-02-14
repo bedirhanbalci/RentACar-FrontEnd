@@ -8,7 +8,7 @@ import {
   addAssurancePrice,
 } from "../../store/slices/rentalSlice";
 import { useNavigate } from "react-router-dom";
-import { formatCurrency } from "../../utils/validation/formatCurrency";
+import { formatCurrency } from "../../utils/formatCurrency";
 
 type Props = {};
 
@@ -179,7 +179,7 @@ const AssurancePackage = (props: Props) => {
         <Col key={index} md={4}>
           <div className={"card"}>
             <img
-              src="assets/Driver.png"
+              src={card.imagePath}
               className="card-img-top"
               alt={`Card ${index + 1}`}
             />

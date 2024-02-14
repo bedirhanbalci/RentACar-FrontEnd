@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { GetByIdCarResponse } from "../../models/car/responses/GetByIdCarResponse";
 import CarService from "../../services/carService";
 
-import { formatCurrency } from "../../utils/validation/formatCurrency";
+import { formatCurrency } from "../../utils/formatCurrency";
 import { Container } from "react-bootstrap";
 
 type Props = {};

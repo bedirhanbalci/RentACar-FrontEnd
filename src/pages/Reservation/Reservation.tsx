@@ -10,7 +10,8 @@ import {
   addRental,
   addRentalPrice,
 } from "../../store/slices/rentalSlice";
-import { formatCurrency } from "../../utils/validation/formatCurrency";
+import { formatCurrency } from "../../utils/formatCurrency";
+import rentalService from "../../services/rentalService";
 
 type Props = {};
 
@@ -73,10 +74,13 @@ export const Reservation = (props: Props) => {
   });
 
   const handleOnSubmit = async (values: CarSearchValues) => {
+    rentalService.dateValid({
+      startDate: initialValues.startDate,
+      endDate: initialValues.endDate,
+    });
     dispatch(addRental(values));
     dispatch(addCarId(car?.id));
     dispatch(addRentalPrice(totalPrice));
-
     navigate("/assurance-package");
   };
 

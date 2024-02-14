@@ -36,10 +36,12 @@ axiosInstance.interceptors.response.use(
     store.dispatch(decreaseRequestCount());
     if (error.response.data === "Bad credentials") {
       toastr.error("Incorrect login, please login correctly");
+    } else if (error.response.data.message) {
+      toastr.error(error.response.data.message);
     } else {
       toastr.error(error.response.data);
     }
-    return error;
+    return;
   }
 );
 

@@ -4,4 +4,5 @@ export interface GetByIdAdditionalFeatureResponse {
   detail: string;
   dailyPrice: number;
   quantity: number;
+  imagePath?: string;
 }

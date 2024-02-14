@@ -1,3 +1,5 @@
+import { CorporateLoginRequest } from "../models/auth/requests/CorporateLoginRequest";
+import { IndividualLoginRequest } from "../models/auth/requests/IndividualLoginRequest";
 import { LoginRequest } from "../models/auth/requests/LoginRequest";
 import { RegisterRequest } from "../models/auth/requests/RegisterRequest";
 import { CorporateRegisterForm } from "../pages/CorporateRegister/CorporateRegister";
@@ -11,6 +13,14 @@ class AuthService {
 
   login(loginRequest: LoginRequest) {
     return axiosInstance.post("auth/login", loginRequest);
+  }
+
+  individualLogin(individualLoginRequest: IndividualLoginRequest) {
+    return axiosInstance.post("auth/individualLogin", individualLoginRequest);
+  }
+
+  corporateLogin(corporateLoginRequest: CorporateLoginRequest) {
+    return axiosInstance.post("auth/corporateLogin", corporateLoginRequest);
   }
 
   individualRegister(individualRequest: IndividualRegisterForm) {

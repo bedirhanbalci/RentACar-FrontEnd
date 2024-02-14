@@ -3,4 +3,5 @@ export interface GetByIdAssurancePackageResponse {
   name: string;
   detail: string;
   dailyPrice: number;
+  imagePath?: string;
 }
