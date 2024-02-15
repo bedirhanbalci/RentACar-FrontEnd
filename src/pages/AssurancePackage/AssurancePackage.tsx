@@ -34,7 +34,6 @@ const AssurancePackage = (props: Props) => {
   const fetchAssurance = async () => {
     try {
       await AssurancePackageService.getAll().then((response: any) => {
-        console.log(response);
         setAssuranceList(response.data.data);
       });
     } catch (error) {
@@ -42,9 +41,7 @@ const AssurancePackage = (props: Props) => {
     }
   };
 
-  useEffect(() => {
-    console.log(assuranceList);
-  }, [assuranceList]);
+  useEffect(() => {}, [assuranceList]);
 
   const fetchAssurancePrices = async (id: any): Promise<any> => {
     try {

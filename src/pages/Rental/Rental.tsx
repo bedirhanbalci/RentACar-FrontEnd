@@ -16,12 +16,12 @@ const Rental = (props: Props) => {
   const authState = useSelector((store: any) => store.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [totalPrice, settotalPrice] = useState(0);
 
   const fetchCar = async () => {
     try {
       await CarService.getById(parseInt(rentalState.carId)).then(
         (response: any) => {
-          console.log(response);
           setCar(response.data.data);
         }
       );
@@ -31,6 +31,10 @@ const Rental = (props: Props) => {
   };
 
   useEffect(() => {
+    settotalPrice(
+      rentalState.additionalPriceWithTotalPrice +
+        rentalState.assurancePriceWithTotalPrice
+    );
     fetchCar();
   }, []);
 
@@ -53,9 +57,8 @@ const Rental = (props: Props) => {
 
       dispatch(clearRental());
       navigate("/order-complete", {
-        state: { invoice: response.data },
+        state: { invoice: response.data, totalPrice: totalPrice },
       });
-      console.log(response);
     } catch (error) {
       console.log(error);
     }

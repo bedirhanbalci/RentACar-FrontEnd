@@ -30,7 +30,6 @@ const Contact = (props: Props) => {
     try {
       const response = await branchService.getById(1);
       setBranch(response.data);
-      console.log(response);
     } catch (error) {
       console.log(error);
     }

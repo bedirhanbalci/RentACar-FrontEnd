@@ -46,6 +46,7 @@ function App(): ReactElement {
           <Route path="/car-detail/:id" element={<CarDetail />}></Route>
 
           <Route path="/reservation/:id" element={<Reservation />}></Route>
+          <Route path="/reservation" element={<Reservation />} />
           <Route path="*" element={<NotFound />} />
           <Route
             path="/assurance-package"

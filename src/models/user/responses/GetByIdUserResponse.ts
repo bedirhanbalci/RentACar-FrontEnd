@@ -4,5 +4,5 @@ export interface GetByIdUserResponse {
   password: string;
   phoneNumber: string;
   address: string;
-  imagePath: string;
+  imagePath?: string;
 }

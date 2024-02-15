@@ -31,7 +31,6 @@ const AdditionalFeature = (props: Props) => {
   const fetchAdditional = async () => {
     try {
       await AdditionalFeatureService.getAll().then((response: any) => {
-        console.log(response);
         setAdditionalList(response.data.data);
       });
     } catch (error) {
@@ -39,9 +38,7 @@ const AdditionalFeature = (props: Props) => {
     }
   };
 
-  useEffect(() => {
-    console.log(additionalList);
-  }, [additionalList]);
+  useEffect(() => {}, [additionalList]);
 
   const fetchAdditionalPrices = async (id: any): Promise<any> => {
     try {
@@ -53,7 +50,6 @@ const AdditionalFeature = (props: Props) => {
       };
 
       const response = await AdditionalFeatureService.addAdditionalPrice(data);
-      console.log(response.data.data.dailyPrice);
       return response.data.data.dailyPrice;
     } catch (error) {
       console.log(error);
@@ -155,10 +151,8 @@ const AdditionalFeature = (props: Props) => {
   useEffect(() => {
     if (counter === 1) {
       calculateAdditionalPrice();
-      console.log(additionalList);
     }
     setCounter(counter + 1);
-    console.log(additionalList);
   }, [additionalList]);
 
   return (
