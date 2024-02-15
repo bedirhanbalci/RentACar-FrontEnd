@@ -4,11 +4,13 @@
   color: wheat;
   background-color: transparent;
   border: none;
+  transition: color 0.3s ease;
 }
 
 .carousel-control-prev:hover,
 .carousel-control-next:hover {
   background-color: transparent;
+  color: lightgrey;
 }
 
 .carousel-control-prev-icon,
@@ -19,15 +21,36 @@
 .camp-card-body {
   height: 400px;
   overflow: hidden;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.camp-card-body:hover {
+  transform: scale(1.05);
 }
 
 .camp-card-body img {
-  height: 200px;
+  padding: 35px;
+  height: 50%;
 }
 
 .camp-card-body p {
   display: -webkit-box;
-  -webkit-line-clamp: 5;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  margin: 10px 0;
+  color: #333;
+  text-align: justify;
+}
+
+@media screen and (max-width: 768px) {
+  .camp-card-body {
+    height: auto;
+  }
+  .camp-card-body img {
+    height: auto;
+  }
 }

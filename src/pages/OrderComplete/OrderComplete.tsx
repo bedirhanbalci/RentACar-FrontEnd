@@ -1,11 +1,13 @@
 import { Link, useLocation } from "react-router-dom";
 import { Container } from "reactstrap";
+import { formatCurrency } from "../../utils/formatCurrency";
 
 type Props = {};
 
 const OrderComplete = (props: Props) => {
   const location = useLocation();
   const { invoice } = location.state || {};
+  const { totalPrice } = location.state || {};
 
   return (
     <div className="mb-5" style={{ fontFamily: "sans-serif" }}>
@@ -49,9 +51,11 @@ const OrderComplete = (props: Props) => {
               <p className="lead">Thank you for your rental!</p>
               <div className="invoice-info mt-4">
                 <p className="fw-bold">Invoice Date:</p>
-                <p>{invoice.createdDate}</p>
+                <p>{invoice?.createdDate}</p>
                 <p className="fw-bold">Invoice No:</p>
-                <p>{invoice.invoiceNo}</p>
+                <p>{invoice?.invoiceNo}</p>
+                <p className="fw-bold">Total Price:</p>
+                <p>{formatCurrency(totalPrice)}</p>
               </div>
               <p className="card-text text-center mb-4">
                 We will contact you shortly regarding delivery details.

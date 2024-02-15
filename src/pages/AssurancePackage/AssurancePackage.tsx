@@ -8,8 +8,8 @@ import {
   addAssurancePrice,
 } from "../../store/slices/rentalSlice";
 import { useNavigate } from "react-router-dom";
-import { formatCurrency } from "../../utils/validation/formatCurrency";
 import { Container } from "reactstrap";
+import { formatCurrency } from "../../utils/formatCurrency";
 
 type Props = {};
 
@@ -35,7 +35,6 @@ const AssurancePackage = (props: Props) => {
   const fetchAssurance = async () => {
     try {
       await AssurancePackageService.getAll().then((response: any) => {
-        console.log(response);
         setAssuranceList(response.data.data);
       });
     } catch (error) {
@@ -43,9 +42,7 @@ const AssurancePackage = (props: Props) => {
     }
   };
 
-  useEffect(() => {
-    console.log(assuranceList);
-  }, [assuranceList]);
+  useEffect(() => {}, [assuranceList]);
 
   const fetchAssurancePrices = async (id: any): Promise<any> => {
     try {
@@ -211,7 +208,8 @@ const AssurancePackage = (props: Props) => {
             <Col key={index} md={4}>
               <div className={"card"}>
                 <img
-                  src="assets/Driver.png"
+                  style={{ height: "50%", padding: "35px" }}
+                  src={card.imagePath}
                   className="card-img-top"
                   alt={`Card ${index + 1}`}
                 />

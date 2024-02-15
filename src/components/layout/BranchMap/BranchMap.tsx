@@ -14,7 +14,6 @@ const BranchMap: React.FC<BranchMapProps> = () => {
   const fetchBranch = async () => {
     try {
       await BranchService.getAll().then((response: any) => {
-        console.log(response);
         setBranches(response.data.data);
       });
     } catch (error) {

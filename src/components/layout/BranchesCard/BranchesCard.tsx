@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { GetAllBranchesResponse } from "../../../models/branch/responses/GetAllBranchesResponse";
 import branchService from "../../../services/branchService";
+import { useNavigate } from "react-router-dom";
 
 const BranchesCard: React.FC = () => {
   const [branches, setBranches] = useState<GetAllBranchesResponse[]>([]);
+  const navigate = useNavigate();
 
   const fetchBranch = async () => {
     try {
       await branchService.getAll().then((response: any) => {
-        console.log(response);
         setBranches(response.data.data);
       });
     } catch (error) {
@@ -20,6 +20,7 @@ const BranchesCard: React.FC = () => {
   useEffect(() => {
     fetchBranch();
   }, []);
+
   return (
     <div>
       {branches.map((branch, id) => (
@@ -37,18 +38,25 @@ const BranchesCard: React.FC = () => {
               className="card-title"
               style={{ color: "#c31432", fontWeight: "bold" }}
             >
-              {`${branch.city}  ${branch.address}`}
+              {`${branch.city} - ${branch.address}`}{" "}
+              <i className="bi bi-building"></i>
             </h5>
-            <p className="card-text"> Phone Number: {branch.phoneNumber}</p>
-            <p className="fw-bold">Monday-Sunday</p>
+
+            <p className="card-text">Phone Number: {branch.phoneNumber}</p>
+            <p className="fw-bold">Monday - Sunday</p>
+
             <p>09:00-21:00</p>
-            <Link
-              to={`/reservation/${branch.id}`}
-              className="btn btn-danger"
+            <div
+              onClick={() =>
+                navigate("/reservation", {
+                  state: { branch: branch.id },
+                })
+              }
+              className="btn btn-danger rounded-4"
               style={{ textDecoration: "none" }}
             >
               Reservation
-            </Link>
+            </div>
           </div>
         </div>
       ))}

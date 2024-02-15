@@ -30,7 +30,6 @@ const Contact = (props: Props) => {
     try {
       const response = await branchService.getById(1);
       setBranch(response.data);
-      console.log(response);
     } catch (error) {
       console.log(error);
     }
@@ -132,7 +131,7 @@ const Contact = (props: Props) => {
                 </h5>
                 <p className="desc">
                   2B2 Aydınevler Neighborhood, Saygı Avenue No: 60, Küçükyalı
-                  34854 / Istanbul
+                  34854 / İstanbul
                 </p>
                 <div
                   className="map-item"

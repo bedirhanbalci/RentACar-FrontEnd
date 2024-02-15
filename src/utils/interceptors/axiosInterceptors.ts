@@ -29,13 +29,14 @@ axiosInstance.interceptors.request.use(config => {
 axiosInstance.interceptors.response.use(
   value => {
     store.dispatch(decreaseRequestCount());
-    console.log("Başarılı bir cevap alındı..");
     return value;
   },
   error => {
     store.dispatch(decreaseRequestCount());
     if (error.response.data === "Bad credentials") {
-      toastr.error("Incorrect login, please login correctly");
+      toastr.error("No such user found!");
+    } else if (error.response.data.message) {
+      toastr.error(error.response.data.message);
     } else {
       toastr.error(error.response.data);
     }

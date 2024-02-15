@@ -5,6 +5,7 @@ import { GetByIdRentalResponse } from "../models/rental/responses/GetByIdRentalR
 import { AddRentalResponse } from "../models/rental/responses/AddRentalResponse";
 import { UpdateRentalResponse } from "../models/rental/responses/UpdateRentalResponse";
 import { BaseService } from "./baseService";
+import axiosInstance from "../utils/interceptors/axiosInterceptors";
 
 class RentalService extends BaseService<
   GetAllRentalsResponse,
@@ -17,6 +18,10 @@ class RentalService extends BaseService<
   constructor() {
     super();
     this.apiUrl = "rentals";
+  }
+
+  dateValid(addRentalRequest: AddRentalRequest) {
+    return axiosInstance.post(this.apiUrl + "/dateValid", addRentalRequest);
   }
 }
 

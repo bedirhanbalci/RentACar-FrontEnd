@@ -5,4 +5,5 @@ export interface GetAllAssurancePackagesResponse {
   dailyPrice: number;
   totalPrice: number;
   addible?: boolean;
+  imagePath?: string;
 }

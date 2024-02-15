@@ -8,8 +8,8 @@ import {
 import { GetAllAdditionalFeaturesResponse } from "../../models/additionalFeature/responses/GetAllAdditionalFeaturesResponse";
 import AdditionalFeatureService from "../../services/additionalFeatureService";
 import { useNavigate } from "react-router-dom";
-import { formatCurrency } from "../../utils/validation/formatCurrency";
 import { Container } from "reactstrap";
+import { formatCurrency } from "../../utils/formatCurrency";
 
 type Props = {};
 
@@ -32,7 +32,6 @@ const AdditionalFeature = (props: Props) => {
   const fetchAdditional = async () => {
     try {
       await AdditionalFeatureService.getAll().then((response: any) => {
-        console.log(response);
         setAdditionalList(response.data.data);
       });
     } catch (error) {
@@ -40,9 +39,7 @@ const AdditionalFeature = (props: Props) => {
     }
   };
 
-  useEffect(() => {
-    console.log(additionalList);
-  }, [additionalList]);
+  useEffect(() => {}, [additionalList]);
 
   const fetchAdditionalPrices = async (id: any): Promise<any> => {
     try {
@@ -54,7 +51,6 @@ const AdditionalFeature = (props: Props) => {
       };
 
       const response = await AdditionalFeatureService.addAdditionalPrice(data);
-      console.log(response.data.data.dailyPrice);
       return response.data.data.dailyPrice;
     } catch (error) {
       console.log(error);
@@ -156,10 +152,8 @@ const AdditionalFeature = (props: Props) => {
   useEffect(() => {
     if (counter === 1) {
       calculateAdditionalPrice();
-      console.log(additionalList);
     }
     setCounter(counter + 1);
-    console.log(additionalList);
   }, [additionalList]);
 
   return (
@@ -193,6 +187,7 @@ const AdditionalFeature = (props: Props) => {
           </h1>
         </Container>
       </section>
+
       <div className="container mt-5 mb-5 ">
         <div className="row justify-content-center">
           {additionalList.map((card, index) => {
@@ -201,6 +196,7 @@ const AdditionalFeature = (props: Props) => {
                 <Col key={index} md={4}>
                   <div className={"card"}>
                     <img
+                      style={{ height: "50%", padding: "35px" }}
                       src={card.imagePath}
                       className="card-img-top"
                       alt={`Card ${index + 1}`}
@@ -325,7 +321,8 @@ const AdditionalFeature = (props: Props) => {
                 }}
                 className="btn btn-danger rounded-4 btn-lg "
               >
-                Next Step<i className="bi bi-arrow-right-circle ps-3"></i>
+                Next Step
+                <i className="bi bi-arrow-right-circle ps-3" />
               </button>
             </div>
           </div>

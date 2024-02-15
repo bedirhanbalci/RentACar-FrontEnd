@@ -68,7 +68,7 @@ const HomePage = (props: Props) => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setMainCount((count) => (count === 2 ? 0 : count + 1));
+      setMainCount(count => (count === 2 ? 0 : count + 1));
     }, 3000);
 
     return () => clearInterval(interval);
@@ -87,14 +87,14 @@ const HomePage = (props: Props) => {
       </div>
 
       <div className="d-block">
-        <h2 className="text-center pt-5 pb-2">Extras</h2>
+        <h2 className="text-center text-danger fw-bold pt-5 pb-2">Extras</h2>
         <CampaignSlider cards={additionalList} />
-        <h2 className="text-center pt-5 pb-2">Coverages</h2>
+        <h2 className="text-center text-danger fw-bold pt-5 pb-2">Coverages</h2>
         <CampaignSlider cards={assuranceList} />
       </div>
 
       <div className="container mt-5">
-        <h2 className="text-center mb-4">Featured Cars</h2>
+        <h2 className="text-center text-danger fw-bold mb-4">Featured Cars</h2>
         <div className="row">
           {carList?.slice(0, 6).map((car: GetAllCarsResponse) => (
             <div key={car.id} className="col-md-4 mb-3">

@@ -49,7 +49,6 @@ const CampaignSlider: React.FC<CampaignSliderProps> = ({ cards }) => {
       <Carousel interval={null} indicators={false} wrap={false}>
         {renderSlides()}
       </Carousel>
-      <div className="scroll-bar">{/* Scroll bar burada */}</div>
     </div>
   );
 };
