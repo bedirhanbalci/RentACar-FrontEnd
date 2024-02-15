@@ -29,7 +29,6 @@ axiosInstance.interceptors.request.use(config => {
 axiosInstance.interceptors.response.use(
   value => {
     store.dispatch(decreaseRequestCount());
-    console.log("Başarılı bir cevap alındı..");
     return value;
   },
   error => {
@@ -41,7 +40,7 @@ axiosInstance.interceptors.response.use(
     } else {
       toastr.error(error.response.data);
     }
-    return;
+    return error;
   }
 );
 

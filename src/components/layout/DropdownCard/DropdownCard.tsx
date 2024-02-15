@@ -18,7 +18,6 @@ const DropdownCard = (props: Props) => {
     try {
       await UserService.getById(parseInt(authState.id)).then(
         (response: any) => {
-          console.log(response);
           setUser(response.data);
         }
       );

@@ -20,7 +20,6 @@ const CarDetail = (props: Props) => {
         try {
           await CarService.getById(parseInt(params.id)).then(
             (response: any) => {
-              console.log(response);
               setCar(response.data.data);
             }
           );

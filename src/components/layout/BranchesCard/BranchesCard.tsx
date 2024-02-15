@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { GetAllBranchesResponse } from "../../../models/branch/responses/GetAllBranchesResponse";
 import branchService from "../../../services/branchService";
+import { useNavigate } from "react-router-dom";
 
 const BranchesCard: React.FC = () => {
   const [branches, setBranches] = useState<GetAllBranchesResponse[]>([]);
+  const navigate = useNavigate();
 
   const fetchBranch = async () => {
     try {
       await branchService.getAll().then((response: any) => {
-        console.log(response);
         setBranches(response.data.data);
       });
     } catch (error) {
@@ -44,13 +44,17 @@ const BranchesCard: React.FC = () => {
             <p className="card-text">Phone Number: {branch.phoneNumber}</p>
             <p className="fw-bold">Monday - Sunday</p>
             <p>09:00-21:00</p>
-            <Link
-              to={`/reservation/${branch.id}`}
+            <div
+              onClick={() =>
+                navigate("/reservation", {
+                  state: { branch: branch.id },
+                })
+              }
               className="btn btn-danger rounded-4"
               style={{ textDecoration: "none" }}
             >
               Reservation
-            </Link>
+            </div>
           </div>
         </div>
       ))}

@@ -33,7 +33,6 @@ const LoginCard: React.FC = () => {
         password: individualPassword,
         type: activeTab,
       } as IndividualLoginRequest);
-      console.log(response.data);
       dispatch(loginSuccess(response.data));
 
       if (rememberMeIndividual) {
