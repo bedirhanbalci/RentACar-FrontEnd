@@ -35,12 +35,12 @@ const BranchesCard: React.FC = () => {
           <div className="card-body">
             <h5
               className="card-title"
-              style={{ color: "red", fontWeight: "bold" }}
+              style={{ color: "#c31432", fontWeight: "bold" }}
             >
               {`${branch.city}  ${branch.address}`}
             </h5>
             <p className="card-text"> Phone Number: {branch.phoneNumber}</p>
-            <p className="fw-bold">Pazartesi-pazar</p>
+            <p className="fw-bold">Monday-Sunday</p>
             <p>09:00-21:00</p>
             <Link
               to={`/reservation/${branch.id}`}

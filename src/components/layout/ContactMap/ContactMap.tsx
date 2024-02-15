@@ -52,8 +52,14 @@ const ContactMap = ({ branch }: Props) => {
     };
 
     initMap();
-  }, [branch]); // Boş dizi, useEffect'in sadece bileşen yüklendiğinde çalışmasını sağlar.
+  }, [branch]);
 
-  return <div ref={mapRef} style={{ height: "500px", width: "100%" }} />;
+  return (
+    <div
+      className="border rounded border-3"
+      style={{ height: "500px", width: "100%" }}
+      ref={mapRef}
+    ></div>
+  );
 };
 export default ContactMap;

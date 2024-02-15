@@ -9,6 +9,7 @@ import { GetAllAdditionalFeaturesResponse } from "../../models/additionalFeature
 import AdditionalFeatureService from "../../services/additionalFeatureService";
 import { useNavigate } from "react-router-dom";
 import { formatCurrency } from "../../utils/validation/formatCurrency";
+import { Container } from "reactstrap";
 
 type Props = {};
 
@@ -62,7 +63,7 @@ const AdditionalFeature = (props: Props) => {
 
   const calculateAdditionalPrice = async (): Promise<any> => {
     const updatedAdditionalList = await Promise.all(
-      additionalList.map(async additional => {
+      additionalList.map(async (additional) => {
         const totalPrice = await fetchAdditionalPrices(additional.id);
         return {
           ...additional,
@@ -78,7 +79,7 @@ const AdditionalFeature = (props: Props) => {
   const calculateQuantityWithTotalPrice = async (card: any) => {
     const newAdditionalList = [...additionalList];
 
-    newAdditionalList.forEach(item => {
+    newAdditionalList.forEach((item) => {
       if (item.id === card.id) {
         if (item.totalPrice && item.amount !== 0) {
           item.finalPrice = item.amount * item.totalPrice;
@@ -91,7 +92,7 @@ const AdditionalFeature = (props: Props) => {
   const calculateAmountIncrease = async (card: any) => {
     const newAdditionalList = [...additionalList];
 
-    newAdditionalList.forEach(item => {
+    newAdditionalList.forEach((item) => {
       if (item.id === card.id && item.amount < 2) {
         item.amount += 1;
       }
@@ -102,7 +103,7 @@ const AdditionalFeature = (props: Props) => {
   const calculateAmountDecrease = async (card: any) => {
     const newAdditionalList = [...additionalList];
 
-    newAdditionalList.forEach(item => {
+    newAdditionalList.forEach((item) => {
       if (item.id === card.id && item.amount !== 0) {
         item.amount -= 1;
       }
@@ -162,124 +163,174 @@ const AdditionalFeature = (props: Props) => {
   }, [additionalList]);
 
   return (
-    <div className="mt-5 mb-5">
-      {additionalList.map((card, index) => {
-        return (
-          <Col key={index} md={4}>
-            <div className={"card"}>
-              <img
-                src={card.imagePath}
-                className="card-img-top"
-                alt={`Card ${index + 1}`}
-              />
-              <h5 className="card-header fw-bold">{card.name}</h5>
-              <div className="card-body">
-                <p className="card-text">{card.detail}</p>
-                <p className="card-text text-muted">
-                  {calculateDateDifference(
-                    rentalState.startDate.startDate,
-                    rentalState.endDate.endDate
-                  )}
-                </p>
-                <p className="card-text fw-bold">
-                  {formatCurrency(
-                    card.totalPrice ? card.totalPrice * card.amount : 0
-                  )}
-                </p>
-              </div>
-
-              <div className="d-flex justify-content-start align-items-center">
-                <button
-                  onClick={() => {
-                    calculateAmountDecrease(card);
-                    calculateQuantityWithTotalPrice(card);
-                  }}
-                  className="btn btn-danger rounded-circle btn-sm me-2"
-                  style={{ width: "32px", height: "32px" }}
-                >
-                  -
-                </button>
-
-                <div
-                  className="border border-1 rounded text-center overflow-hidden"
-                  style={{
-                    width: "32px",
-                    height: "32px",
-                    lineHeight: "32px",
-                    backgroundColor: "#fff",
-                  }}
-                >
-                  <span
-                    className="d-inline-block"
-                    style={{
-                      maxWidth: "100%",
-                      overflow: "hidden",
-                      textOverflow: "ellipsis",
-                    }}
-                  >
-                    {card.amount}
-                  </span>
-                </div>
-
-                <button
-                  onClick={() => {
-                    calculateAmountIncrease(card);
-                    calculateQuantityWithTotalPrice(card);
-                  }}
-                  className="btn btn-danger rounded-circle btn-sm me-2"
-                  style={{ width: "32px", height: "32px" }}
-                >
-                  +
-                </button>
-
-                <button
-                  onClick={() => {
-                    const isAlreadyAdded = additionalCard.some(
-                      (item: any) => item.id === card.id
-                    );
-                    if (!isAlreadyAdded) {
-                      setAdditionalCard([
-                        ...additionalCard,
-                        {
-                          quantity: card.amount,
-                          id: card.id,
-                          amount: card.amount,
-                          totalPrice: card.totalPrice,
-                        },
-                      ]);
-                    } else {
-                      setAdditionalCard(
-                        additionalCard.filter((x: any) => x.id !== card.id)
-                      );
-                    }
-                  }}
-                  className="btn btn-danger ms-2"
-                  style={{ borderRadius: "20px" }}
-                >
-                  {additionalCard.some((item: any) => item.id === card.id)
-                    ? "Remove"
-                    : "Add"}
-                </button>
-              </div>
-            </div>
-          </Col>
-        );
-      })}
-      <p>
-        {formatCurrency(
-          additionalTotalPrice + rentalState.assurancePriceWithTotalPrice
-        )}
-      </p>
-      <button
-        onClick={() => {
-          dispatch(addAdditional(additionalCard));
-          dispatch(addAdditionalPrice(additionalTotalPrice));
-          navigate("/rental");
+    <div className="mb-5" style={{ fontFamily: "sans-serif" }}>
+      <section
+        className="page-header mb-5"
+        style={{
+          background: `linear-gradient(to top, #c31432, #ff4e50)`,
+          minHeight: "80px",
         }}
-        className="btn btn-danger rounded-4 btn-lg"
       >
-        Next Step<i className="bi bi-arrow-right-circle ps-3"></i>
-      </button>
+        <Container
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            height: "80px",
+            textAlign: "center",
+          }}
+        >
+          <h1
+            className="title"
+            style={{
+              color: "white",
+              fontFamily: '"Open Sans", sans-serif',
+              fontSize: "25px",
+              fontWeight: "bold",
+            }}
+          >
+            Additional Feature
+          </h1>
+        </Container>
+      </section>
+      <div className="container mt-5 mb-5 ">
+        <div className="row justify-content-center">
+          {additionalList.map((card, index) => {
+            return (
+              <div className="col-lg-4 col-md-4 col-sm-6 col-12 mb-3 mb-sm-0 mt-3">
+                <Col key={index} md={4}>
+                  <div className={"card"}>
+                    <img
+                      src={card.imagePath}
+                      className="card-img-top"
+                      alt={`Card ${index + 1}`}
+                    />
+                    <h5 className="card-header fw-bold">{card.name}</h5>
+                    <div className="card-body">
+                      <p className="card-text">
+                        {card.detail.length > 80
+                          ? card.detail.substring(0, 80) + "..."
+                          : card.detail}
+                      </p>
+                      <p className="card-text text-muted">
+                        {calculateDateDifference(
+                          rentalState.startDate.startDate,
+                          rentalState.endDate.endDate
+                        )}
+                      </p>
+                      <p className="card-text fw-bold">
+                        {formatCurrency(
+                          card.totalPrice ? card.totalPrice * card.amount : 0
+                        )}
+                      </p>
+                    </div>
+
+                    <div className="d-flex justify-content-start align-items-center ms-3">
+                      <button
+                        onClick={() => {
+                          calculateAmountDecrease(card);
+                          calculateQuantityWithTotalPrice(card);
+                        }}
+                        className="btn btn-danger rounded-circle btn-sm me-2 "
+                        style={{
+                          width: "32px",
+                          height: "32px",
+                        }}
+                      >
+                        -
+                      </button>
+                      <div
+                        className="border border-1 rounded text-center overflow-hidden me-2"
+                        style={{
+                          width: "32px",
+                          height: "32px",
+                          lineHeight: "32px",
+                          backgroundColor: "#fff",
+                        }}
+                      >
+                        <span
+                          className="d-inline-block"
+                          style={{
+                            maxWidth: "100%",
+                            overflow: "hidden",
+                            textOverflow: "ellipsis",
+                          }}
+                        >
+                          {card.amount}
+                        </span>
+                      </div>
+
+                      <button
+                        onClick={() => {
+                          calculateAmountIncrease(card);
+                          calculateQuantityWithTotalPrice(card);
+                        }}
+                        className="btn btn-danger rounded-circle btn-sm me-2"
+                        style={{
+                          width: "32px",
+                          height: "32px",
+                        }}
+                      >
+                        +
+                      </button>
+
+                      <button
+                        onClick={() => {
+                          const isAlreadyAdded = additionalCard.some(
+                            (item: any) => item.id === card.id
+                          );
+                          if (!isAlreadyAdded) {
+                            setAdditionalCard([
+                              ...additionalCard,
+                              {
+                                quantity: card.amount,
+                                id: card.id,
+                                amount: card.amount,
+                                totalPrice: card.totalPrice,
+                              },
+                            ]);
+                          } else {
+                            setAdditionalCard(
+                              additionalCard.filter(
+                                (x: any) => x.id !== card.id
+                              )
+                            );
+                          }
+                        }}
+                        className="btn btn-danger ms-2"
+                        style={{ borderRadius: "20px" }}
+                      >
+                        {additionalCard.some((item: any) => item.id === card.id)
+                          ? "Remove"
+                          : "Add"}
+                      </button>
+                    </div>
+                  </div>
+                </Col>
+              </div>
+            );
+          })}
+          <hr />
+          <div className="text-center">
+            Total Price:{" "}
+            {formatCurrency(
+              additionalTotalPrice + rentalState.assurancePriceWithTotalPrice
+            )}
+            <div style={{ display: "inline-block", marginLeft: "10px" }}>
+              <button
+                onClick={() => {
+                  dispatch(addAdditional(additionalCard));
+                  dispatch(addAdditionalPrice(additionalTotalPrice));
+                  navigate("/rental");
+                }}
+                className="btn btn-danger rounded-4 btn-lg "
+              >
+                Next Step<i className="bi bi-arrow-right-circle ps-3"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

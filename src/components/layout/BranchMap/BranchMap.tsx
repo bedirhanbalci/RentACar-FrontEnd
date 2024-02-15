@@ -44,7 +44,7 @@ const BranchMap: React.FC<BranchMapProps> = () => {
 
       const map = new Map(mapRef.current as HTMLDivElement, MapOptions);
 
-      branches.forEach(markerInfo => {
+      branches.forEach((markerInfo) => {
         const marker = new google.maps.Marker({
           position: { lat: markerInfo.latitude, lng: markerInfo.longitude },
           map,
@@ -63,13 +63,11 @@ const BranchMap: React.FC<BranchMapProps> = () => {
   }, [branches]);
 
   return (
-    <div>
-      <div
-        className="border   rounded border-4 p-md-5"
-        style={{ height: "300px" }}
-        ref={mapRef}
-      ></div>
-    </div>
+    <div
+      className="border   rounded border-3 p-md-5"
+      style={{ height: "350px" }}
+      ref={mapRef}
+    ></div>
   );
 };
 

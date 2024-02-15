@@ -44,8 +44,8 @@ export default function About() {
                 className="img-fluid rounded "
               />
             </div>
-            <div className="col-lg-4 mr-auto">
-              <h2 style={{ color: "red" }}>
+            <div className="col-lg-4">
+              <h2 style={{ color: "#c31432" }}>
                 Car Company: Where Performance Meets Sustainability
               </h2>
               <p>
@@ -65,7 +65,7 @@ export default function About() {
         <div className="container">
           <div className="row justify-content-center text-center mb-5 section-2-title">
             <div className="col-md-6">
-              <h2 className="mb-4" style={{ color: "red" }}>
+              <h2 className="mb-4" style={{ color: "#c31432" }}>
                 Meet Our Team
               </h2>
             </div>
@@ -86,7 +86,7 @@ export default function About() {
                   <span className="meta" style={{ fontWeight: "bold" }}>
                     Chief Technology Officer
                   </span>
-                  <h2 style={{ color: "red" }}>Tom Clark</h2>
+                  <h2 style={{ color: "#c31432" }}>Tom Clark</h2>
                   <p>
                     Tom spearheads our tech innovations with a sharp eye for
                     emerging trends. His passion for sustainable tech drives us
@@ -110,7 +110,7 @@ export default function About() {
                   <span className="meta" style={{ fontWeight: "bold" }}>
                     Human Resources Lead
                   </span>
-                  <h2 style={{ color: "red" }}>Emily Turner</h2>
+                  <h2 style={{ color: "#c31432" }}>Emily Turner</h2>
                   <p>
                     Emily's leadership in HR cultivates our vibrant company
                     culture, attracting top talent while fostering professional
@@ -135,7 +135,7 @@ export default function About() {
                   <span className="meta" style={{ fontWeight: "bold" }}>
                     Product Manager
                   </span>
-                  <h2 style={{ color: "red" }}>Sophia Martin </h2>
+                  <h2 style={{ color: "#c31432" }}>Sophia Martin </h2>
                   <p>
                     Sophia's expertise lies in delivering products that resonate
                     with our customers, ensuring quality and innovation are
@@ -163,7 +163,7 @@ export default function About() {
                   <span className="meta" style={{ fontWeight: "bold" }}>
                     Sales Director
                   </span>
-                  <h2 style={{ color: "red" }}>Alex Johnson </h2>
+                  <h2 style={{ color: "#c31432" }}>Alex Johnson </h2>
                   <p>
                     With a knack for communication, Alex transforms market
                     challenges into opportunities, fostering strong client
@@ -188,7 +188,7 @@ export default function About() {
                   <span className="meta" style={{ fontWeight: "bold" }}>
                     Customer Success Advocate
                   </span>
-                  <h2 style={{ color: "red" }}>Olivia King</h2>
+                  <h2 style={{ color: "#c31432" }}>Olivia King</h2>
                   <p>
                     Olivia is dedicated to creating exceptional customer
                     experiences, driving satisfaction through personalized
@@ -213,7 +213,7 @@ export default function About() {
                   <span className="meta" style={{ fontWeight: "bold" }}>
                     Marketing Manager
                   </span>
-                  <h2 style={{ color: "red" }}>Ethan Wright </h2>
+                  <h2 style={{ color: "#c31432" }}>Ethan Wright </h2>
                   <p>
                     Ethan's creative strategies in digital marketing have
                     consistently elevated our brand presence, engaging a broader
@@ -240,7 +240,7 @@ export default function About() {
               className="col-lg-4 ml-auto"
               style={{ textAlign: "center", padding: "20px" }}
             >
-              <h2 style={{ color: "red" }}>Our History</h2>
+              <h2 style={{ color: "#c31432" }}>Our History</h2>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit
                 suscipit, repudiandae similique accusantium eius nulla quam

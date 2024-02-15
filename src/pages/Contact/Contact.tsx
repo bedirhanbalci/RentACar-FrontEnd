@@ -127,12 +127,12 @@ const Contact = (props: Props) => {
             <div className="col-lg-6 col-md-12" style={{ padding: "24px" }}>
               <div className="map-card" style={{ overflow: "hidden" }}>
                 {" "}
-                <h4 className="title" style={{ color: "#c31432" }}>
+                <h5 className="title fw-bold" style={{ color: "#c31432" }}>
                   Headquarters
-                </h4>
+                </h5>
                 <p className="desc">
-                  Avis Türkiye Aydınevler Mah. Saygı Cad.No: 60 34854 Küçükyalı
-                  / İstanbul
+                  2B2 Aydınevler Neighborhood, Saygı Avenue No: 60, Küçükyalı
+                  34854 / Istanbul
                 </p>
                 <div
                   className="map-item"
@@ -146,7 +146,7 @@ const Contact = (props: Props) => {
               <Formik
                 initialValues={initialValues}
                 validationSchema={validationSchema}
-                onSubmit={values => {
+                onSubmit={(values) => {
                   console.log(values);
                 }}
               >
@@ -154,7 +154,10 @@ const Contact = (props: Props) => {
                   className="form"
                   style={{ fontFamily: '"Open Sans", sans-serif' }}
                 >
-                  <h5 className="form-title mb-5" style={{ color: "#c31432" }}>
+                  <h5
+                    className="form-title mb-5 fw-bold"
+                    style={{ color: "#c31432" }}
+                  >
                     Contact Us
                   </h5>
                   <div>

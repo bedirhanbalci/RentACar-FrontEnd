@@ -6,7 +6,7 @@ type Props = {};
 
 const Branches = (props: Props) => {
   const ScrollableContent = () => (
-    <div style={{ height: "200px", overflowY: "scroll" }}>
+    <div style={{ height: "250px", overflowY: "scroll" }}>
       <BranchesCard />
     </div>
   );
@@ -47,14 +47,15 @@ const Branches = (props: Props) => {
         <div className="row">
           <div className="col-lg-4 sm-12">
             <div className="fw-bold">
-              <h4>Kiralama Lokasyonu Ara</h4>
+              <h4>Search Rental Location</h4>
             </div>
             <form>
               <input
-                placeholder="İl ya da İlçe Ara …"
+                placeholder="Search by City or District"
                 className="form-control md-4"
               />
             </form>
+            <br />
             <div>{<ScrollableContent />} </div>
           </div>
           <div className="col-lg-8 sm-12">
