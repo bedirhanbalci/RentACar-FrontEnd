@@ -40,15 +40,15 @@ const CarDetail = (props: Props) => {
   }, [car]);
 
   if (isLoading) {
-    return <div>Yükleniyor...</div>;
+    return <div>Lodading...</div>;
   }
 
   if (error) {
-    return <div>Hata: {error}</div>;
+    return <div>Error: {error}</div>;
   }
 
   if (!car) {
-    return <div>Araç bulunamadı.</div>;
+    return <div>Car not found!</div>;
   }
 
   return (
@@ -88,37 +88,76 @@ const CarDetail = (props: Props) => {
         className="container border border-3 rounded mb-3 col-12 col-md-6 shadow p-md-5 mb-5 pt-5"
       >
         <div className="row g-0">
-          <div className="col-md-4">
+          <div className="col-md-5">
             <img
               src={car.imagePath}
-              className="img-fluid rounded-start"
+              className="img-fluid  rounded-start zoom"
+              style={{
+                transform: "scale(1.25) translateY(20px) translateX(-15px)",
+              }}
               alt={car.modelName}
             />
           </div>
-          <div className="col-md-8 mb-3">
+          <div className="col-md-7 mb-3">
             <div className="card-body">
               <h5 className="card-title fw-bold fs-4">
                 {car.brandName} {car.modelName}
               </h5>
 
               <ul className="list-group list-group-flush border border-1">
-                <li className="list-group-item">Year: {car.year}</li>
-                <li className="list-group-item">
+                <li
+                  className="list-group-item border-bottom"
+                  style={{ backgroundColor: "#fafaf5" }}
+                >
+                  Year: {car.year}
+                </li>
+                <li
+                  className="list-group-item border-bottom"
+                  style={{ backgroundColor: "#fafaf5" }}
+                >
                   Daily Price: {formatCurrency(car.dailyPrice)}
                 </li>
-                <li className="list-group-item">Gear Type: {car.gearType}</li>
-                <li className="list-group-item">Fuel Type: {car.fuelType}</li>
-                <li className="list-group-item">Color: {car.colorName}</li>
-                <li className="list-group-item">Body Type: {car.bodyType}</li>
-                <li className="list-group-item">
+                <li
+                  className="list-group-item border-bottom"
+                  style={{ backgroundColor: "#fafaf5" }}
+                >
+                  Gear Type: {car.gearType}
+                </li>
+                <li
+                  className="list-group-item border-bottom"
+                  style={{ backgroundColor: "#fafaf5" }}
+                >
+                  Fuel Type: {car.fuelType}
+                </li>
+                <li
+                  className="list-group-item border-bottom"
+                  style={{ backgroundColor: "#fafaf5" }}
+                >
+                  Color: {car.colorName}
+                </li>
+                <li
+                  className="list-group-item border-bottom"
+                  style={{ backgroundColor: "#fafaf5" }}
+                >
+                  Body Type: {car.bodyType}
+                </li>
+                <li
+                  className="list-group-item border-bottom"
+                  style={{ backgroundColor: "#fafaf5" }}
+                >
                   Branch City: {car.branchCity}
                 </li>
-                <li className="list-group-item">Plate: {car.plate}</li>
+                <li
+                  className="list-group-item border-bottom"
+                  style={{ backgroundColor: "#fafaf5" }}
+                >
+                  Plate: {car.plate}
+                </li>
               </ul>
               <div className="d-grid gap-2 d-md-block mt-3">
                 <Link
                   to={`/reservation/${car?.id}`}
-                  className="btn btn-danger rounded-4 btn-lg"
+                  className="btn btn-danger rounded-4 "
                 >
                   Reservation
                 </Link>

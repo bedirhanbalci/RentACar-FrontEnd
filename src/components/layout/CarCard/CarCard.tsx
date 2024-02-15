@@ -8,7 +8,7 @@ const CarCard = ({ car }: Props) => {
     <div key={car.id} className="card" style={{ width: "24 rem" }}>
       <img src={car.imagePath} className="card-img-top" alt={car.modelName} />
       <div className="card-body">
-        <p className="card-text text-danger fw-bold">
+        <p className=" fw-bold" style={{ color: "#c31432" }}>
           {car.brandName} {car.modelName}
         </p>
       </div>

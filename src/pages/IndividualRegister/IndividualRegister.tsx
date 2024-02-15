@@ -5,6 +5,7 @@ import FormikInput from "../../components/common/FormikInput/FormikInput";
 import { toast } from "react-toastify";
 import AuthService from "../../services/authService";
 import { useNavigate } from "react-router-dom";
+import { Container } from "reactstrap";
 
 type Props = {};
 
@@ -94,70 +95,111 @@ const IndividualRegister = (props: Props) => {
   };
 
   return (
-    <div className="container mt-5 mb-5 pt-5 pb-5">
-      <Formik
-        validationSchema={validationSchema}
-        initialValues={initialValues}
-        onSubmit={handleSignupSubmit}
+    <div className="mb-5" style={{ fontFamily: "sans-serif" }}>
+      <section
+        className="page-header mb-5"
+        style={{
+          background: `linear-gradient(to top, #c31432, #ff4e50)`,
+          minHeight: "80px",
+        }}
       >
-        <Form>
-          <div className="row">
-            <div className="col-6 mx-auto">
-              <FormikInput
-                className="form-control"
-                htmlFor="firstName"
-                id="firstName"
-                label="First Name"
-                name="firstName"
-                placeholder="Please write the first name!"
-              />
-
-              <FormikInput
-                className="form-control"
-                htmlFor="lastName"
-                id="lastName"
-                label="Last Name"
-                name="lastName"
-                placeholder="Please write the last name!"
-              />
-
-              <FormikInput
-                className="form-control"
-                htmlFor="nationalityNo"
-                id="nationalityNo"
-                label="Nationality Number"
-                name="nationalityNo"
-                placeholder="Please write the nationality number!"
-              />
-
-              <FormikInput
-                className="form-control"
-                htmlFor="birthDate"
-                id="birthDate"
-                label="Birth Date"
-                name="birthDate"
-                type="date"
-                placeholder="Please write the birth date!"
-              />
-
-              <FormikInput
-                className="form-control"
-                htmlFor="phoneNumber"
-                id="phoneNumber"
-                label="Phone Number"
-                name="phoneNumber"
-                placeholder="Please write the phone number!"
-              />
-
-              <FormikInput
-                className="form-control"
-                htmlFor="email"
-                id="email"
-                label="Email"
-                name="email"
-                placeholder="Please write the email!"
-              />
-
+        <Container
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            height: "80px",
+            textAlign: "center",
+          }}
+        >
+          <h1
+            className="title"
+            style={{
+              color: "white",
+              fontFamily: '"Open Sans", sans-serif',
+              fontSize: "25px",
+              fontWeight: "bold",
+            }}
+          >
+            Personal Information
+          </h1>
+        </Container>
+      </section>
+      <Container>
+        <div className="row container col-lg-6 col-md-12 mt-5 mb-5 pt-5 pb-5">
+          <Formik
+            validationSchema={validationSchema}
+            initialValues={initialValues}
+            onSubmit={handleSignupSubmit}
+          >
+            <Form>
+              <div className="row mb-2">
+                <div className="col-md-6 col-lg-6 mx-auto">
+                  <FormikInput
+                    className="form-control"
+                    htmlFor="firstName"
+                    id="firstName"
+                    label="First Name"
+                    name="firstName"
+                    placeholder="Please write the first name!"
+                  />
+                </div>
+                <div className="col-md-6, col-lg-6">
+                  <FormikInput
+                    className="form-control"
+                    htmlFor="lastName"
+                    id="lastName"
+                    label="Last Name"
+                    name="lastName"
+                    placeholder="Please write the last name!"
+                  />
+                </div>
+              </div>
+              <div className="row mb-2">
+                <div className="col-md-6 col-lg-6">
+                  <FormikInput
+                    className="form-control"
+                    htmlFor="nationalityNo"
+                    id="nationalityNo"
+                    label="Nationality Number"
+                    name="nationalityNo"
+                    placeholder="Please write the nationality number!"
+                  />
+                </div>
+                <div className="col-md-6 col-lg-6">
+                  <FormikInput
+                    className="form-control"
+                    htmlFor="birthDate"
+                    id="birthDate"
+                    label="Birth Date"
+                    name="birthDate"
+                    type="date"
+                    placeholder="Please write the birth date!"
+                  />
+                </div>
+              </div>
+              <div className="row mb-6">
+                <div className="col-md-6 col-lg-6">
+                  <FormikInput
+                    className="form-control"
+                    htmlFor="phoneNumber"
+                    id="phoneNumber"
+                    label="Phone Number"
+                    name="phoneNumber"
+                    placeholder="Please write the phone number!"
+                  />
+                </div>
+                <div className="col-md-6 col-lg-6">
+                  <FormikInput
+                    className="form-control"
+                    htmlFor="email"
+                    id="email"
+                    label="Email"
+                    name="email"
+                    placeholder="Please write the email!"
+                  />
+                </div>
+              </div>
               <FormikInput
                 className="form-control"
                 htmlFor="password"
@@ -181,10 +223,10 @@ const IndividualRegister = (props: Props) => {
               <button className="btn btn-danger rounded-5 mt-3" type="submit">
                 Sign Up
               </button>
-            </div>
-          </div>
-        </Form>
-      </Formik>
+            </Form>
+          </Formik>
+        </div>
+      </Container>
     </div>
   );
 };
