@@ -32,12 +32,13 @@
 }
 
 .camp-card-body img {
-  height: 140px;
+  padding: 35px;
+  height: 50%;
 }
 
 .camp-card-body p {
   display: -webkit-box;
-  -webkit-line-clamp: 5;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
   margin: 10px 0;

@@ -162,6 +162,7 @@ const AdditionalFeature = (props: Props) => {
           <Col key={index} md={4}>
             <div className={"card"}>
               <img
+                style={{ height: "50%", padding: "35px" }}
                 src={card.imagePath}
                 className="card-img-top"
                 alt={`Card ${index + 1}`}
