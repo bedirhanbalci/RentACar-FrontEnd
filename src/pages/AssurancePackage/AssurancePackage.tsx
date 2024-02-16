@@ -202,7 +202,7 @@ const AssurancePackage = (props: Props) => {
           </h1>
         </div>
       </section>
-      <div className="container mt-5 mb-5 ">
+      <div className="container mt-5 mb-5">
         <div className="row justify-content-center">
           {assuranceList.map((card, index) => (
             <Col key={index} md={4}>
@@ -216,11 +216,16 @@ const AssurancePackage = (props: Props) => {
                   className="card-img-top"
                   alt={`Card ${index + 1}`}
                 />
-                <h5 className="card-header fw-bold">{card.name}</h5>
+                <h5
+                  style={{ height: "65px" }}
+                  className="card-header text-danger fw-bold d-flex justify-content-center align-items-center text-center"
+                >
+                  {card.name}
+                </h5>
                 <div className="card-body">
-                  <p className="card-text">
-                    {card.detail.length > 100
-                      ? card.detail.substring(0, 100) + "..."
+                  <p className="card-text" style={{ textAlign: "justify" }}>
+                    {card.detail.length > 80
+                      ? card.detail.substring(0, 80) + "..."
                       : card.detail}
                   </p>
                   <p className="card-text text-muted">

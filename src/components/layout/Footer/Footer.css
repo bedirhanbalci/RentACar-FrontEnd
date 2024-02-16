@@ -12,7 +12,9 @@
 
 .footer__logo span {
   color: #fff;
-  font-weight: 500;
+  font-family: Outfit;
+  font-size: 44px;
+  font-weight: 900;
 }
 
 .footer__logo-content {

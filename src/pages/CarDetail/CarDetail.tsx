@@ -99,7 +99,7 @@ const CarDetail = (props: Props) => {
           </div>
           <div className="col-md-7 mb-3">
             <div className="card-body">
-              <h5 className="card-title fw-bold fs-4">
+              <h5 className="card-title text-danger fw-bold fs-4">
                 {car.brandName} {car.modelName}
               </h5>
 

@@ -1,12 +1,14 @@
+import { useState } from "react";
 import BranchMap from "../../components/layout/BranchMap/BranchMap";
 import BranchesCard from "../../components/layout/BranchesCard/BranchesCard";
 
 type Props = {};
 
 const Branches = (props: Props) => {
+  const [cityInput, setCityInput] = useState<string>("");
   const ScrollableContent = () => (
-    <div style={{ height: "250px", overflowY: "scroll" }}>
-      <BranchesCard />
+    <div className="mt-5" style={{ height: "250px", overflowY: "scroll" }}>
+      <BranchesCard cityInput={cityInput} />
     </div>
   );
 
@@ -61,8 +63,12 @@ const Branches = (props: Props) => {
               </div>
               <form>
                 <input
-                  placeholder="Search by City or District"
+                  placeholder="Search by City"
                   className="form-control md-4"
+                  onChange={e => {
+                    setCityInput(e.target.value);
+                  }}
+                  value={cityInput}
                 />
               </form>
               <br />

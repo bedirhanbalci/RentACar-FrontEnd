@@ -1,17 +1,38 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import "./Invoice.css";
 import { formatCurrency } from "../../utils/formatCurrency";
+import userService from "../../services/userService";
+import rentalService from "../../services/rentalService";
 
 type Props = {};
 
 const Invoice = (props: Props) => {
-  const rentalState = useSelector((store: any) => store.rental);
   const authState = useSelector((store: any) => store.auth);
-  const location = useLocation();
-  const { invoice } = location.state || {};
-  const { totalPrice } = location.state || {};
+
+  const [info, setInfo] = useState([[{ id: 0 }]]);
+
+  const fetchInfo = async () => {
+    try {
+      await rentalService
+        .getByUserId(parseInt(authState.id))
+        .then((response: any) => {
+          setInfo(response.data);
+        });
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  useEffect(() => {
+    console.log(info);
+  }, [info]);
+
+  useEffect(() => {
+    fetchInfo();
+  }, []);
+
   return (
     <div className="mb-5" style={{ fontFamily: "sans-serif" }}>
       <section
@@ -44,7 +65,53 @@ const Invoice = (props: Props) => {
           </h1>
         </div>
       </section>
-      <div className="invoice-detail" onClick={() => console.log("Clicked!")}>
+
+      {info.map((innerList: any, outerIndex: any) => (
+        <div key={outerIndex} className="invoice-card">
+          <div className="invoice-item">
+            <span className="item-label">Name: </span>
+            <span className="item-value">
+              {innerList[2]?.firstName} {innerList[2]?.lastName || "N/A"}
+            </span>
+          </div>
+          <div className="invoice-item">
+            <span className="item-label">Company Name: </span>
+            <span className="item-value">
+              {innerList[2]?.companyName || "N/A"}
+            </span>
+          </div>
+          <div className="invoice-item">
+            <span className="item-label">Contact Name: </span>
+            <span className="item-value">
+              {innerList[2]?.contactName || "N/A"}
+            </span>
+          </div>
+          <div className="invoice-item">
+            <span className="item-label">Invoice No: </span>
+            <span className="item-value">{innerList[1]?.invoiceNo}</span>
+          </div>
+          <div className="invoice-item">
+            <span className="item-label">Invoice Date: </span>
+            <span className="item-value">{innerList[1]?.createdDate}</span>
+          </div>
+          <div className="invoice-item">
+            <span className="item-label">Rental Start Date: </span>
+            <span className="item-value">{innerList[0]?.startDate}</span>
+          </div>
+          <div className="invoice-item">
+            <span className="item-label">Rental End Date: </span>
+            <span className="item-value">{innerList[0]?.endDate}</span>
+          </div>
+          <div className="invoice-item">
+            <span className="item-label">Total Price: </span>
+            <span className="item-value">
+              {formatCurrency(innerList[0]?.totalPrice)}
+            </span>
+          </div>
+        </div>
+      ))}
+
+      {/* <div className="invoice-detail" onClick={() => console.log("Clicked!")}>
         <div className="card">
           <div className="card-body">
             <h5 className="card-title fw-bold">Invoice Detail</h5>
@@ -66,7 +133,7 @@ const Invoice = (props: Props) => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
