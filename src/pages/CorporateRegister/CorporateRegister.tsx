@@ -6,7 +6,6 @@ import FormikSelect from "../../components/common/FormikSelect/FormikSelect";
 import { useNavigate } from "react-router-dom";
 import AuthService from "../../services/authService";
 import { toast } from "react-toastify";
-import { Container } from "reactstrap";
 
 type Props = {};
 
@@ -118,7 +117,8 @@ const CorporateRegister = (props: Props) => {
           minHeight: "80px",
         }}
       >
-        <Container
+        <div
+          className="container"
           style={{
             display: "flex",
             flexDirection: "column",
@@ -138,9 +138,9 @@ const CorporateRegister = (props: Props) => {
           >
             Corporate Information
           </h1>
-        </Container>
+        </div>
       </section>
-      <Container>
+      <div className="container">
         <div className="row container col-lg-6 col-md-12 mt-5 mb-5 pt-5 pb-5">
           <Formik
             validationSchema={validationSchema}
@@ -249,7 +249,7 @@ const CorporateRegister = (props: Props) => {
             </Form>
           </Formik>
         </div>
-      </Container>
+      </div>
     </div>
   );
 };

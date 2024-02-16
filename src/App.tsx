@@ -22,6 +22,7 @@ import Rental from "./pages/Rental/Rental";
 import OrderComplete from "./pages/OrderComplete/OrderComplete";
 import Profile from "./pages/Profile/Profile";
 import Invoice from "./pages/Invoice/Invoice";
+import ActiveRentals from "./pages/ActiveRentals/ActiveRentals";
 function App(): ReactElement {
   return (
     <>
@@ -58,8 +59,9 @@ function App(): ReactElement {
           ></Route>
           <Route path="/rental" element={<Rental />}></Route>
           <Route path="/order-complete" element={<OrderComplete />}></Route>
-          <Route path="/invoice" element={<Invoice />}></Route>
           <Route path="/profile" element={<Profile />}></Route>
+          <Route path="/invoice" element={<Invoice />}></Route>
+          <Route path="/active-rental" element={<ActiveRentals />}></Route>
         </Routes>
       </div>
       <Footer />

@@ -36,7 +36,7 @@ const BranchesCard: React.FC = () => {
           <div className="card-body">
             <h5
               className="card-title"
-              style={{ color: "#c31432", fontWeight: "bold" }}
+              style={{ color: "#ad0a27", fontWeight: "bold" }}
             >
               {`${branch.city} - ${branch.address}`}{" "}
               <i className="bi bi-building"></i>
