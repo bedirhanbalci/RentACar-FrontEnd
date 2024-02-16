@@ -1,6 +1,3 @@
-import React from "react";
-import { Container } from "react-bootstrap";
-
 export default function About() {
   return (
     <div className="mb-5" style={{ fontFamily: "sans-serif" }}>
@@ -11,7 +8,8 @@ export default function About() {
           minHeight: "80px",
         }}
       >
-        <Container
+        <div
+          className="container"
           style={{
             display: "flex",
             flexDirection: "column",
@@ -31,7 +29,7 @@ export default function About() {
           >
             About
           </h1>
-        </Container>
+        </div>
       </section>
 
       <div className="site-section style={{backgroundColor: '#fafaf5'}}">

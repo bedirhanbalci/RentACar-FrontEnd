@@ -8,7 +8,6 @@ import {
 import { GetAllAdditionalFeaturesResponse } from "../../models/additionalFeature/responses/GetAllAdditionalFeaturesResponse";
 import AdditionalFeatureService from "../../services/additionalFeatureService";
 import { useNavigate } from "react-router-dom";
-import { Container } from "reactstrap";
 import { formatCurrency } from "../../utils/formatCurrency";
 
 type Props = {};
@@ -59,7 +58,7 @@ const AdditionalFeature = (props: Props) => {
 
   const calculateAdditionalPrice = async (): Promise<any> => {
     const updatedAdditionalList = await Promise.all(
-      additionalList.map(async (additional) => {
+      additionalList.map(async additional => {
         const totalPrice = await fetchAdditionalPrices(additional.id);
         return {
           ...additional,
@@ -75,7 +74,7 @@ const AdditionalFeature = (props: Props) => {
   const calculateQuantityWithTotalPrice = async (card: any) => {
     const newAdditionalList = [...additionalList];
 
-    newAdditionalList.forEach((item) => {
+    newAdditionalList.forEach(item => {
       if (item.id === card.id) {
         if (item.totalPrice && item.amount !== 0) {
           item.finalPrice = item.amount * item.totalPrice;
@@ -88,7 +87,7 @@ const AdditionalFeature = (props: Props) => {
   const calculateAmountIncrease = async (card: any) => {
     const newAdditionalList = [...additionalList];
 
-    newAdditionalList.forEach((item) => {
+    newAdditionalList.forEach(item => {
       if (item.id === card.id && item.amount < 2) {
         item.amount += 1;
       }
@@ -99,7 +98,7 @@ const AdditionalFeature = (props: Props) => {
   const calculateAmountDecrease = async (card: any) => {
     const newAdditionalList = [...additionalList];
 
-    newAdditionalList.forEach((item) => {
+    newAdditionalList.forEach(item => {
       if (item.id === card.id && item.amount !== 0) {
         item.amount -= 1;
       }
@@ -165,7 +164,8 @@ const AdditionalFeature = (props: Props) => {
           minHeight: "80px",
         }}
       >
-        <Container
+        <div
+          className="container"
           style={{
             display: "flex",
             flexDirection: "column",
@@ -183,9 +183,9 @@ const AdditionalFeature = (props: Props) => {
               fontWeight: "bold",
             }}
           >
-            Additional Feature
+            Extras
           </h1>
-        </Container>
+        </div>
       </section>
 
       <div className="container mt-5 mb-5 ">
@@ -196,7 +196,7 @@ const AdditionalFeature = (props: Props) => {
                 <Col key={index} md={4}>
                   <div className={"card"}>
                     <img
-                      style={{ height: "50%", padding: "35px" }}
+                      style={{ padding: "35px", maxHeight: "200px" }}
                       src={card.imagePath}
                       className="card-img-top"
                       alt={`Card ${index + 1}`}
@@ -293,7 +293,7 @@ const AdditionalFeature = (props: Props) => {
                             );
                           }
                         }}
-                        className="btn btn-danger ms-2"
+                        className="btn btn-danger ms-5 mb-1"
                         style={{ borderRadius: "20px" }}
                       >
                         {additionalCard.some((item: any) => item.id === card.id)
@@ -309,9 +309,11 @@ const AdditionalFeature = (props: Props) => {
           <hr />
           <div className="text-center">
             Total Price:{" "}
-            {formatCurrency(
-              additionalTotalPrice + rentalState.assurancePriceWithTotalPrice
-            )}
+            <strong>
+              {formatCurrency(
+                additionalTotalPrice + rentalState.assurancePriceWithTotalPrice
+              )}
+            </strong>
             <div style={{ display: "inline-block", marginLeft: "10px" }}>
               <button
                 onClick={() => {

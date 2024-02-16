@@ -5,7 +5,6 @@ import FormikInput from "../../components/common/FormikInput/FormikInput";
 import { toast } from "react-toastify";
 import AuthService from "../../services/authService";
 import { useNavigate } from "react-router-dom";
-import { Container } from "reactstrap";
 
 type Props = {};
 
@@ -103,7 +102,8 @@ const IndividualRegister = (props: Props) => {
           minHeight: "80px",
         }}
       >
-        <Container
+        <div
+          className="container"
           style={{
             display: "flex",
             flexDirection: "column",
@@ -121,11 +121,11 @@ const IndividualRegister = (props: Props) => {
               fontWeight: "bold",
             }}
           >
-            Personal Information
+            Individual Information
           </h1>
-        </Container>
+        </div>
       </section>
-      <Container>
+      <div className="container">
         <div className="row container col-lg-6 col-md-12 mt-5 mb-5 pt-5 pb-5">
           <Formik
             validationSchema={validationSchema}
@@ -226,7 +226,7 @@ const IndividualRegister = (props: Props) => {
             </Form>
           </Formik>
         </div>
-      </Container>
+      </div>
     </div>
   );
 };

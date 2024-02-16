@@ -7,7 +7,6 @@ import CarService from "../../services/carService";
 import { GetByIdCarResponse } from "../../models/car/responses/GetByIdCarResponse";
 import { formatCurrency } from "../../utils/formatCurrency";
 import toastr from "toastr";
-import { Container } from "reactstrap";
 
 type Props = {};
 
@@ -74,7 +73,8 @@ const Rental = (props: Props) => {
           minHeight: "80px",
         }}
       >
-        <Container
+        <div
+          className="container"
           style={{
             display: "flex",
             flexDirection: "column",
@@ -94,15 +94,15 @@ const Rental = (props: Props) => {
           >
             Rental
           </h1>
-        </Container>
+        </div>
       </section>
 
       <div className="d-flex flex-row justify-content-center mt-5">
-        <div className="border border-1 border-gray rounded col-5 mb-3">
+        <div className="border border-2 border-gray rounded col-5 mb-3">
           <img
             src={car?.imagePath}
             alt={`${car?.brandName} ${car?.modelName}`}
-            className="card-img-top"
+            className="img-fluid rounded"
           />
           <div className="card-body">
             <h5 className="card-title" style={{ color: "#c31432" }}>
@@ -113,9 +113,8 @@ const Rental = (props: Props) => {
               <h6 style={{ color: "#c31432" }}>
                 <strong> Car Details:</strong>
               </h6>
-
               <p>
-                <strong>Body Type:</strong> {car?.bodyType}
+                <strong>Year:</strong> {car?.year}
               </p>
               <p>
                 <strong>Gear Type:</strong> {car?.gearType}
@@ -124,19 +123,20 @@ const Rental = (props: Props) => {
                 <strong>Fuel Type:</strong> {car?.fuelType}
               </p>
               <p>
-                <strong>Branch City:</strong> {car?.branchCity}
+                <strong>Body Type:</strong> {car?.bodyType}
               </p>
               <p>
                 <strong>Color:</strong> {car?.colorName}
               </p>
               <p>
-                <strong>Year:</strong> {car?.year}
+                <strong>Branch City:</strong> {car?.branchCity}
               </p>
+
               <p>
                 <strong>Plate:</strong> {car?.plate}
               </p>
               <hr />
-              <h6 style={{ color: "#c31432" }}>
+              <h6 style={{ color: "#ad0a27" }}>
                 <strong>Rental Details:</strong>
               </h6>
               <p>

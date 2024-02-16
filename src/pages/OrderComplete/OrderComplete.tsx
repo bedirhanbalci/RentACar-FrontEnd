@@ -1,5 +1,4 @@
 import { Link, useLocation } from "react-router-dom";
-import { Container } from "reactstrap";
 import { formatCurrency } from "../../utils/formatCurrency";
 
 type Props = {};
@@ -18,7 +17,8 @@ const OrderComplete = (props: Props) => {
           minHeight: "80px",
         }}
       >
-        <Container
+        <div
+          className="container"
           style={{
             display: "flex",
             flexDirection: "column",
@@ -38,7 +38,7 @@ const OrderComplete = (props: Props) => {
           >
             Order Complete
           </h1>
-        </Container>
+        </div>
       </section>
       <div className="container mt-5">
         <div className="row justify-content-center">

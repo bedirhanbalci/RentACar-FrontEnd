@@ -12,7 +12,7 @@ function Navbar({}: Props) {
   return (
     <div className="nav-red z-3 p-3 px-5">
       <Link className="text-decoration-none ms-xl-5" to={"/"}>
-        <div className="nav-logo ms-xl-5">2B2</div>
+        <div className="nav-logo ms-xl-5 ps-xl-5">2B2</div>
       </Link>
       <ul className="nav-menu p-0 m-0">
         <div className="d-none d-lg-flex flex-row gap-4 gap-xl-5">

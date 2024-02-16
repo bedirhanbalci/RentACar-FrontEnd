@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import CarCard from "../../components/layout/CarCard/CarCard";
 import { GetByIdCarResponse } from "../../models/car/responses/GetByIdCarResponse";
 import carService from "../../services/carService";
-import { Container } from "react-bootstrap";
 
 type Props = {};
 
@@ -50,7 +49,8 @@ const CarList = (props: Props) => {
           minHeight: "80px",
         }}
       >
-        <Container
+        <div
+          className="container"
           style={{
             display: "flex",
             flexDirection: "column",
@@ -70,9 +70,9 @@ const CarList = (props: Props) => {
           >
             Cars
           </h1>
-        </Container>
+        </div>
       </section>
-      <div className="container mt-3">
+      <div className="container mb-5">
         <div className="row">
           {cars.map(car => (
             <div

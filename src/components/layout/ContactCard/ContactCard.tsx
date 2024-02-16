@@ -35,12 +35,13 @@ export default function ContactCard() {
                     fontFamily: '"Open Sans", sans-serif',
                     overflowY: "auto",
                     minHeight: "200px",
+                    textAlign: "justify",
                   }}
                 >
                   You can contact our Reservation Center at res@2B2.com.tr or
-                  call 444 28 47/444 2B2 from 09:00-19:00 daily. Reservations
+                  call 000 28 47/444 2B2 from 09:00-19:00 daily. Reservations
                   can also be made online via www.2B2.com.tr. For international
-                  calls, dial +90 (216) 444 28 47.
+                  calls, dial +90 (216) 000 28 47.
                 </p>
               </div>
             </div>
@@ -72,11 +73,12 @@ export default function ContactCard() {
                     fontFamily: '"Open Sans", sans-serif',
                     overflowY: "auto",
                     minHeight: "200px",
+                    textAlign: "justify",
                   }}
                 >
                   For all your suggestions, requests, criticisms and comments,
                   you can contact us from our Contact Center by pressing 3 on
-                  our 444 28 47 / 444 2B2&nbsp;line between 08:00-17:00 on
+                  our 000 28 47 / 000 2B2&nbsp;line between 08:00-17:00 on
                   weekdays, our contact form on our website, or our e-mail
                   address <Link to={email}> cs@2B2.com.tr </Link>{" "}
                 </p>
@@ -110,9 +112,10 @@ export default function ContactCard() {
                     fontFamily: '"Open Sans", sans-serif',
                     overflowY: "auto",
                     minHeight: "200px",
+                    textAlign: "justify",
                   }}
                 >
-                  You can reach us 24 / 7 by dialing 2 on 444 28 47 / 444 2B2
+                  You can reach us 24 / 7 by dialing 2 on 000 28 47 / 000 2B2
                   line in case of any kind of emergency, such as breakdowns,
                   accidents, or roadside assistance.
                   <br />

@@ -78,6 +78,10 @@ const DropdownCard = (props: Props) => {
             Invoices
           </NavDropdown.Item>
           <NavDropdown.Divider />
+          <NavDropdown.Item as={Link} to="/active-rental" className="text-dark">
+            Active Rentals
+          </NavDropdown.Item>
+          <NavDropdown.Divider />
           <NavDropdown.Item
             className="text-dark"
             onClick={() => {
