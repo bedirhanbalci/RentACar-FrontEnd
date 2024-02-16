@@ -57,7 +57,7 @@ const ContactMap = ({ branch }: Props) => {
   return (
     <div
       className="border rounded border-3"
-      style={{ height: "500px", width: "100%" }}
+      style={{ height: "520px", width: "100%" }}
       ref={mapRef}
     ></div>
   );

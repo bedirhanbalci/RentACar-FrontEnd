@@ -105,12 +105,12 @@ const Rental = (props: Props) => {
             className="img-fluid rounded"
           />
           <div className="card-body">
-            <h5 className="card-title" style={{ color: "#c31432" }}>
+            <h5 className="card-title text-danger">
               {car?.brandName} {car?.modelName}
             </h5>
             <div className="card-text">
               <hr />
-              <h6 style={{ color: "#c31432" }}>
+              <h6 className="text-danger">
                 <strong> Car Details:</strong>
               </h6>
               <p>
@@ -136,7 +136,7 @@ const Rental = (props: Props) => {
                 <strong>Plate:</strong> {car?.plate}
               </p>
               <hr />
-              <h6 style={{ color: "#ad0a27" }}>
+              <h6 className="text-danger">
                 <strong>Rental Details:</strong>
               </h6>
               <p>

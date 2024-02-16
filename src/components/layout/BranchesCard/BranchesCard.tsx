@@ -3,15 +3,25 @@ import { GetAllBranchesResponse } from "../../../models/branch/responses/GetAllB
 import branchService from "../../../services/branchService";
 import { useNavigate } from "react-router-dom";
 
-const BranchesCard: React.FC = () => {
+type Props = {
+  cityInput: string;
+};
+
+const BranchesCard: React.FC<Props> = props => {
   const [branches, setBranches] = useState<GetAllBranchesResponse[]>([]);
   const navigate = useNavigate();
 
   const fetchBranch = async () => {
     try {
-      await branchService.getAll().then((response: any) => {
-        setBranches(response.data.data);
-      });
+      if (props.cityInput !== "") {
+        await branchService.getByCity(props.cityInput).then((response: any) => {
+          setBranches(response.data);
+        });
+      } else {
+        await branchService.getAll().then((response: any) => {
+          setBranches(response.data.data);
+        });
+      }
     } catch (error) {
       console.log(error);
     }
