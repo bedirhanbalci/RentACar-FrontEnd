@@ -7,14 +7,14 @@ import userService from "../../../services/userService";
 
 type Props = { user: any; customer: any; setUpdate: any };
 
-const UserUpdate = ({ user, customer, setUpdate }: Props) => {
+const UserUpdateForm = ({ user, customer, setUpdate }: Props) => {
   const initialValues: UpdateUserRequest = {
     id: user?.id || 0,
     firstName: customer?.firstName || "",
     lastName: customer?.lastName || "",
     nationalityNo: customer?.nationalityNo || "",
     birthDate: customer?.birthDate || "",
-    phoneNumber: user.phoneNumber || "",
+    phoneNumber: user?.phoneNumber || "",
     email: user?.email || "",
     password: "",
     address: user?.address || "",
@@ -151,4 +151,4 @@ const UserUpdate = ({ user, customer, setUpdate }: Props) => {
   );
 };
 
-export default UserUpdate;
+export default UserUpdateForm;
