@@ -3,15 +3,25 @@ import { GetAllBranchesResponse } from "../../../models/branch/responses/GetAllB
 import branchService from "../../../services/branchService";
 import { useNavigate } from "react-router-dom";
 
-const BranchesCard: React.FC = () => {
+type Props = {
+  cityInput: string;
+};
+
+const BranchesCard: React.FC<Props> = props => {
   const [branches, setBranches] = useState<GetAllBranchesResponse[]>([]);
   const navigate = useNavigate();
 
   const fetchBranch = async () => {
     try {
-      await branchService.getAll().then((response: any) => {
-        setBranches(response.data.data);
-      });
+      if (props.cityInput !== "") {
+        await branchService.getByCity(props.cityInput).then((response: any) => {
+          setBranches(response.data);
+        });
+      } else {
+        await branchService.getAll().then((response: any) => {
+          setBranches(response.data.data);
+        });
+      }
     } catch (error) {
       console.log(error);
     }
@@ -36,7 +46,7 @@ const BranchesCard: React.FC = () => {
           <div className="card-body">
             <h5
               className="card-title"
-              style={{ color: "#c31432", fontWeight: "bold" }}
+              style={{ color: "#ad0a27", fontWeight: "bold" }}
             >
               {`${branch.city} - ${branch.address}`}{" "}
               <i className="bi bi-building"></i>

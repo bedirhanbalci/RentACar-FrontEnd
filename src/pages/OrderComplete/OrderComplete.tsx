@@ -1,6 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
-import { Container } from "reactstrap";
 import { formatCurrency } from "../../utils/formatCurrency";
+import { Button, Modal } from "react-bootstrap";
+import { useState } from "react";
 
 type Props = {};
 
@@ -8,6 +9,12 @@ const OrderComplete = (props: Props) => {
   const location = useLocation();
   const { invoice } = location.state || {};
   const { totalPrice } = location.state || {};
+
+  const [showModal, setShowModal] = useState(true);
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
 
   return (
     <div className="mb-5" style={{ fontFamily: "sans-serif" }}>
@@ -18,7 +25,8 @@ const OrderComplete = (props: Props) => {
           minHeight: "80px",
         }}
       >
-        <Container
+        <div
+          className="container"
           style={{
             display: "flex",
             flexDirection: "column",
@@ -38,7 +46,7 @@ const OrderComplete = (props: Props) => {
           >
             Order Complete
           </h1>
-        </Container>
+        </div>
       </section>
       <div className="container mt-5">
         <div className="row justify-content-center">
@@ -67,6 +75,29 @@ const OrderComplete = (props: Props) => {
           </div>
         </div>
       </div>
+      <Modal show={showModal} onHide={handleCloseModal}>
+        <Modal.Header closeButton className="bg-success text-white">
+          <Modal.Title className="fw-bold">Success</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <div className="d-flex align-items-center">
+            <i className="icon modal-icon icon-success me-3"></i>
+            <p className="mb-0">
+              Your order has been successfully completed. Thank you for your
+              rental!
+            </p>
+          </div>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button
+            className="btn rounded-4"
+            variant="success"
+            onClick={handleCloseModal}
+          >
+            OK
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 };

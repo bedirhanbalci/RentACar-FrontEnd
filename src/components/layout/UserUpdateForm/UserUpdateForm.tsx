@@ -1,6 +1,5 @@
 import { UpdateUserRequest } from "../../../models/user/requests/UpdateUserRequest";
 import { Form, Formik } from "formik";
-import { Container } from "reactstrap";
 import FormikInput from "../../common/FormikInput/FormikInput";
 import * as Yup from "yup";
 import userService from "../../../services/userService";
@@ -46,7 +45,7 @@ const UserUpdateForm = ({ user, customer, setUpdate }: Props) => {
 
   return (
     <div>
-      <Container>
+      <div className="container">
         <div className="row container col-lg-6 col-md-12 mt-5 mb-5 pt-5 pb-5">
           <Formik
             validationSchema={validationSchema}
@@ -141,12 +140,12 @@ const UserUpdateForm = ({ user, customer, setUpdate }: Props) => {
               />
 
               <button className="btn btn-danger rounded-4 mt-3" type="submit">
-                Update
+                Update My Information
               </button>
             </Form>
           </Formik>
         </div>
-      </Container>
+      </div>
     </div>
   );
 };

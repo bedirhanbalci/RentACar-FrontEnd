@@ -117,7 +117,7 @@ export const Reservation = (props: Props) => {
         <img className="img-fluid rounded" src={car?.imagePath} alt="" />
       </div>
       <div className="col-12 col-md-6 border rounded border-3 p-md-5">
-        <div className="text-center fs-1 text-capitalize fw-bolder">
+        <div className="text-center text-danger fs-1 text-capitalize fw-bolder">
           {car?.brandName} {car?.modelName}
         </div>
         <div>

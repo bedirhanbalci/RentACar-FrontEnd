@@ -2,9 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { GetByIdCarResponse } from "../../models/car/responses/GetByIdCarResponse";
 import CarService from "../../services/carService";
-
 import { formatCurrency } from "../../utils/formatCurrency";
-import { Container } from "react-bootstrap";
 
 type Props = {};
 
@@ -60,7 +58,8 @@ const CarDetail = (props: Props) => {
           minHeight: "80px",
         }}
       >
-        <Container
+        <div
+          className="container"
           style={{
             display: "flex",
             flexDirection: "column",
@@ -80,7 +79,7 @@ const CarDetail = (props: Props) => {
           >
             Car Details
           </h1>
-        </Container>
+        </div>
       </section>
 
       <div
@@ -93,14 +92,14 @@ const CarDetail = (props: Props) => {
               src={car.imagePath}
               className="img-fluid  rounded-start zoom"
               style={{
-                transform: "scale(1.25) translateY(20px) translateX(-15px)",
+                transform: "scale(1.15) translateY(20px) translateX(-15px)",
               }}
               alt={car.modelName}
             />
           </div>
           <div className="col-md-7 mb-3">
             <div className="card-body">
-              <h5 className="card-title fw-bold fs-4">
+              <h5 className="card-title text-danger fw-bold fs-4">
                 {car.brandName} {car.modelName}
               </h5>
 
@@ -133,14 +132,15 @@ const CarDetail = (props: Props) => {
                   className="list-group-item border-bottom"
                   style={{ backgroundColor: "#fafaf5" }}
                 >
-                  Color: {car.colorName}
+                  Body Type: {car.bodyType}
                 </li>
                 <li
                   className="list-group-item border-bottom"
                   style={{ backgroundColor: "#fafaf5" }}
                 >
-                  Body Type: {car.bodyType}
+                  Color: {car.colorName}
                 </li>
+
                 <li
                   className="list-group-item border-bottom"
                   style={{ backgroundColor: "#fafaf5" }}

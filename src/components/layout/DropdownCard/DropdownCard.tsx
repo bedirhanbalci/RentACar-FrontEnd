@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Nav, NavDropdown, NavLink } from "react-bootstrap";
+import { Nav, NavDropdown } from "react-bootstrap";
 import UserService from "../../../services/userService";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutSuccess } from "../../../store/slices/authSlice";
@@ -29,10 +29,6 @@ const DropdownCard = (props: Props) => {
   useEffect(() => {
     fetchUser();
   }, []);
-
-  useEffect(() => {
-    console.log(user);
-  }, [user]);
 
   return (
     <div className="mt-2">

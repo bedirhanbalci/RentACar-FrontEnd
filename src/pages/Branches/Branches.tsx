@@ -1,18 +1,21 @@
+import { useState } from "react";
 import BranchMap from "../../components/layout/BranchMap/BranchMap";
-import { Container } from "react-bootstrap";
 import BranchesCard from "../../components/layout/BranchesCard/BranchesCard";
 
 type Props = {};
 
 const Branches = (props: Props) => {
+  const [cityInput, setCityInput] = useState<string>("");
   const ScrollableContent = () => (
-    <div style={{ height: "250px", overflowY: "scroll" }}>
-      <BranchesCard />
+    <div className="mt-5" style={{ height: "250px", overflowY: "scroll" }}>
+      <BranchesCard cityInput={cityInput} />
     </div>
   );
 
   return (
-    <div>
+    <div
+      style={{ display: "flex", flexDirection: "column", minHeight: "67.5vh" }}
+    >
       <section
         className="page-header mb-5"
         style={{
@@ -20,7 +23,8 @@ const Branches = (props: Props) => {
           minHeight: "80px",
         }}
       >
-        <Container
+        <div
+          className="container"
           style={{
             display: "flex",
             flexDirection: "column",
@@ -40,29 +44,42 @@ const Branches = (props: Props) => {
           >
             Branches
           </h1>
-        </Container>
+        </div>
       </section>
 
-      <Container>
-        <div className="row">
-          <div className="col-lg-4 sm-12">
-            <div className="fw-bold">
-              <h4>Search Rental Location</h4>
+      <div
+        style={{
+          flex: 1,
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <div className="container">
+          <div className="row ">
+            <div className="col-lg-4 sm-12">
+              <div className="fw-bold">
+                <h4>Search Rental Location</h4>
+              </div>
+              <form>
+                <input
+                  placeholder="Search by City"
+                  className="form-control md-4"
+                  onChange={e => {
+                    setCityInput(e.target.value);
+                  }}
+                  value={cityInput}
+                />
+              </form>
+              <br />
+              <div>{<ScrollableContent />} </div>
             </div>
-            <form>
-              <input
-                placeholder="Search by City or District"
-                className="form-control md-4"
-              />
-            </form>
-            <br />
-            <div>{<ScrollableContent />} </div>
-          </div>
-          <div className="col-lg-8 sm-12">
-            <BranchMap />
+            <div className="col-lg-8 sm-12">
+              <BranchMap />
+            </div>
           </div>
         </div>
-      </Container>
+      </div>
     </div>
   );
 };

@@ -8,7 +8,6 @@ import {
   addAssurancePrice,
 } from "../../store/slices/rentalSlice";
 import { useNavigate } from "react-router-dom";
-import { Container } from "reactstrap";
 import { formatCurrency } from "../../utils/formatCurrency";
 
 type Props = {};
@@ -110,7 +109,7 @@ const AssurancePackage = (props: Props) => {
 
   const calculateAssurancePrice = async () => {
     const updatedAssuranceList = await Promise.all(
-      assuranceList.map(async (assurance) => {
+      assuranceList.map(async assurance => {
         const totalPrice = await fetchAssurancePrices(assurance.id);
         return { ...assurance, totalPrice: totalPrice, addible: false };
       })
@@ -121,7 +120,7 @@ const AssurancePackage = (props: Props) => {
   const changeAddible = async (id: any) => {
     const newAssuranceList = [...assuranceList];
 
-    newAssuranceList.forEach((item) => {
+    newAssuranceList.forEach(item => {
       if (item.id === id) {
         item.addible = !item.addible;
       } else {
@@ -180,7 +179,8 @@ const AssurancePackage = (props: Props) => {
           minHeight: "80px",
         }}
       >
-        <Container
+        <div
+          className="container"
           style={{
             display: "flex",
             flexDirection: "column",
@@ -198,26 +198,34 @@ const AssurancePackage = (props: Props) => {
               fontWeight: "bold",
             }}
           >
-            Assurance Packages
+            Coverages
           </h1>
-        </Container>
+        </div>
       </section>
-      <div className="container mt-5 mb-5 ">
+      <div className="container mt-5 mb-5">
         <div className="row justify-content-center">
           {assuranceList.map((card, index) => (
             <Col key={index} md={4}>
               <div className={"card"}>
                 <img
-                  style={{ height: "50%", padding: "35px" }}
+                  style={{
+                    padding: "35px",
+                    maxHeight: "200px",
+                  }}
                   src={card.imagePath}
                   className="card-img-top"
                   alt={`Card ${index + 1}`}
                 />
-                <h5 className="card-header fw-bold">{card.name}</h5>
+                <h5
+                  style={{ height: "65px" }}
+                  className="card-header text-danger fw-bold d-flex justify-content-center align-items-center text-center"
+                >
+                  {card.name}
+                </h5>
                 <div className="card-body">
-                  <p className="card-text">
-                    {card.detail.length > 100
-                      ? card.detail.substring(0, 100) + "..."
+                  <p className="card-text" style={{ textAlign: "justify" }}>
+                    {card.detail.length > 80
+                      ? card.detail.substring(0, 80) + "..."
                       : card.detail}
                   </p>
                   <p className="card-text text-muted">
@@ -235,7 +243,7 @@ const AssurancePackage = (props: Props) => {
                 <div>
                   <button
                     onClick={() => handleOnClick(card)}
-                    className="btn btn-danger ms-2"
+                    className="btn btn-danger ms-2 mb-1"
                     style={{ borderRadius: "20px" }}
                   >
                     {card.addible ? "Remove" : "Add"}
@@ -247,7 +255,7 @@ const AssurancePackage = (props: Props) => {
           <hr />
           <div className="card-text text-center">
             {" "}
-            Total Price: {formatCurrency(totalPrice)}
+            Total Price: <strong>{formatCurrency(totalPrice)}</strong>
             <div style={{ display: "inline-block", marginLeft: "10px" }}>
               <button
                 onClick={() => {

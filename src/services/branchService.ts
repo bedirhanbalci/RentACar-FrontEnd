@@ -26,6 +26,17 @@ class BranchService extends BaseService<
       this.apiUrl + "/getCarById/" + id
     );
   }
+
+  getByCity(city: any): Promise<AxiosResponse<GetAllBranchesResponse[]>> {
+    return axiosInstance.get<GetAllBranchesResponse[]>(
+      this.apiUrl + "/getByCity",
+      {
+        params: {
+          city: city,
+        },
+      }
+    );
+  }
 }
 
 export default new BranchService();

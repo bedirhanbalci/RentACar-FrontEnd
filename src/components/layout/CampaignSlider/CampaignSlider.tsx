@@ -34,7 +34,12 @@ const CampaignSlider: React.FC<CampaignSliderProps> = ({ cards }) => {
             className="card-img-top"
             alt={`Card ${index + 1}`}
           />
-          <h5 className="card-header fw-bold">{card.name}</h5>
+          <h5
+            style={{ height: "65px" }}
+            className="card-header text-danger fw-bold d-flex justify-content-center align-items-center text-center"
+          >
+            {card.name}
+          </h5>
           <div className="card-body">
             <p className="card-text">{card.detail}</p>
           </div>

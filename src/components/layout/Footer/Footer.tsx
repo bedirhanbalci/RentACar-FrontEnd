@@ -41,7 +41,7 @@ const Footer = (props: Props) => {
             <div className="logo footer__logo">
               <h1>
                 <Link
-                  to="/home"
+                  to="/"
                   className="d-flex align-items-center gap-2 text-white list-t text-decoration-none"
                 >
                   <span>2B2</span>

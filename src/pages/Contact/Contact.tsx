@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import ContactMap from "../../components/layout/ContactMap/ContactMap";
-import { Container } from "react-bootstrap";
 import { GetByIdBranchResponse } from "../../models/branch/responses/GetByIdBranchResponse";
 import branchService from "../../services/branchService";
 import { Form, Formik } from "formik";
@@ -96,7 +95,8 @@ const Contact = (props: Props) => {
           minHeight: "80px",
         }}
       >
-        <Container
+        <div
+          className="container"
           style={{
             display: "flex",
             flexDirection: "column",
@@ -116,11 +116,11 @@ const Contact = (props: Props) => {
           >
             Contact
           </h1>
-        </Container>
+        </div>
       </section>
 
       <section className="primary-section">
-        <Container>
+        <div className="container">
           <ContactCard />
           <div className="row">
             <div className="col-lg-6 col-md-12" style={{ padding: "24px" }}>
@@ -130,8 +130,8 @@ const Contact = (props: Props) => {
                   Headquarters
                 </h5>
                 <p className="desc">
-                  2B2 Aydınevler Neighborhood, Saygı Avenue No: 60, Küçükyalı
-                  34854 / İstanbul
+                  2B2 Atatürk Neighborhood, Saygı Avenue No: 19, Ataşehir 34019
+                  / İstanbul
                 </p>
                 <div
                   className="map-item"
@@ -145,7 +145,7 @@ const Contact = (props: Props) => {
               <Formik
                 initialValues={initialValues}
                 validationSchema={validationSchema}
-                onSubmit={(values) => {
+                onSubmit={values => {
                   console.log(values);
                 }}
               >
@@ -257,8 +257,8 @@ const Contact = (props: Props) => {
                   <div className="col-12 mb-3">
                     <p>
                       Pursuant to the Privacy Notice, I accept the following
-                      processing activities conducted by Otokoç Otomotiv Ticaret
-                      ve Sanayi Anonim Şirketi:
+                      processing activities conducted by 2B2 Otomotiv Ticaret ve
+                      Sanayi Anonim Şirketi:
                     </p>
                     <div className="col-12 mb-3">
                       <FormikInput
@@ -267,7 +267,7 @@ const Contact = (props: Props) => {
                         id="terms1"
                         name="terms1"
                       />
-                      <label htmlFor="terms1">
+                      <label htmlFor="terms1" style={{ textAlign: "justify" }}>
                         {" "}
                         Processing of my identity, communication, customer
                         transaction, marketing, and vehicle-insurance data for
@@ -276,8 +276,8 @@ const Contact = (props: Props) => {
                         in this regard, sending commercial electronic messages
                         such as advertisements, promotions, and campaigns to my
                         contact information, and for sharing this information
-                        with the suppliers whom Otokoç procures their services
-                        for these activities.
+                        with the suppliers whom 2B2 procures their services for
+                        these activities.
                       </label>
                     </div>
 
@@ -288,7 +288,7 @@ const Contact = (props: Props) => {
                         id="terms2"
                         name="terms2"
                       />
-                      <label htmlFor="terms2">
+                      <label htmlFor="terms2" style={{ textAlign: "justify" }}>
                         Processing of my identity, vehicle, location, customer
                         transaction and marketing data for the purposes of
                         analyzing my Connected Car driving and service usage
@@ -311,7 +311,7 @@ const Contact = (props: Props) => {
               </Formik>
             </div>
           </div>
-        </Container>
+        </div>
       </section>
     </>
   );

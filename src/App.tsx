@@ -58,8 +58,8 @@ function App(): ReactElement {
           ></Route>
           <Route path="/rental" element={<Rental />}></Route>
           <Route path="/order-complete" element={<OrderComplete />}></Route>
-          <Route path="/invoice" element={<Invoice />}></Route>
           <Route path="/profile" element={<Profile />}></Route>
+          <Route path="/invoice" element={<Invoice />}></Route>
         </Routes>
       </div>
       <Footer />
