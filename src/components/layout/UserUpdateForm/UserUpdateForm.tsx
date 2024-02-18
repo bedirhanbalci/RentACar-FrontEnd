@@ -46,7 +46,7 @@ const UserUpdateForm = ({ user, customer, setUpdate }: Props) => {
   return (
     <div>
       <div className="container">
-        <div className="row container col-lg-6 col-md-12 mt-5 mb-5 pt-5 pb-5">
+        <div className="row container  col-md-12 mt-3 mb-5  pb-5">
           <Formik
             validationSchema={validationSchema}
             initialValues={initialValues}
@@ -84,8 +84,7 @@ const UserUpdateForm = ({ user, customer, setUpdate }: Props) => {
                     type="date"
                   />
                 </div>
-              </div>
-              <div className="row mb-6">
+
                 <div className="col-md-6 col-lg-6">
                   <FormikInput
                     className="form-control"
