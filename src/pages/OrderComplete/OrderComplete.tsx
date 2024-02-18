@@ -52,7 +52,7 @@ const OrderComplete = (props: Props) => {
         <div className="row justify-content-center">
           <div className="col-md-8 text-center">
             <div className="p-4 shadow rounded">
-              <h2 className="card-title mb-4">Order Complete</h2>
+              <h2 className="card-title text-danger mb-4">Order Complete</h2>
               <p className="lead">
                 Your order has been successfully completed.
               </p>
