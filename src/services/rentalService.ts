@@ -1,12 +1,12 @@
 import { BaseService } from "./baseService";
 import axiosInstance from "../utils/interceptors/axiosInterceptors";
 import { AxiosResponse } from "axios";
-import { GetAllRentalsResponse } from "../models/rental/responses/getAllRentalsResponse";
-import { GetByIdRentalResponse } from "../models/rental/responses/getByIdRentalResponse";
-import { AddRentalRequest } from "../models/rental/requests/addRentalRequest";
-import { AddRentalResponse } from "../models/rental/responses/addRentalResponse";
-import { UpdateRentalRequest } from "../models/rental/requests/updateRentalRequest";
-import { UpdateRentalResponse } from "../models/rental/responses/updateRentalResponse";
+import { GetAllRentalsResponse } from "../models/rental/responses/GetAllRentalsResponse";
+import { GetByIdRentalResponse } from "../models/rental/responses/GetByIdRentalResponse";
+import { AddRentalRequest } from "../models/rental/requests/AddRentalRequest";
+import { AddRentalResponse } from "../models/rental/responses/AddRentalResponse";
+import { UpdateRentalRequest } from "../models/rental/requests/UpdateRentalRequest";
+import { UpdateRentalResponse } from "../models/rental/responses/UpdateRentalResponse";
 
 class RentalService extends BaseService<
   GetAllRentalsResponse,

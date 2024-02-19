@@ -1,13 +1,13 @@
 import { BaseService } from "./baseService";
 import { AxiosResponse } from "axios";
 import axiosInstance from "../utils/interceptors/axiosInterceptors";
-import { GetAllCarsResponse } from "../models/car/responses/getAllCarsResponse";
-import { GetByIdCarResponse } from "../models/car/responses/getByIdCarResponse";
-import { AddCarRequest } from "../models/car/requests/addCarRequest";
-import { AddCarResponse } from "../models/car/responses/addCarResponse";
-import { UpdateCarRequest } from "../models/car/requests/updateCarRequest";
-import { UpdateCarResponse } from "../models/car/responses/updateCarResponse";
-import { CarTotalPriceRequest } from "../models/car/requests/carTotalPriceRequest";
+import { GetAllCarsResponse } from "../models/car/responses/GetAllCarsResponse";
+import { GetByIdCarResponse } from "../models/car/responses/GetByIdCarResponse";
+import { AddCarRequest } from "../models/car/requests/AddCarRequest";
+import { AddCarResponse } from "../models/car/responses/AddCarResponse";
+import { UpdateCarRequest } from "../models/car/requests/UpdateCarRequest";
+import { UpdateCarResponse } from "../models/car/responses/UpdateCarResponse";
+import { CarTotalPriceRequest } from "../models/car/requests/CarTotalPriceRequest";
 
 class CarService extends BaseService<
   GetAllCarsResponse,

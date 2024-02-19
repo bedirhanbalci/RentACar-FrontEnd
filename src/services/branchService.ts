@@ -1,13 +1,13 @@
 import { AxiosResponse } from "axios";
-import { GetByIdBranchResponse } from "../models/branch/responses/getByIdBranchResponse";
+import { GetByIdBranchResponse } from "../models/branch/responses/GetByIdBranchResponse";
 import { BaseService } from "./baseService";
 import axiosInstance from "../utils/interceptors/axiosInterceptors";
-import { GetByIdCarResponse } from "../models/car/responses/getByIdCarResponse";
-import { GetAllBranchesResponse } from "../models/branch/responses/getAllBranchesResponse";
-import { AddBranchRequest } from "../models/branch/requests/addBranchRequest";
-import { AddBranchResponse } from "../models/branch/responses/addBranchResponse";
-import { UpdateBranchRequest } from "../models/branch/requests/updateBranchRequest";
-import { UpdateBranchResponse } from "../models/branch/responses/updateBranchResponse";
+import { GetByIdCarResponse } from "../models/car/responses/GetByIdCarResponse";
+import { GetAllBranchesResponse } from "../models/branch/responses/GetAllBranchesResponse";
+import { AddBranchRequest } from "../models/branch/requests/AddBranchRequest";
+import { AddBranchResponse } from "../models/branch/responses/AddBranchResponse";
+import { UpdateBranchRequest } from "../models/branch/requests/UpdateBranchRequest";
+import { UpdateBranchResponse } from "../models/branch/responses/UpdateBranchResponse";
 
 class BranchService extends BaseService<
   GetAllBranchesResponse,

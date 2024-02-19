@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { GetByIdUserResponse } from "../../models/user/responses/getByIdUserResponse";
+import { GetByIdUserResponse } from "../../models/user/responses/GetByIdUserResponse";
 import UserService from "../../services/userService";
 import { useSelector } from "react-redux";
 import UserUpdateForm from "../../components/layout/UserUpdateForm/UserUpdateForm";

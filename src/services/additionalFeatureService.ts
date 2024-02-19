@@ -1,13 +1,13 @@
 import { AxiosResponse } from "axios";
-import { GetAllAdditionalFeaturesResponse } from "../models/additionalFeature/responses/getAllAdditionalFeaturesResponse";
+import { GetAllAdditionalFeaturesResponse } from "../models/additionalFeature/responses/GetAllAdditionalFeaturesResponse";
 import { BaseService } from "./baseService";
 import axiosInstance from "../utils/interceptors/axiosInterceptors";
-import { GetByIdAdditionalFeatureResponse } from "../models/additionalFeature/responses/getByIdAdditionalFeatureResponse";
-import { AddAdditionalFeatureRequest } from "../models/additionalFeature/requests/addAdditionalFeatureRequest";
-import { AddAdditionalFeatureResponse } from "../models/additionalFeature/responses/addAdditionalFeatureResponse";
-import { UpdateAdditionalFeatureRequest } from "../models/additionalFeature/requests/updateAdditionalFeatureRequest";
-import { UpdateAdditionalFeatureResponse } from "../models/additionalFeature/responses/updateAdditionalFeatureResponse";
-import { AdditionalRequest } from "../models/additionalFeature/requests/additionalRequest";
+import { GetByIdAdditionalFeatureResponse } from "../models/additionalFeature/responses/GetByIdAdditionalFeatureResponse";
+import { AddAdditionalFeatureRequest } from "../models/additionalFeature/requests/AddAdditionalFeatureRequest";
+import { AddAdditionalFeatureResponse } from "../models/additionalFeature/responses/AddAdditionalFeatureResponse";
+import { UpdateAdditionalFeatureRequest } from "../models/additionalFeature/requests/UpdateAdditionalFeatureRequest";
+import { UpdateAdditionalFeatureResponse } from "../models/additionalFeature/responses/UpdateAdditionalFeatureResponse";
+import { AdditionalRequest } from "../models/additionalFeature/requests/AdditionalRequest";
 
 class AdditionalFeatureService extends BaseService<
   GetAllAdditionalFeaturesResponse,

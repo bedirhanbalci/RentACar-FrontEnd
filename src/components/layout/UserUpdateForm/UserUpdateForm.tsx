@@ -1,4 +1,4 @@
-import { UpdateUserRequest } from "../../../models/user/requests/updateUserRequest";
+import { UpdateUserRequest } from "../../../models/user/requests/UpdateUserRequest";
 import { Form, Formik } from "formik";
 import FormikInput from "../../common/FormikInput/FormikInput";
 import * as Yup from "yup";

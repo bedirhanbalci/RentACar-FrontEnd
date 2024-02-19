@@ -1,13 +1,13 @@
 import { AxiosResponse } from "axios";
-import { GetAllAssurancePackagesResponse } from "../models/assurancePackage/responses/getAllAssurancePackagesResponse";
+import { GetAllAssurancePackagesResponse } from "../models/assurancePackage/responses/GetAllAssurancePackagesResponse";
 import { BaseService } from "./baseService";
 import axiosInstance from "../utils/interceptors/axiosInterceptors";
-import { GetByIdAssurancePackageResponse } from "../models/assurancePackage/responses/getByIdAssurancePackageResponse";
-import { AddAssurancePackageRequest } from "../models/assurancePackage/requests/addAssurancePackageRequest";
-import { AddAssurancePackageResponse } from "../models/assurancePackage/responses/addAssurancePackageResponse";
-import { UpdateAssurancePackageRequest } from "../models/assurancePackage/requests/updateAssurancePackageRequest";
-import { UpdateAssurancePackageResponse } from "../models/assurancePackage/responses/updateAssurancePackageResponse";
-import { AssuranceRequest } from "../models/assurancePackage/requests/assuranceRequest";
+import { GetByIdAssurancePackageResponse } from "../models/assurancePackage/responses/GetByIdAssurancePackageResponse";
+import { AddAssurancePackageRequest } from "../models/assurancePackage/requests/AddAssurancePackageRequest";
+import { AddAssurancePackageResponse } from "../models/assurancePackage/responses/AddAssurancePackageResponse";
+import { UpdateAssurancePackageRequest } from "../models/assurancePackage/requests/UpdateAssurancePackageRequest";
+import { UpdateAssurancePackageResponse } from "../models/assurancePackage/responses/UpdateAssurancePackageResponse";
+import { AssuranceRequest } from "../models/assurancePackage/requests/AssuranceRequest";
 
 class AssurancePackageService extends BaseService<
   GetAllAssurancePackagesResponse,

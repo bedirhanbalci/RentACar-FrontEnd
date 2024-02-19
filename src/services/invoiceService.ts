@@ -1,9 +1,9 @@
-import { AddInvoiceRequest } from "../models/invoice/requests/addInvoiceRequest";
-import { UpdateInvoiceRequest } from "../models/invoice/requests/updateInvoiceRequest";
-import { GetAllInvoicesResponse } from "../models/invoice/responses/getAllInvoicesResponse";
-import { GetByIdInvoiceResponse } from "../models/invoice/responses/getByIdInvoiceResponse";
-import { AddInvoiceResponse } from "../models/invoice/responses/addInvoiceResponse";
-import { UpdateInvoiceResponse } from "../models/invoice/responses/updateInvoiceResponse";
+import { AddInvoiceRequest } from "../models/invoice/requests/AddInvoiceRequest";
+import { UpdateInvoiceRequest } from "../models/invoice/requests/UpdateInvoiceRequest";
+import { GetAllInvoicesResponse } from "../models/invoice/responses/GetAllInvoicesResponse";
+import { GetByIdInvoiceResponse } from "../models/invoice/responses/GetByIdInvoiceResponse";
+import { AddInvoiceResponse } from "../models/invoice/responses/AddInvoiceResponse";
+import { UpdateInvoiceResponse } from "../models/invoice/responses/UpdateInvoiceResponse";
 import { BaseService } from "./baseService";
 
 class InvoiceService extends BaseService<

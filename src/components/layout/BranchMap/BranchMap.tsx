@@ -1,7 +1,7 @@
 "use client";
 import { Loader } from "@googlemaps/js-api-loader";
 import React, { useEffect, useRef, useState } from "react";
-import { GetAllBranchesResponse } from "../../../models/branch/responses/getAllBranchesResponse";
+import { GetAllBranchesResponse } from "../../../models/branch/responses/GetAllBranchesResponse";
 import BranchService from "../../../services/branchService";
 import { toast } from "react-toastify";
 

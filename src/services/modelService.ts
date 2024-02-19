@@ -1,9 +1,9 @@
-import { AddModelRequest } from "../models/model/requests/addModelRequest";
-import { UpdateModelRequest } from "../models/model/requests/updateModelRequest";
-import { GetAllModelsResponse } from "../models/model/responses/getAllModelsResponse";
-import { GetByIdModelResponse } from "../models/model/responses/getByIdModelResponse";
-import { AddModelResponse } from "../models/model/responses/addModelResponse";
-import { UpdateModelResponse } from "../models/model/responses/updateModelResponse";
+import { AddModelRequest } from "../models/model/requests/AddModelRequest";
+import { UpdateModelRequest } from "../models/model/requests/UpdateModelRequest";
+import { GetAllModelsResponse } from "../models/model/responses/GetAllModelsResponse";
+import { GetByIdModelResponse } from "../models/model/responses/GetByIdModelResponse";
+import { AddModelResponse } from "../models/model/responses/AddModelResponse";
+import { UpdateModelResponse } from "../models/model/responses/UpdateModelResponse";
 import { BaseService } from "./baseService";
 
 class ModelService extends BaseService<
