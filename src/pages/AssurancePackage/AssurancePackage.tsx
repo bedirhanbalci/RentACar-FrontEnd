@@ -9,6 +9,7 @@ import {
 } from "../../store/slices/rentalSlice";
 import { useNavigate } from "react-router-dom";
 import { formatCurrency } from "../../utils/formatCurrency";
+import { toast } from "react-toastify";
 
 type Props = {};
 
@@ -36,8 +37,8 @@ const AssurancePackage = (props: Props) => {
       await AssurancePackageService.getAll().then((response: any) => {
         setAssuranceList(response.data.data);
       });
-    } catch (error) {
-      console.log(error);
+    } catch (error: any) {
+      toast.error(error.response.data.message);
     }
   };
 
@@ -53,8 +54,8 @@ const AssurancePackage = (props: Props) => {
 
       const response = await AssurancePackageService.addAssurancePrice(data);
       return response.data.data.dailyPrice;
-    } catch (error) {
-      console.log(error);
+    } catch (error: any) {
+      toast.error(error.response.data.message);
     }
   };
 
@@ -134,34 +135,24 @@ const AssurancePackage = (props: Props) => {
     startDateStr: string,
     endDateStr: string
   ): string {
-    // String tarihleri Date nesnelerine dönüştür
     const startDate = new Date(startDateStr);
+
     const endDate = new Date(endDateStr);
 
-    // İki tarih arasındaki farkı hesapla
     const timeDifference = endDate.getTime() - startDate.getTime();
 
-    // Bir günün milisaniye cinsinden değeri
     const oneDay = 1000 * 60 * 60 * 24;
 
-    // Farkı gün cinsine dönüştür
     const differenceInDays = Math.floor(timeDifference / oneDay);
-
-    // Gün hesaplaması
 
     const days = Math.floor((differenceInDays % 365) % 30);
 
-    // Sonucu formatlı bir şekilde döndür
     return `For ${days + 1} days`;
   }
 
   useEffect(() => {
     fetchAssurance();
   }, []);
-
-  useEffect(() => {
-    console.log(assuranceId);
-  }, [assuranceId]);
 
   useEffect(() => {
     if (counter === 1) {
@@ -206,7 +197,7 @@ const AssurancePackage = (props: Props) => {
         <div className="row justify-content-center">
           {assuranceList.map((card, index) => (
             <Col key={index} md={4}>
-              <div className={"card"}>
+              <div className={"card"} key={card.id}>
                 <img
                   style={{
                     padding: "35px",

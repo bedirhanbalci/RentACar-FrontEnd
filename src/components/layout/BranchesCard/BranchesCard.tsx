@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { GetAllBranchesResponse } from "../../../models/branch/responses/GetAllBranchesResponse";
 import branchService from "../../../services/branchService";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 type Props = {
   cityInput: string;
@@ -22,8 +23,8 @@ const BranchesCard: React.FC<Props> = props => {
           setBranches(response.data.data);
         });
       }
-    } catch (error) {
-      console.log(error);
+    } catch (error: any) {
+      toast.error(error.response.data.message);
     }
   };
 

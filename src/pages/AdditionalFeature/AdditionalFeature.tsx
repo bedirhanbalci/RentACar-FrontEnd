@@ -9,6 +9,7 @@ import { GetAllAdditionalFeaturesResponse } from "../../models/additionalFeature
 import AdditionalFeatureService from "../../services/additionalFeatureService";
 import { useNavigate } from "react-router-dom";
 import { formatCurrency } from "../../utils/formatCurrency";
+import { toast } from "react-toastify";
 
 type Props = {};
 
@@ -33,8 +34,8 @@ const AdditionalFeature = (props: Props) => {
       await AdditionalFeatureService.getAll().then((response: any) => {
         setAdditionalList(response.data.data);
       });
-    } catch (error) {
-      console.log(error);
+    } catch (error: any) {
+      toast.error(error.response.data.message);
     }
   };
 
@@ -51,8 +52,8 @@ const AdditionalFeature = (props: Props) => {
 
       const response = await AdditionalFeatureService.addAdditionalPrice(data);
       return response.data.data.dailyPrice;
-    } catch (error) {
-      console.log(error);
+    } catch (error: any) {
+      toast.error(error.response.data.message);
     }
   };
 
@@ -119,24 +120,18 @@ const AdditionalFeature = (props: Props) => {
     startDateStr: string,
     endDateStr: string
   ): string {
-    // String tarihleri Date nesnelerine dönüştür
     const startDate = new Date(startDateStr);
+
     const endDate = new Date(endDateStr);
 
-    // İki tarih arasındaki farkı hesapla
     const timeDifference = endDate.getTime() - startDate.getTime();
 
-    // Bir günün milisaniye cinsinden değeri
     const oneDay = 1000 * 60 * 60 * 24;
 
-    // Farkı gün cinsine dönüştür
     const differenceInDays = Math.floor(timeDifference / oneDay);
-
-    // Gün hesaplaması
 
     const days = Math.floor((differenceInDays % 365) % 30);
 
-    // Sonucu formatlı bir şekilde döndür
     return `For ${days + 1} days`;
   }
 
@@ -192,7 +187,10 @@ const AdditionalFeature = (props: Props) => {
         <div className="row justify-content-center">
           {additionalList.map((card, index) => {
             return (
-              <div className="col-lg-4 col-md-4 col-sm-6 col-12 mb-3 mb-sm-0 mt-3">
+              <div
+                className="col-lg-4 col-md-4 col-sm-6 col-12 mb-3 mb-sm-0 mt-3"
+                key={card.id}
+              >
                 <Col key={index} md={4}>
                   <div className={"card"}>
                     <img

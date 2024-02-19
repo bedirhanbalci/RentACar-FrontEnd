@@ -7,6 +7,7 @@ import FormikSelect from "../../components/common/FormikSelect/FormikSelect";
 import FormikInput from "../../components/common/FormikInput/FormikInput";
 import * as Yup from "yup";
 import ContactCard from "../../components/layout/ContactCard/ContactCard";
+import { toast } from "react-toastify";
 
 type Props = {};
 interface ContactForm {
@@ -29,8 +30,8 @@ const Contact = (props: Props) => {
     try {
       const response = await branchService.getById(1);
       setBranch(response.data);
-    } catch (error) {
-      console.log(error);
+    } catch (error: any) {
+      toast.error(error.response.data.message);
     }
   };
   useEffect(() => {

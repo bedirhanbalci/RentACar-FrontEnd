@@ -61,7 +61,6 @@ const LoginCard: React.FC = () => {
         password: corporatePassword,
         type: activeTab,
       } as CorporateLoginRequest);
-      console.log(response.data);
       dispatch(loginSuccess(response.data));
 
       if (rememberMeCorporate) {

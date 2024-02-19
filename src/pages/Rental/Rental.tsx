@@ -7,6 +7,7 @@ import CarService from "../../services/carService";
 import { GetByIdCarResponse } from "../../models/car/responses/GetByIdCarResponse";
 import { formatCurrency } from "../../utils/formatCurrency";
 import toastr from "toastr";
+import { toast } from "react-toastify";
 
 type Props = {};
 
@@ -45,22 +46,39 @@ const Rental = (props: Props) => {
       return;
     }
 
+    type RequestData = {
+      startDate: any;
+      endDate: any;
+      userId: any;
+      carId: any;
+      assurancePackageId?: any;
+      additionalList?: any;
+    };
+
+    const requestData: RequestData = {
+      startDate: rentalState.startDate.startDate,
+      endDate: rentalState.endDate.endDate,
+      userId: authState.id,
+      carId: rentalState.carId,
+    };
+
+    if (rentalState.assurance) {
+      requestData.assurancePackageId = rentalState.assurance;
+    }
+
+    if (rentalState.additional) {
+      requestData.additionalList = rentalState.additional;
+    }
+
     try {
-      const response = await RentalService.add({
-        startDate: rentalState.startDate.startDate,
-        endDate: rentalState.endDate.endDate,
-        assurancePackageId: rentalState.assurance,
-        additionalList: rentalState.additional,
-        userId: authState.id,
-        carId: rentalState.carId,
-      });
+      const response = await RentalService.add(requestData);
 
       dispatch(clearRental());
       navigate("/order-complete", {
         state: { invoice: response.data, totalPrice: totalPrice },
       });
-    } catch (error) {
-      console.log(error);
+    } catch (error: any) {
+      toast.error(error.response.data.message);
     }
   };
 

@@ -100,7 +100,6 @@ const CorporateRegister = (props: Props) => {
         });
         setErrors(formikErrors);
       } else {
-        console.log(error);
         toast.error(error.response.data.message);
       }
     } finally {

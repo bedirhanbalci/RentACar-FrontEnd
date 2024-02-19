@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import "./Invoice.css";
 import { formatCurrency } from "../../utils/formatCurrency";
-import userService from "../../services/userService";
 import rentalService from "../../services/rentalService";
+import "./Invoice.css";
 
 type Props = {};
 
@@ -24,10 +22,6 @@ const Invoice = (props: Props) => {
       console.error(err);
     }
   };
-
-  useEffect(() => {
-    console.log(info);
-  }, [info]);
 
   useEffect(() => {
     fetchInfo();
@@ -110,30 +104,6 @@ const Invoice = (props: Props) => {
           </div>
         </div>
       ))}
-
-      {/* <div className="invoice-detail" onClick={() => console.log("Clicked!")}>
-        <div className="card">
-          <div className="card-body">
-            <h5 className="card-title fw-bold">Invoice Detail</h5>
-            <div className="d-flex justify-content-between mb-3">
-              <p className="fw-bold">Invoice No:</p>
-              <p>{invoice?.invoiceNo}</p>
-            </div>
-            <div className="d-flex justify-content-between mb-3">
-              <p className="fw-bold">Invoice Date:</p>
-              <p>{invoice?.createdDate}</p>
-            </div>
-            <div className="d-flex justify-content-between mb-3">
-              <p className="fw-bold">Total Price:</p>
-              <p>{formatCurrency(invoice?.totalPrice)}</p>
-            </div>
-            <div className="d-flex justify-content-between mb-3">
-              <p className="fw-bold">User:</p>
-              <p>{invoice?.userName}</p>
-            </div>
-          </div>
-        </div>
-      </div> */}
     </div>
   );
 };

@@ -33,10 +33,6 @@ const CarDetail = (props: Props) => {
     fetchCar();
   }, [params.id]);
 
-  useEffect(() => {
-    console.log(car?.imagePath);
-  }, [car]);
-
   if (isLoading) {
     return <div>Lodading...</div>;
   }

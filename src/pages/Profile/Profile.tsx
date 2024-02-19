@@ -3,7 +3,7 @@ import { GetByIdUserResponse } from "../../models/user/responses/GetByIdUserResp
 import userService from "../../services/userService";
 import { useSelector } from "react-redux";
 import UserUpdateForm from "../../components/layout/UserUpdateForm/UserUpdateForm";
-import { Container } from "react-bootstrap";
+import { Container, Card, Button, Modal } from "react-bootstrap";
 
 type Props = {};
 
@@ -13,6 +13,7 @@ const Profile = (props: Props) => {
   const authState = useSelector((store: any) => store.auth);
   const [editable, setEditable] = useState(false);
   const [updated, setUpdated] = useState<boolean>(false);
+  const [showModal, setShowModal] = useState(false);
 
   const fetchUser = async () => {
     try {
@@ -30,6 +31,14 @@ const Profile = (props: Props) => {
   useEffect(() => {
     fetchUser();
   }, [updated]);
+
+  const openModal = () => {
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
 
   return (
     <>
@@ -59,16 +68,16 @@ const Profile = (props: Props) => {
                 fontWeight: "bold",
               }}
             >
-              My Personal Information
+              Personal Informations
             </h1>
           </Container>
         </section>
-        <div className="row">
-          <div>
-            <div className="row">
-              <div className="col-md-4 ms-5">
-                <div className="card mt-3 mb-5">
-                  <div className="card-header">User Details</div>
+        <div className="container">
+          <div className="row">
+            <div className="col-md-6">
+              <Card className="mt-3 mb-5">
+                <Card.Header className="fw-bold">User Details</Card.Header>
+                <Card.Body>
                   <ul className="list-group list-group-flush">
                     <li className="list-group-item border-bottom">
                       Email: {user?.email || "N/A"}
@@ -80,11 +89,15 @@ const Profile = (props: Props) => {
                       Address: {user?.address || "N/A"}
                     </li>
                   </ul>
-                </div>
-                <div className="card mt-3">
-                  <div className="card-header fw-bold ">
-                    Customer Information
-                  </div>
+                </Card.Body>
+              </Card>
+            </div>
+            <div className="col-md-6">
+              <Card className="mt-3 mb-5">
+                <Card.Header className="fw-bold">
+                  Customer Information
+                </Card.Header>
+                <Card.Body>
                   <ul className="list-group list-group-flush">
                     <li className="list-group-item border-bottom">
                       Name: {customer?.firstName} {customer?.lastName || "N/A"}
@@ -116,34 +129,48 @@ const Profile = (props: Props) => {
                       </li>
                     )}
                   </ul>
-                </div>
-
-                <div className="col-md-8 ms-3">
-                  <button
-                    className="btn btn-sm btn-danger rounded-4"
-                    onClick={() => {
-                      setEditable(!editable);
-                      setUpdated(false);
-                    }}
-                  >
-                    Update My Information
-                    <i className="bi bi-arrow-right-circle ps-3" />
-                  </button>
-                </div>
-              </div>
-              {editable && (
-                <div className="col-md-6">
-                  <UserUpdateForm
-                    user={user}
-                    customer={customer}
-                    setUpdate={setUpdated}
-                  />{" "}
-                </div>
-              )}
+                </Card.Body>
+              </Card>
+            </div>
+          </div>
+          <div className="row justify-content-center">
+            <div className="col-md-6">
+              <Button
+                variant="danger"
+                className="rounded-4 mt-3"
+                onClick={() => {
+                  setEditable(!editable);
+                  setUpdated(false);
+                  openModal();
+                }}
+              >
+                Update My Information
+                <i className="bi bi-arrow-right-circle ps-3" />
+              </Button>
             </div>
           </div>
         </div>
       </div>
+      <Modal show={showModal} onHide={closeModal} size="lg" centered>
+        <Modal.Header closeButton>
+          <Modal.Title className="fw-bold">
+            Edit Personal Information
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <div className="container-fluid">
+            <div className="row">
+              <div className="col-md-12">
+                <UserUpdateForm
+                  user={user}
+                  customer={customer}
+                  setUpdate={setUpdated}
+                />
+              </div>
+            </div>
+          </div>
+        </Modal.Body>
+      </Modal>
     </>
   );
 };
