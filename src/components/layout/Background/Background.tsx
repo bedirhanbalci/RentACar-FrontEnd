@@ -1,4 +1,4 @@
-import "./Background.css";
+import "./background.css";
 
 type Props = {
   playStatus: boolean;

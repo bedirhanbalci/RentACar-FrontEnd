@@ -1,8 +1,8 @@
-import { UpdateUserRequest } from "../../../models/user/requests/UpdateUserRequest";
+import { UpdateUserRequest } from "../../../models/user/requests/updateUserRequest";
 import { Form, Formik } from "formik";
 import FormikInput from "../../common/FormikInput/FormikInput";
 import * as Yup from "yup";
-import userService from "../../../services/userService";
+import UserService from "../../../services/userService";
 
 type Props = { user: any; customer: any; setUpdate: any };
 
@@ -36,7 +36,7 @@ const UserUpdateForm = ({ user, customer, setUpdate }: Props) => {
 
   const handleOnSubmit = async (values: UpdateUserRequest) => {
     try {
-      await userService.update(values);
+      await UserService.update(values);
       setUpdate(true);
     } catch (err) {
       console.error(err);

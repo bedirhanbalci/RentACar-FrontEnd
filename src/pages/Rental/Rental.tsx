@@ -4,7 +4,7 @@ import { clearRental } from "../../store/slices/rentalSlice";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import CarService from "../../services/carService";
-import { GetByIdCarResponse } from "../../models/car/responses/GetByIdCarResponse";
+import { GetByIdCarResponse } from "../../models/car/responses/getByIdCarResponse";
 import { formatCurrency } from "../../utils/formatCurrency";
 import toastr from "toastr";
 import { toast } from "react-toastify";

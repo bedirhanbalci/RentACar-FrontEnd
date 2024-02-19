@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import { GetByIdCarResponse } from "../../models/car/responses/GetByIdCarResponse";
+import { GetByIdCarResponse } from "../../models/car/responses/getByIdCarResponse";
 import * as Yup from "yup";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import CarService from "../../services/carService";
@@ -11,8 +11,8 @@ import {
   addRentalPrice,
 } from "../../store/slices/rentalSlice";
 import { formatCurrency } from "../../utils/formatCurrency";
-import rentalService from "../../services/rentalService";
-import branchService from "../../services/branchService";
+import RentalService from "../../services/rentalService";
+import BranchService from "../../services/branchService";
 import { toast } from "react-toastify";
 
 type Props = {};
@@ -46,11 +46,11 @@ export const Reservation = (props: Props) => {
   };
   const fetchCarByBrandId = async () => {
     try {
-      await branchService
-        .getCarById(parseInt(`${branch}`))
-        .then((response: any) => {
+      await BranchService.getCarById(parseInt(`${branch}`)).then(
+        (response: any) => {
           setCar(response.data.data);
-        });
+        }
+      );
     } catch (error: any) {
       toast.error(error.response.data.message);
     }
@@ -91,14 +91,12 @@ export const Reservation = (props: Props) => {
 
   const handleOnSubmit = async (values: CarSearchValues) => {
     let name;
-    await rentalService
-      .dateValid({
-        startDate: initialValues.startDate,
-        endDate: initialValues.endDate,
-      })
-      .then((response: any) => {
-        name = response.name;
-      });
+    await RentalService.dateValid({
+      startDate: initialValues.startDate,
+      endDate: initialValues.endDate,
+    }).then((response: any) => {
+      name = response.name;
+    });
     if (name !== "AxiosError") {
       dispatch(addRental(values));
       dispatch(addCarId(car?.id));

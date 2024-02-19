@@ -5,7 +5,7 @@ import {
   addAdditional,
   addAdditionalPrice,
 } from "../../store/slices/rentalSlice";
-import { GetAllAdditionalFeaturesResponse } from "../../models/additionalFeature/responses/GetAllAdditionalFeaturesResponse";
+import { GetAllAdditionalFeaturesResponse } from "../../models/additionalFeature/responses/getAllAdditionalFeaturesResponse";
 import AdditionalFeatureService from "../../services/additionalFeatureService";
 import { useNavigate } from "react-router-dom";
 import { formatCurrency } from "../../utils/formatCurrency";

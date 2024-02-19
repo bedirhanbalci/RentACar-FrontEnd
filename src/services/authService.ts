@@ -1,7 +1,7 @@
-import { CorporateLoginRequest } from "../models/auth/requests/CorporateLoginRequest";
-import { IndividualLoginRequest } from "../models/auth/requests/IndividualLoginRequest";
-import { LoginRequest } from "../models/auth/requests/LoginRequest";
-import { RegisterRequest } from "../models/auth/requests/RegisterRequest";
+import { LoginRequest } from "../models/auth/requests/loginRequest";
+import { RegisterRequest } from "../models/auth/requests/registerRequest";
+import { CorporateLoginRequest } from "../models/auth/requests/corporateLoginRequest";
+import { IndividualLoginRequest } from "../models/auth/requests/individualLoginRequest";
 import { CorporateRegisterForm } from "../pages/CorporateRegister/CorporateRegister";
 import { IndividualRegisterForm } from "../pages/IndividualRegister/IndividualRegister";
 import axiosInstance from "../utils/interceptors/axiosInterceptors";

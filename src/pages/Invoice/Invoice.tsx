@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { formatCurrency } from "../../utils/formatCurrency";
-import rentalService from "../../services/rentalService";
+import RentalService from "../../services/rentalService";
 import "./Invoice.css";
 
 type Props = {};
@@ -13,11 +13,11 @@ const Invoice = (props: Props) => {
 
   const fetchInfo = async () => {
     try {
-      await rentalService
-        .getByUserId(parseInt(authState.id))
-        .then((response: any) => {
+      await RentalService.getByUserId(parseInt(authState.id)).then(
+        (response: any) => {
           setInfo(response.data);
-        });
+        }
+      );
     } catch (err) {
       console.error(err);
     }

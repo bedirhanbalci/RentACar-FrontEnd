@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import "./Navbar.css";
+import "./navbar.css";
 import LoginCard from "../LoginCard/LoginCard";
 import { useSelector } from "react-redux";
 import DropdownCard from "../DropdownCard/DropdownCard";

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { GetByIdUserResponse } from "../../models/user/responses/GetByIdUserResponse";
-import userService from "../../services/userService";
+import { GetByIdUserResponse } from "../../models/user/responses/getByIdUserResponse";
+import UserService from "../../services/userService";
 import { useSelector } from "react-redux";
 import UserUpdateForm from "../../components/layout/UserUpdateForm/UserUpdateForm";
 import { Container, Card, Button, Modal } from "react-bootstrap";
@@ -17,12 +17,12 @@ const Profile = (props: Props) => {
 
   const fetchUser = async () => {
     try {
-      await userService
-        .getById(parseInt(authState.id))
-        .then((response: any) => {
+      await UserService.getById(parseInt(authState.id)).then(
+        (response: any) => {
           setUser(response.data[1]);
           setCustomer(response.data[0]);
-        });
+        }
+      );
     } catch (err) {
       console.error(err);
     }
