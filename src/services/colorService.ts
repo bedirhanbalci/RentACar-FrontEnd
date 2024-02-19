@@ -4,7 +4,7 @@ import { GetAllColorsResponse } from "../models/color/responses/GetAllColorsResp
 import { GetByIdColorResponse } from "../models/color/responses/GetByIdColorResponse";
 import { AddColorResponse } from "../models/color/responses/AddColorResponse";
 import { UpdateColorResponse } from "../models/color/responses/UpdateColorResponse";
-import { BaseService } from "./baseService";
+import { BaseService } from "./BaseService";
 
 class ColorService extends BaseService<
   GetAllColorsResponse,

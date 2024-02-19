@@ -1,6 +1,6 @@
 import { AxiosResponse } from "axios";
 import { GetAllAssurancePackagesResponse } from "../models/assurancePackage/responses/GetAllAssurancePackagesResponse";
-import { BaseService } from "./baseService";
+import { BaseService } from "./BaseService";
 import axiosInstance from "../utils/interceptors/axiosInterceptors";
 import { GetByIdAssurancePackageResponse } from "../models/assurancePackage/responses/GetByIdAssurancePackageResponse";
 import { AddAssurancePackageRequest } from "../models/assurancePackage/requests/AddAssurancePackageRequest";

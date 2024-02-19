@@ -4,7 +4,7 @@ import { GetAllUsersResponse } from "../models/user/responses/GetAllUsersRespons
 import { GetByIdUserResponse } from "../models/user/responses/GetByIdUserResponse";
 import { AddUserResponse } from "../models/user/responses/AddUserResponse";
 import { UpdateUserResponse } from "../models/user/responses/UpdateUserResponse";
-import { BaseService } from "./baseService";
+import { BaseService } from "./BaseService";
 
 class UserService extends BaseService<
   GetAllUsersResponse,

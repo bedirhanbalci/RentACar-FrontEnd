@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { GetByIdCarResponse } from "../../models/car/responses/GetByIdCarResponse";
-import CarService from "../../services/carService";
+import CarService from "../../services/CarService";
 import { formatCurrency } from "../../utils/formatCurrency";
 
 type Props = {};

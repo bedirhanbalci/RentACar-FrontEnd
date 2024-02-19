@@ -1,6 +1,6 @@
 import { AxiosResponse } from "axios";
 import { GetByIdBranchResponse } from "../models/branch/responses/GetByIdBranchResponse";
-import { BaseService } from "./baseService";
+import { BaseService } from "./BaseService";
 import axiosInstance from "../utils/interceptors/axiosInterceptors";
 import { GetByIdCarResponse } from "../models/car/responses/GetByIdCarResponse";
 import { GetAllBranchesResponse } from "../models/branch/responses/GetAllBranchesResponse";

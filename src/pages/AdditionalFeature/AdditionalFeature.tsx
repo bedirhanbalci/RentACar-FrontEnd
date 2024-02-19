@@ -6,7 +6,7 @@ import {
   addAdditionalPrice,
 } from "../../store/slices/rentalSlice";
 import { GetAllAdditionalFeaturesResponse } from "../../models/additionalFeature/responses/GetAllAdditionalFeaturesResponse";
-import AdditionalFeatureService from "../../services/additionalFeatureService";
+import AdditionalFeatureService from "../../services/AdditionalFeatureService";
 import { useNavigate } from "react-router-dom";
 import { formatCurrency } from "../../utils/formatCurrency";
 import { toast } from "react-toastify";

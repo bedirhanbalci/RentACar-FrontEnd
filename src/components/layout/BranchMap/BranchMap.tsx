@@ -2,7 +2,7 @@
 import { Loader } from "@googlemaps/js-api-loader";
 import React, { useEffect, useRef, useState } from "react";
 import { GetAllBranchesResponse } from "../../../models/branch/responses/GetAllBranchesResponse";
-import BranchService from "../../../services/branchService";
+import BranchService from "../../../services/BranchService";
 import { toast } from "react-toastify";
 
 type BranchMapProps = {};

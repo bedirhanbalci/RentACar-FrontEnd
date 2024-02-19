@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Nav, NavDropdown } from "react-bootstrap";
-import UserService from "../../../services/userService";
+import UserService from "../../../services/UserService";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutSuccess } from "../../../store/slices/authSlice";
 import { Link, useNavigate } from "react-router-dom";

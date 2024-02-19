@@ -1,6 +1,6 @@
 import { AxiosResponse } from "axios";
 import { GetAllAdditionalFeaturesResponse } from "../models/additionalFeature/responses/GetAllAdditionalFeaturesResponse";
-import { BaseService } from "./baseService";
+import { BaseService } from "./BaseService";
 import axiosInstance from "../utils/interceptors/axiosInterceptors";
 import { GetByIdAdditionalFeatureResponse } from "../models/additionalFeature/responses/GetByIdAdditionalFeatureResponse";
 import { AddAdditionalFeatureRequest } from "../models/additionalFeature/requests/AddAdditionalFeatureRequest";

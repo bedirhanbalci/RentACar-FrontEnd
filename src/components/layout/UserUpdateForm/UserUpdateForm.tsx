@@ -2,7 +2,7 @@ import { UpdateUserRequest } from "../../../models/user/requests/UpdateUserReque
 import { Form, Formik } from "formik";
 import FormikInput from "../../common/FormikInput/FormikInput";
 import * as Yup from "yup";
-import UserService from "../../../services/userService";
+import UserService from "../../../services/UserService";
 
 type Props = { user: any; customer: any; setUpdate: any };
 

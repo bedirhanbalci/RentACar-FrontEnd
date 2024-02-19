@@ -2,13 +2,13 @@ import { useEffect, useState } from "react";
 import Background from "../../components/layout/Background/Background";
 import MainSlider from "../../components/layout/MainSlider/MainSlider";
 import CampaignSlider from "../../components/layout/CampaignSlider/CampaignSlider";
-import CarService from "../../services/carService";
+import CarService from "../../services/CarService";
 import CarCard from "../../components/layout/CarCard/CarCard";
 import { GetAllCarsResponse } from "../../models/car/responses/GetAllCarsResponse";
-import AssurancePackageService from "../../services/assurancePackageService";
+import AssurancePackageService from "../../services/AssurancePackageService";
 import { GetAllAssurancePackagesResponse } from "../../models/assurancePackage/responses/GetAllAssurancePackagesResponse";
 import { GetAllAdditionalFeaturesResponse } from "../../models/additionalFeature/responses/GetAllAdditionalFeaturesResponse";
-import AdditionalFeatureService from "../../services/additionalFeatureService";
+import AdditionalFeatureService from "../../services/AdditionalFeatureService";
 import { toast } from "react-toastify";
 
 type Props = {};

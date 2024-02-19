@@ -4,7 +4,7 @@ import { AddBrandResponse } from "../models/brand/responses/AddBrandResponse";
 import { GetAllBrandsResponse } from "../models/brand/responses/GetAllBrandsResponse";
 import { GetByIdBrandResponse } from "../models/brand/responses/GetByIdBrandResponse";
 import { UpdateBrandResponse } from "../models/brand/responses/UpdateBrandResponse";
-import { BaseService } from "./baseService";
+import { BaseService } from "./BaseService";
 
 class BrandService extends BaseService<
   GetAllBrandsResponse,

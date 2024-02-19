@@ -1,4 +1,4 @@
-import { BaseService } from "./baseService";
+import { BaseService } from "./BaseService";
 import { AxiosResponse } from "axios";
 import axiosInstance from "../utils/interceptors/axiosInterceptors";
 import { GetAllCarsResponse } from "../models/car/responses/GetAllCarsResponse";

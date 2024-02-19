@@ -4,7 +4,7 @@ import { AddCorporateCustomerResponse } from "../models/corporateCustomer/respon
 import { GetAllCorporateCustomersResponse } from "../models/corporateCustomer/responses/GetAllCorporateCustomersResponse";
 import { GetByIdCorporateCustomerResponse } from "../models/corporateCustomer/responses/GetByIdCorporateCustomerResponse";
 import { UpdateCorporateCustomerResponse } from "../models/corporateCustomer/responses/UpdateCorporateCustomerResponse";
-import { BaseService } from "./baseService";
+import { BaseService } from "./BaseService";
 
 class CorporateCustomerService extends BaseService<
   GetAllCorporateCustomersResponse,
