@@ -4,7 +4,7 @@ import { GetAllInvoicesResponse } from "../models/invoice/responses/GetAllInvoic
 import { GetByIdInvoiceResponse } from "../models/invoice/responses/GetByIdInvoiceResponse";
 import { AddInvoiceResponse } from "../models/invoice/responses/AddInvoiceResponse";
 import { UpdateInvoiceResponse } from "../models/invoice/responses/UpdateInvoiceResponse";
-import { BaseService } from "./baseService";
+import { BaseService } from "./BaseService";
 
 class InvoiceService extends BaseService<
   GetAllInvoicesResponse,

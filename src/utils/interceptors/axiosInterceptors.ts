@@ -1,7 +1,7 @@
 import axios from "axios";
 import toastr from "toastr";
 import { loadToken, storeToken } from "../../store/authStorage";
-import TokenService from "../../services/tokenService";
+import TokenService from "../../services/TokenService";
 import {
   decreaseRequestCount,
   increaseRequestCount,

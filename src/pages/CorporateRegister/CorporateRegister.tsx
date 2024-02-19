@@ -4,7 +4,7 @@ import { passwordRule } from "../../utils/validation/customValidationRules";
 import FormikInput from "../../components/common/FormikInput/FormikInput";
 import FormikSelect from "../../components/common/FormikSelect/FormikSelect";
 import { useNavigate } from "react-router-dom";
-import AuthService from "../../services/authService";
+import AuthService from "../../services/AuthService";
 import { toast } from "react-toastify";
 
 type Props = {};

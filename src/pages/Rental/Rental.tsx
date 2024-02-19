@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
-import RentalService from "../../services/rentalService";
+import RentalService from "../../services/RentalService";
 import { clearRental } from "../../store/slices/rentalSlice";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import CarService from "../../services/carService";
+import CarService from "../../services/CarService";
 import { GetByIdCarResponse } from "../../models/car/responses/GetByIdCarResponse";
 import { formatCurrency } from "../../utils/formatCurrency";
 import toastr from "toastr";

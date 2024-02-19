@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { GetByIdUserResponse } from "../../models/user/responses/GetByIdUserResponse";
-import UserService from "../../services/userService";
+import UserService from "../../services/UserService";
 import { useSelector } from "react-redux";
 import UserUpdateForm from "../../components/layout/UserUpdateForm/UserUpdateForm";
 import { Container, Card, Button, Modal } from "react-bootstrap";

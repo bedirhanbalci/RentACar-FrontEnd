@@ -3,7 +3,7 @@ import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { GetByIdCarResponse } from "../../models/car/responses/GetByIdCarResponse";
 import * as Yup from "yup";
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import CarService from "../../services/carService";
+import CarService from "../../services/CarService";
 import { useDispatch } from "react-redux";
 import {
   addCarId,
@@ -11,8 +11,8 @@ import {
   addRentalPrice,
 } from "../../store/slices/rentalSlice";
 import { formatCurrency } from "../../utils/formatCurrency";
-import RentalService from "../../services/rentalService";
-import BranchService from "../../services/branchService";
+import RentalService from "../../services/RentalService";
+import BranchService from "../../services/BranchService";
 import { toast } from "react-toastify";
 
 type Props = {};
