@@ -4,7 +4,7 @@ import { AddIndividualCustomerResponse } from "../models/individualCustomer/resp
 import { GetAllIndividualCustomersResponse } from "../models/individualCustomer/responses/GetAllIndividualCustomersResponse";
 import { GetByIdIndividualCustomerResponse } from "../models/individualCustomer/responses/GetByIdIndividualCustomerResponse";
 import { UpdateIndividualCustomerResponse } from "../models/individualCustomer/responses/UpdateIndividualCustomerResponse";
-import { BaseService } from "./BaseService";
+import { BaseService } from "./baseService";
 
 class IndividualCustomerService extends BaseService<
   GetAllIndividualCustomersResponse,

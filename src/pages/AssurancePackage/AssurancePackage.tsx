@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Col } from "react-bootstrap";
-import AssurancePackageService from "../../services/AssurancePackageService";
+import AssurancePackageService from "../../services/assurancePackageService";
 import { GetAllAssurancePackagesResponse } from "../../models/assurancePackage/responses/GetAllAssurancePackagesResponse";
 import { useDispatch, useSelector } from "react-redux";
 import {

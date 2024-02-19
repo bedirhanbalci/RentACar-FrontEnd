@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { loginSuccess } from "../../../store/slices/authSlice";
 import "./LoginCard.css";
-import AuthService from "../../../services/AuthService";
+import AuthService from "../../../services/authService";
 import { IndividualLoginRequest } from "../../../models/auth/requests/IndividualLoginRequest";
 import { CorporateLoginRequest } from "../../../models/auth/requests/CorporateLoginRequest";
 import { encryptPassword } from "../../../utils/config/passwordHelper";

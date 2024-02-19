@@ -4,7 +4,7 @@ import { GetAllModelsResponse } from "../models/model/responses/GetAllModelsResp
 import { GetByIdModelResponse } from "../models/model/responses/GetByIdModelResponse";
 import { AddModelResponse } from "../models/model/responses/AddModelResponse";
 import { UpdateModelResponse } from "../models/model/responses/UpdateModelResponse";
-import { BaseService } from "./BaseService";
+import { BaseService } from "./baseService";
 
 class ModelService extends BaseService<
   GetAllModelsResponse,
