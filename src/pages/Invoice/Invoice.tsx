@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { formatCurrency } from "../../utils/formatCurrency";
-import RentalService from "../../services/RentalService";
+import RentalService from "../../services/rentalService";
 import "./Invoice.css";
 
 type Props = {};

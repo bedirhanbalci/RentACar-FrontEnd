@@ -3,7 +3,7 @@ import * as Yup from "yup";
 import { passwordRule } from "../../utils/validation/customValidationRules";
 import FormikInput from "../../components/common/FormikInput/FormikInput";
 import { toast } from "react-toastify";
-import AuthService from "../../services/AuthService";
+import AuthService from "../../services/authService";
 import { useNavigate } from "react-router-dom";
 
 type Props = {};

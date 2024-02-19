@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import ContactMap from "../../components/layout/ContactMap/ContactMap";
 import { GetByIdBranchResponse } from "../../models/branch/responses/GetByIdBranchResponse";
-import BranchService from "../../services/BranchService";
+import BranchService from "../../services/branchService";
 import { Form, Formik } from "formik";
 import FormikSelect from "../../components/common/FormikSelect/FormikSelect";
 import FormikInput from "../../components/common/FormikInput/FormikInput";
