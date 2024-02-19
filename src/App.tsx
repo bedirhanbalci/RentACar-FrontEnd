@@ -22,6 +22,7 @@ import Rental from "./pages/Rental/Rental";
 import OrderComplete from "./pages/OrderComplete/OrderComplete";
 import Profile from "./pages/Profile/Profile";
 import Invoice from "./pages/Invoice/Invoice";
+import ProtectedRoute from "./guards/ProtectedRoute";
 function App(): ReactElement {
   return (
     <>
@@ -57,9 +58,30 @@ function App(): ReactElement {
             element={<AdditionalFeature />}
           ></Route>
           <Route path="/rental" element={<Rental />}></Route>
-          <Route path="/order-complete" element={<OrderComplete />}></Route>
-          <Route path="/profile" element={<Profile />}></Route>
-          <Route path="/invoice" element={<Invoice />}></Route>
+          <Route
+            path="/order-complete"
+            element={
+              <ProtectedRoute>
+                <OrderComplete />
+              </ProtectedRoute>
+            }
+          ></Route>
+          <Route
+            path="/profile"
+            element={
+              <ProtectedRoute>
+                <Profile />
+              </ProtectedRoute>
+            }
+          ></Route>
+          <Route
+            path="/invoice"
+            element={
+              <ProtectedRoute>
+                <Invoice />
+              </ProtectedRoute>
+            }
+          ></Route>
         </Routes>
       </div>
       <Footer />

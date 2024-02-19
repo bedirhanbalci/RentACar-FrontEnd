@@ -13,6 +13,7 @@ import {
 import { formatCurrency } from "../../utils/formatCurrency";
 import rentalService from "../../services/rentalService";
 import branchService from "../../services/branchService";
+import { toast } from "react-toastify";
 
 type Props = {};
 
@@ -39,8 +40,8 @@ export const Reservation = (props: Props) => {
       await CarService.getById(parseInt(`${id}`)).then((response: any) => {
         setCar(response.data.data);
       });
-    } catch (error) {
-      console.log(error);
+    } catch (error: any) {
+      toast.error(error.response.data.message);
     }
   };
   const fetchCarByBrandId = async () => {
@@ -50,8 +51,8 @@ export const Reservation = (props: Props) => {
         .then((response: any) => {
           setCar(response.data.data);
         });
-    } catch (error) {
-      console.log(error);
+    } catch (error: any) {
+      toast.error(error.response.data.message);
     }
   };
 
@@ -64,8 +65,8 @@ export const Reservation = (props: Props) => {
       }).then((response: any) => {
         setTotalPrice(response.data);
       });
-    } catch (error) {
-      console.log(error);
+    } catch (error: any) {
+      toast.error(error.response.data.message);
     }
   };
 

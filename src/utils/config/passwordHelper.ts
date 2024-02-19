@@ -2,7 +2,6 @@ import bcryptjs from "bcryptjs";
 
 const saltRounds = 10;
 
-// Şifreyi şifrelemek için kullanılacak yardımcı fonksiyon
 export async function encryptPassword(password: string): Promise<string> {
   try {
     const hashedPassword = await bcryptjs.hash(password, saltRounds);
@@ -12,7 +11,6 @@ export async function encryptPassword(password: string): Promise<string> {
   }
 }
 
-// Şifreyi çözmek için kullanılacak yardımcı fonksiyon
 export async function decryptPassword(
   password: string,
   hashedPassword: string

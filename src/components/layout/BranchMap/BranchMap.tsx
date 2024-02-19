@@ -3,6 +3,7 @@ import { Loader } from "@googlemaps/js-api-loader";
 import React, { useEffect, useRef, useState } from "react";
 import { GetAllBranchesResponse } from "../../../models/branch/responses/GetAllBranchesResponse";
 import BranchService from "../../../services/branchService";
+import { toast } from "react-toastify";
 
 type BranchMapProps = {};
 
@@ -16,8 +17,8 @@ const BranchMap: React.FC<BranchMapProps> = () => {
       await BranchService.getAll().then((response: any) => {
         setBranches(response.data.data);
       });
-    } catch (error) {
-      console.log(error);
+    } catch (error: any) {
+      toast.error(error.response.data.message);
     }
   };
 

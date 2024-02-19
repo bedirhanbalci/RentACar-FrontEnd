@@ -9,6 +9,7 @@ import AssurancePackageService from "../../services/assurancePackageService";
 import { GetAllAssurancePackagesResponse } from "../../models/assurancePackage/responses/GetAllAssurancePackagesResponse";
 import { GetAllAdditionalFeaturesResponse } from "../../models/additionalFeature/responses/GetAllAdditionalFeaturesResponse";
 import AdditionalFeatureService from "../../services/additionalFeatureService";
+import { toast } from "react-toastify";
 
 type Props = {};
 
@@ -35,8 +36,8 @@ const HomePage = (props: Props) => {
       await CarService.getAll().then((response: any) => {
         setCarList(response.data.data);
       });
-    } catch (error) {
-      console.log(error);
+    } catch (error: any) {
+      toast.error(error.response.data.message);
     }
   };
 
@@ -45,8 +46,8 @@ const HomePage = (props: Props) => {
       await AssurancePackageService.getAll().then((response: any) => {
         setAssuranceList(response.data.data);
       });
-    } catch (error) {
-      console.log(error);
+    } catch (error: any) {
+      toast.error(error.response.data.message);
     }
   };
 
@@ -55,8 +56,8 @@ const HomePage = (props: Props) => {
       await AdditionalFeatureService.getAll().then((response: any) => {
         setAdditionalList(response.data.data);
       });
-    } catch (error) {
-      console.log(error);
+    } catch (error: any) {
+      toast.error(error.response.data.message);
     }
   };
 
