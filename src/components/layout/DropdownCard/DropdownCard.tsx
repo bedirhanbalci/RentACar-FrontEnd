@@ -4,7 +4,7 @@ import UserService from "../../../services/userService";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutSuccess } from "../../../store/slices/authSlice";
 import { Link, useNavigate } from "react-router-dom";
-import "./DropdownCard.css";
+import "./dropdownCard.css";
 
 type Props = {};
 

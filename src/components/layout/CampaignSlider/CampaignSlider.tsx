@@ -1,7 +1,7 @@
 import React from "react";
 import { Carousel, Container, Row, Col } from "react-bootstrap";
-import "./CampaignSlider.css";
-import { GetAllAdditionalFeaturesResponse } from "../../../models/additionalFeature/responses/GetAllAdditionalFeaturesResponse";
+import "./campaignSlider.css";
+import { GetAllAdditionalFeaturesResponse } from "../../../models/additionalFeature/responses/getAllAdditionalFeaturesResponse";
 
 interface CampaignSliderProps {
   cards: GetAllAdditionalFeaturesResponse[];

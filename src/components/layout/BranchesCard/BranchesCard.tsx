@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { GetAllBranchesResponse } from "../../../models/branch/responses/GetAllBranchesResponse";
-import branchService from "../../../services/branchService";
+import { GetAllBranchesResponse } from "../../../models/branch/responses/getAllBranchesResponse";
+import BranchService from "../../../services/branchService";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
@@ -15,11 +15,11 @@ const BranchesCard: React.FC<Props> = props => {
   const fetchBranch = async () => {
     try {
       if (props.cityInput !== "") {
-        await branchService.getByCity(props.cityInput).then((response: any) => {
+        await BranchService.getByCity(props.cityInput).then((response: any) => {
           setBranches(response.data);
         });
       } else {
-        await branchService.getAll().then((response: any) => {
+        await BranchService.getAll().then((response: any) => {
           setBranches(response.data.data);
         });
       }

@@ -1,4 +1,4 @@
-import "./MainSlider.css";
+import "./mainSlider.css";
 
 type Props = {
   mainData: { text1: string; text2: string };

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import "./CarCard.css";
+import "./carCard.css";
 import { formatCurrency } from "../../../utils/formatCurrency";
 type Props = { car: any };
 

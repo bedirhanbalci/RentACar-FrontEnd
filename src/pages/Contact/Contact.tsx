@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import ContactMap from "../../components/layout/ContactMap/ContactMap";
-import { GetByIdBranchResponse } from "../../models/branch/responses/GetByIdBranchResponse";
-import branchService from "../../services/branchService";
+import { GetByIdBranchResponse } from "../../models/branch/responses/getByIdBranchResponse";
+import BranchService from "../../services/branchService";
 import { Form, Formik } from "formik";
 import FormikSelect from "../../components/common/FormikSelect/FormikSelect";
 import FormikInput from "../../components/common/FormikInput/FormikInput";
@@ -28,7 +28,7 @@ const Contact = (props: Props) => {
 
   const fetchBranch = async () => {
     try {
-      const response = await branchService.getById(1);
+      const response = await BranchService.getById(1);
       setBranch(response.data);
     } catch (error: any) {
       toast.error(error.response.data.message);

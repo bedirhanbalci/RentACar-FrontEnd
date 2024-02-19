@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Col } from "react-bootstrap";
 import AssurancePackageService from "../../services/assurancePackageService";
-import { GetAllAssurancePackagesResponse } from "../../models/assurancePackage/responses/GetAllAssurancePackagesResponse";
+import { GetAllAssurancePackagesResponse } from "../../models/assurancePackage/responses/getAllAssurancePackagesResponse";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addAssurance,

@@ -3,10 +3,10 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { loginSuccess } from "../../../store/slices/authSlice";
-import "./LoginCard.css";
+import "./loginCard.css";
 import AuthService from "../../../services/authService";
-import { IndividualLoginRequest } from "../../../models/auth/requests/IndividualLoginRequest";
-import { CorporateLoginRequest } from "../../../models/auth/requests/CorporateLoginRequest";
+import { IndividualLoginRequest } from "../../../models/auth/requests/individualLoginRequest";
+import { CorporateLoginRequest } from "../../../models/auth/requests/corporateLoginRequest";
 import { encryptPassword } from "../../../utils/config/passwordHelper";
 
 const LoginCard: React.FC = () => {

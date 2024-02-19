@@ -4,10 +4,10 @@ import MainSlider from "../../components/layout/MainSlider/MainSlider";
 import CampaignSlider from "../../components/layout/CampaignSlider/CampaignSlider";
 import CarService from "../../services/carService";
 import CarCard from "../../components/layout/CarCard/CarCard";
-import { GetAllCarsResponse } from "../../models/car/responses/GetAllCarsResponse";
+import { GetAllCarsResponse } from "../../models/car/responses/getAllCarsResponse";
 import AssurancePackageService from "../../services/assurancePackageService";
-import { GetAllAssurancePackagesResponse } from "../../models/assurancePackage/responses/GetAllAssurancePackagesResponse";
-import { GetAllAdditionalFeaturesResponse } from "../../models/additionalFeature/responses/GetAllAdditionalFeaturesResponse";
+import { GetAllAssurancePackagesResponse } from "../../models/assurancePackage/responses/getAllAssurancePackagesResponse";
+import { GetAllAdditionalFeaturesResponse } from "../../models/additionalFeature/responses/getAllAdditionalFeaturesResponse";
 import AdditionalFeatureService from "../../services/additionalFeatureService";
 import { toast } from "react-toastify";
 
